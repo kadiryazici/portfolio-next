@@ -7,11 +7,7 @@ export default defineConfig({
   plugins: [
     vinext(),
     nitro({
-      preset: "static",
-      prerender: {
-        crawlLinks: true,
-        routes: ["/"],
-      },
+      static: true,
     }),
     tailwindcss(),
   ],
