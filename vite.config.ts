@@ -4,5 +4,15 @@ import { nitro } from "nitro/vite"
 import tailwindcss from "@tailwindcss/vite"
 
 export default defineConfig({
-  plugins: [vinext(), nitro(), tailwindcss()],
+  plugins: [
+    vinext(),
+    nitro({
+      preset: "static",
+      prerender: {
+        crawlLinks: true,
+        routes: ["/"],
+      },
+    }),
+    tailwindcss(),
+  ],
 })

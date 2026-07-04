@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vite build",
-    "build:vinext": "vinext build",
-    "start": "vinext start"
+    "preview": "vite preview"
   },
   "dependencies": {
     "clsx": "^2.1.0",
