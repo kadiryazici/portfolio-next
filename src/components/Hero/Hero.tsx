@@ -52,12 +52,13 @@ export function Hero(props: HeroProps) {
 
         <div className="relative max-md:w-full shrink-0 max-md:-order-1 justify-self-start md:justify-self-auto">
           <img
-            src="/me.png"
+            src="/me.jpg"
             alt="Kadir Yazıcı"
             className={cn("blur-2xl opacity-50 transform-gpu absolute inset-0", imgStyles)}
+            aria-hidden="true"
           />
           <img
-            src="/me.png"
+            src="/me.jpg"
             alt="Kadir Yazıcı"
             className={cn("relative z-[5]", imgStyles)}
           />
