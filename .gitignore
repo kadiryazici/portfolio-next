@@ -1,5 +1,7 @@
 node_modules/
 dist/
 .vinext/
+.output/
+.vercel/
 .DS_Store
 *.local

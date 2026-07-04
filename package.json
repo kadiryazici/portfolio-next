@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vinext dev",
-    "build": "vinext build",
+    "build": "vite build",
+    "build:vinext": "vinext build",
     "start": "vinext start"
   },
   "dependencies": {
     "clsx": "^2.1.0",
+    "nitro": "latest",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.0.0",
