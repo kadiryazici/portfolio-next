@@ -11,7 +11,7 @@ export function Background(props: BackgroundProps) {
       {...attrs}
       aria-hidden
       className={cn(
-        "pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-bg",
+        "pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-bg",
         className,
       )}
     >
