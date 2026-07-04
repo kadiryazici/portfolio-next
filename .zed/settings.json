@@ -1,0 +1,66 @@
+// Project-local Zed settings.
+{
+  // Use TypeScript's language server formatter. This project intentionally
+  // does not use ESLint or Prettier as the formatting source of truth.
+  "format_on_save": "on",
+  "formatter": "language_server",
+  "linked_edits": true,
+  "file_scan_exclusions": [
+    "**/node_modules",
+    "**/.next",
+    "**/.vinext",
+    "**/dist"
+  ],
+  "languages": {
+    // Keep a single TypeScript language server attached, and preserve Tailwind
+    // completions after replacing Zed's default language server list.
+    "TypeScript": {
+      "formatter": "language_server",
+      "language_servers": [
+        "typescript-language-server",
+        "!vtsls",
+        "tailwindcss-language-server"
+      ]
+    },
+    "TSX": {
+      "formatter": "language_server",
+      "language_servers": [
+        "typescript-language-server",
+        "!vtsls",
+        "tailwindcss-language-server"
+      ]
+    },
+    "JavaScript": {
+      "formatter": "language_server",
+      "language_servers": [
+        "typescript-language-server",
+        "!vtsls",
+        "tailwindcss-language-server"
+      ]
+    },
+  },
+  "lsp": {
+    // Non-relative import specifiers match this repo's @/* path alias.
+    "typescript-language-server": {
+      "initialization_options": {
+        "preferences": {
+          "importModuleSpecifierPreference": "non-relative"
+        }
+      }
+    },
+    // Tailwind class detection for local class helpers.
+    "tailwindcss-language-server": {
+      "settings": {
+        "classFunctions": [
+          "cn",
+          "clsx",
+          "twMerge"
+        ],
+        "lint": {
+          "suggestCanonicalClasses": "ignore",
+          "cssConflict": "ignore"
+        }
+      }
+    }
+  }
+}
