@@ -37,8 +37,8 @@ pnpm start
 ```
 src/
   app/
-    layout.tsx                 # <html>, fonts, viewport meta, mounts <Background/> + <Page/>
-    page.tsx                   # home: <Hero/> + <Experience/> + <Contact/>
+    layout.tsx                 # <html>, fonts, viewport meta, mounts <Background/> only
+    page.tsx                   # <Page pathname="/"> + <Hero/> + <Experience/> + <Contact/>
     blog/
       page.tsx                 # blog index — `posts` array + thin-divider list
       <slug>/page.tsx          # one file per post, renders <BlogPost>
@@ -66,9 +66,9 @@ src/
 ### Nav (`components/Page/Page.tsx`)
 
 - Two items only: **About** (`/`) and **Blog** (`/blog`). The logo links to `/`.
-- Active state is derived from `window.location.pathname` read in a mount effect
-  — **not** `usePathname` from `next/navigation` (that resolves at runtime but
-  `tsc` can't find its types, since only vinext is installed). Keep it this way.
+- Active state is derived from the `pathname` prop, passed by each page at the
+  route level. `Page` is a server component — no client hooks needed.
+  Every page module wraps its content in `<Page pathname="…">`.
 
 ## Blog content system (`components/BlogPost/`)
 

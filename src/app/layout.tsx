@@ -1,7 +1,6 @@
 import type { ReactNode } from "react"
 import "@/styles/globals.css"
 import { Background } from "@/components/Background/Background"
-import { Page } from "@/components/Page/Page"
 
 export const metadata = {
   title: "Kadir Yazıcı — Software Developer",
@@ -35,7 +34,7 @@ export default function RootLayout(props: { children: ReactNode }) {
       </head>
       <body>
         <Background />
-        <Page>{children}</Page>
+        {children}
       </body>
     </html>
   )

@@ -1,11 +1,9 @@
-"use client"
-
 import type { ComponentProps, ReactNode } from "react"
-import { useEffect, useState } from "react"
 import { GithubIcon } from "@/components/GithubIcon/GithubIcon"
 import { cn } from "@/lib/utils"
 
 export type PageProps = ComponentProps<"div"> & {
+  pathname: string
   children: ReactNode
 }
 
@@ -15,12 +13,7 @@ const links = [
 ] as const
 
 export function Page(props: PageProps) {
-  const { children, className, ...attrs } = props
-  const [pathname, setPathname] = useState<string | null>(null)
-
-  useEffect(() => {
-    setPathname(window.location.pathname)
-  }, [])
+  const { pathname, children, className, ...attrs } = props
 
   return (
     <div
@@ -51,7 +44,7 @@ export function Page(props: PageProps) {
             const isActive =
               link.href === "/"
                 ? pathname === "/"
-                : pathname?.startsWith(link.href) ?? false
+                : pathname.startsWith(link.href)
 
             return (
               <a
