@@ -6,6 +6,8 @@ export type HeroProps = ComponentProps<"section">
 export function Hero(props: HeroProps) {
   const { className, ...attrs } = props
 
+  const imgStyles = cn("size-50 shrink-0 rounded-2xl border border-line object-cover")
+
   return (
     <section
       {...attrs}
@@ -15,7 +17,7 @@ export function Hero(props: HeroProps) {
         className,
       )}
     >
-      <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_auto] md:gap-12">
+      <div className="grid grid-cols-1 items-center max-md:gap-8 gap-16 md:grid-cols-[1fr_auto]">
         <div>
           <h1 className="m-0 text-[40px] font-semibold leading-[1.05] tracking-[-0.03em] text-ink md:text-[52px]">
             Kadir Yazıcı
@@ -48,11 +50,16 @@ export function Hero(props: HeroProps) {
           </div>
         </div>
 
-        <div className="max-md:-order-1 justify-self-start md:justify-self-auto">
+        <div className="relative max-md:w-full shrink-0 max-md:-order-1 justify-self-start md:justify-self-auto">
           <img
-            src="https://avatars.githubusercontent.com/u/47540799?v=4"
+            src="/me.png"
             alt="Kadir Yazıcı"
-            className="h-28 w-28 rounded-2xl border border-line object-cover md:h-40 md:w-40"
+            className={cn("blur-2xl opacity-50 transform-gpu absolute inset-0", imgStyles)}
+          />
+          <img
+            src="/me.png"
+            alt="Kadir Yazıcı"
+            className={cn("relative z-[5]", imgStyles)}
           />
         </div>
       </div>
