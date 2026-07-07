@@ -1,7 +1,4 @@
-// Project-local Zed settings.
 {
-  // Use TypeScript's language server formatter. This project intentionally
-  // does not use ESLint or Prettier as the formatting source of truth.
   "format_on_save": "on",
   "formatter": "language_server",
   "linked_edits": true,
@@ -12,31 +9,14 @@
     "**/dist"
   ],
   "languages": {
-    // Keep a single TypeScript language server attached, and preserve Tailwind
-    // completions after replacing Zed's default language server list.
     "TypeScript": {
       "formatter": "language_server",
-      "language_servers": [
-        "typescript-language-server",
-        "!vtsls",
-        "tailwindcss-language-server"
-      ]
     },
     "TSX": {
       "formatter": "language_server",
-      "language_servers": [
-        "typescript-language-server",
-        "!vtsls",
-        "tailwindcss-language-server"
-      ]
     },
     "JavaScript": {
       "formatter": "language_server",
-      "language_servers": [
-        "typescript-language-server",
-        "!vtsls",
-        "tailwindcss-language-server"
-      ]
     },
   },
   "lsp": {

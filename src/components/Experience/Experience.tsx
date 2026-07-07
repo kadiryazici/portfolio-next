@@ -5,22 +5,12 @@ const jobs = [
   {
     name: "Seam",
     website: "https://www.seam.co",
-    period: "2024 — Now",
+    period: "2024/10 — 2026/06",
     role: "Software Developer",
     type: "Full-time · Remote",
     detail:
       "Building web components and complex UI systems with Next.js and React — API and state management, performance optimization and refactoring, plus open-source libraries.",
     stack: "Next.js · React · Web Components · State · Performance",
-  },
-  {
-    name: "Open Source",
-    website: "https://github.com/kadiryazici",
-    period: "2020 — Now",
-    role: "Maintainer",
-    type: "Self-employed",
-    detail:
-      "Developing and maintaining open-source libraries, and contributing to other repositories.",
-    stack: "TypeScript · Libraries · Tooling",
   },
   {
     name: "Wope",
