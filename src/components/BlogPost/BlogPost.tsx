@@ -32,7 +32,7 @@ export function BlogPost(props: BlogPostProps) {
         {date}
       </p>
 
-      <div className="mt-12 max-w-2xl">
+      <div className="mt-12 w-full">
         {children}
       </div>
     </article>

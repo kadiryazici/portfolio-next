@@ -7,6 +7,19 @@ export const metadata = {
   title: "Surviving AI World as a Stubborn Old Developer — Kadir Yazıcı",
   description:
     "Suggestions from a stubborn old developer on using AI tools daily without handing over the whole job.",
+  openGraph: {
+    title: "Surviving AI World as a Stubborn Old Developer — Kadir Yazıcı",
+    description:
+      "Suggestions from a stubborn old developer on using AI tools daily without handing over the whole job.",
+    type: "article",
+    publishedTime: "2026-07-04",
+  },
+  twitter: {
+    card: "summary",
+    title: "Surviving AI World as a Stubborn Old Developer — Kadir Yazıcı",
+    description:
+      "Suggestions from a stubborn old developer on using AI tools daily without handing over the whole job.",
+  },
 }
 
 export default function SurvivingAiWorldPage() {
