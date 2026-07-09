@@ -7,7 +7,7 @@ export const metadata = {
 
 const posts = [
   {
-    slug: "why-a-perfect-ui-so-hard",
+    slug: "that-feeling-when-the-app-has-perfect-ux",
     title: "That Feeling When the App Has Perfect UX",
     date: "July 9, 2026",
   },
