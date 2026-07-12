@@ -16,7 +16,7 @@ const jobs = [
       <br />
       • Reduced page load time from 80 seconds to 10 seconds by parallelizing independent API requests.
       <br />
-      • Simplified product searching by implementing an optimized querying algorithm which is cached by default and deliveres lightning fast results.
+      • Simplified product searching by implementing an optimized querying algorithm for lightning fast results and caching.
     </Fragment>,
     stack: "Next.js · React · Web Components · State · Performance",
   },
@@ -32,11 +32,11 @@ const jobs = [
       <br />
       <strong>Achievements:</strong>
       <br />
-      • Built a component library for the entire company, which is used in all of our products.
+      • Built a component library for the entire company.
       <br />
-      • Implemented a new state management system that improved performance and reduced complexity.
+      • Implemented a new state management system with Pinia, which improved performance and reduced complexity.
       <br />
-      • Improved table algorithm by virtualizing rows and columns and multi threaded calculations, which improved performance and reduced complexity.
+      • Improved large-table performance by virtualizing rows and columns and moving expensive calculations to Web Workers.
     </Fragment>,
     stack: "Vue · TypeScript · Pinia · Storybook · SCSS",
   },
