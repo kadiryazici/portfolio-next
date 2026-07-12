@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react"
+import { Fragment, type ComponentProps } from "react"
 import { Section } from "@/components/Section/Section"
 
 const jobs = [
@@ -8,8 +8,16 @@ const jobs = [
     period: "2024/10 — 2026/06",
     role: "Software Developer",
     type: "Full-time · Remote",
-    detail:
-      "Building web components and complex UI systems with Next.js and React — API and state management, performance optimization and refactoring, plus open-source libraries.",
+    detail: <Fragment>
+      Building web components and complex UI systems with Next.js and React — API and state management, performance optimization and refactoring, plus open-source libraries.
+      <br />
+      <br />
+      <strong>Achievements:</strong>
+      <br />
+      • Reduced page load time from 80 seconds to 10 seconds by parallelizing independent API requests.
+      <br />
+      • Simplified product searching by implementing an optimized querying algorithm which is cached by default and deliveres lightning fast results.
+    </Fragment>,
     stack: "Next.js · React · Web Components · State · Performance",
   },
   {
@@ -18,8 +26,18 @@ const jobs = [
     period: "2021 — 2024",
     role: "Frontend Developer",
     type: "Full-time · Remote",
-    detail:
-      "Building UI components from scratch, handling animations, writing performant code, and owning app state and logic.",
+    detail: <Fragment>
+      Building UI components from scratch, handling animations, writing performant code, and owning app state and logic.
+      <br />
+      <br />
+      <strong>Achievements:</strong>
+      <br />
+      • Built a component library for the entire company, which is used in all of our products.
+      <br />
+      • Implemented a new state management system that improved performance and reduced complexity.
+      <br />
+      • Improved table algorithm by virtualizing rows and columns and multi threaded calculations, which improved performance and reduced complexity.
+    </Fragment>,
     stack: "Vue · TypeScript · Pinia · Storybook · SCSS",
   },
   {
