@@ -1,5 +1,6 @@
 import { Fragment, type ComponentProps } from "react"
 import { Section } from "@/components/Section/Section"
+import { cn } from "@/lib/utils"
 
 const jobs = [
   {
@@ -72,14 +73,18 @@ const jobs = [
   },
 ] as const
 
-export type ExperienceProps = ComponentProps<"section">
+export type ExperienceProps = ComponentProps<"section"> & {
+  step: string
+}
 
 export function Experience(props: ExperienceProps) {
+  const { step, ...attrs } = props
+
   return (
     <Section
-      {...props}
+      {...attrs}
       id="experience"
-      index="01"
+      step={step}
       label="Experience"
     >
       <div className="flex flex-col">
@@ -116,7 +121,7 @@ export function Experience(props: ExperienceProps) {
           )
 
           const rowClass =
-            "grid grid-cols-1 gap-2 border-b border-line py-7 no-underline first:pt-0 last:border-b-0 md:grid-cols-[130px_1fr] md:gap-8"
+            "flex flex-col gap-2 border-b border-line p-7 no-underline last:border-b-0"
 
           if (job.website == null) {
             return (
@@ -134,7 +139,11 @@ export function Experience(props: ExperienceProps) {
               key={job.name}
               href={job.website}
               target="_blank"
-              className={`group ${rowClass} transition-colors hover:bg-surface`}
+              className={cn(
+                "group",
+                rowClass,
+                "transition-colors hover:bg-surface",
+              )}
             >
               {body}
             </a>

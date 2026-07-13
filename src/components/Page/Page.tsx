@@ -64,7 +64,7 @@ export function Page(props: PageProps) {
         </nav>
       </header>
 
-      <article className="lg:px-[64px] px-[24px]">
+      <article className="lg:px-[64px]">
         {children}
       </article>
 

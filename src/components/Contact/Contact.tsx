@@ -2,14 +2,18 @@ import type { ComponentProps } from "react"
 import { GithubIcon } from "@/components/GithubIcon/GithubIcon"
 import { Section } from "@/components/Section/Section"
 
-export type ContactProps = ComponentProps<"section">
+export type ContactProps = ComponentProps<"section"> & {
+  step: string
+}
 
 export function Contact(props: ContactProps) {
+  const { step, ...attrs } = props
+
   return (
     <Section
-      {...props}
+      {...attrs}
       id="contact"
-      index="02"
+      step={step}
       label="Contact"
     >
       <p className="m-0 max-w-xl text-[17px] text-ink-muted">
