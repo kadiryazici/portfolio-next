@@ -14,17 +14,6 @@ const projects = [
     logoImage: "/projects/gitification-logo.png",
     subtitle: "Desktop product",
   },
-  {
-    name: "Eye Health 202020",
-    description:
-      "A lightweight menubar app that turns the 20-20-20 rule into a quiet desktop habit.",
-    purpose:
-      "It helps reduce eye strain by reminding you to look at something 20 feet away for 20 seconds every 20 minutes.",
-    website: "https://github.com/kadiryazici/eye-health-202020",
-    stack: ["Vue", "TypeScript", "Rust", "Tauri", "SCSS"],
-    logoImage: "/projects/eye-health-logo.png",
-    subtitle: "Desktop utility",
-  },
 ] as const
 
 export type ProjectsProps = ComponentProps<"section"> & {
