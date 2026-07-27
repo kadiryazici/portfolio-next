@@ -118,7 +118,6 @@ function PickerPopover(props: PickerPopoverProps) {
     }
 
     const digit = Number(e.target.getAttribute("data-digit-value"))
-    setMinute(digit)
     elRef.current?.togglePopover(false)
     onValueChange?.([hour, digit])
   }
