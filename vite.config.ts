@@ -3,11 +3,11 @@ import vinext from "vinext"
 import { nitro } from "nitro/vite"
 import tailwindcss from "@tailwindcss/vite"
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   plugins: [
     vinext(),
     nitro({
-      static: mode === "production",
+      // static: mode === "production",
     }),
     tailwindcss(),
   ],
