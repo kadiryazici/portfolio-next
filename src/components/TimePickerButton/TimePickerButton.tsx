@@ -74,9 +74,14 @@ const minuteDigits = createDigitPosition(
 )
 
 const innerHourDigits = createDigitPosition(
-  [24, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+  [0, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
   25,
 )
+
+const numFormatter = new Intl.NumberFormat("en-US", {
+  minimumIntegerDigits: 2,
+  useGrouping: false,
+})
 
 function PickerPopover(props: PickerPopoverProps) {
   const {
@@ -225,7 +230,7 @@ function PickerPopover(props: PickerPopoverProps) {
                   }}
                   role="button"
                 >
-                  {digit.value}
+                  {numFormatter.format(digit.value)}
                 </span>
               ))}
               {innerHourDigits.map((digit) => (
@@ -242,7 +247,7 @@ function PickerPopover(props: PickerPopoverProps) {
                   }}
                   role="button"
                 >
-                  {digit.value}
+                  {numFormatter.format(digit.value)}
                 </span>
               ))}
             </Fragment>
@@ -269,7 +274,7 @@ function PickerPopover(props: PickerPopoverProps) {
                 onPointerEnter={() => setHoveredDigit(digit)}
               // onMouseLeave={() => setHoveredDigit(null)}
               >
-                {digit.value}
+                {numFormatter.format(digit.value)}
               </span>
             </div>
           ))}
