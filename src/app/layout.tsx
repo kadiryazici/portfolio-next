@@ -1,6 +1,7 @@
 import type { ReactNode } from "react"
 import "@/styles/globals.css"
 import { Background } from "@/components/Background/Background"
+import { usePathname } from "vinext/shims/navigation"
 
 export const metadata = {
   title: "Kadir Yazıcı — Software Developer",
@@ -40,6 +41,8 @@ export const metadata = {
 export default function RootLayout(props: { children: ReactNode }) {
   const { children } = props
 
+  const pathName = usePathname()
+
   return (
     <html lang="en">
       <head>
@@ -62,7 +65,7 @@ export default function RootLayout(props: { children: ReactNode }) {
         />
       </head>
       <body>
-        <Background />
+        <Background noMask={pathName.includes("/preview")} />
         {children}
       </body>
     </html>

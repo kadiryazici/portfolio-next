@@ -20,21 +20,24 @@ declare global {
 }
 
 declare namespace VinextRouteTypes {
-  type PageRoute = "/" | "/blog" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux";
+  type PageRoute = "/" | "/blog" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux" | "/preview/time-picker-button";
   type LayoutRoute = "/";
   type RouteHandlerRoute = never;
-  type AppRoute = "/" | "/blog" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux";
+  type AppRoute = "/" | "/blog" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux" | "/preview/time-picker-button";
 
   interface ParamMap {
     "/": {};
     "/blog": {};
     "/blog/surviving-ai-world-as-a-stubborn-old-developer": {};
     "/blog/that-feeling-when-the-app-has-perfect-ux": {};
+    "/preview/time-picker-button": {};
   }
 
   interface LayoutSlotMap {
     "/": never;
   }
 }
+
+
 
 export {};
