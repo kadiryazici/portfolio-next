@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import { Fragment, MouseEvent as ReactMouseEvent, ToggleEvent, useEffect, useId, useRef, useState, type ComponentProps } from "react";
+import { Fragment, PointerEvent as ReactPointerEvent, ToggleEvent, useEffect, useId, useRef, useState, type ComponentProps } from "react";
 
 export type TimePickerButtonProps = ComponentProps<"button"> & {
   onValueChange?: (value: [number, number]) => void
@@ -100,26 +100,53 @@ function PickerPopover(props: PickerPopoverProps) {
   }
 
   const elRef = useRef<HTMLDivElement>(null)
+  const clockRef = useRef<HTMLDivElement>(null)
 
-  const handleSelectHour = (e: ReactMouseEvent<HTMLDivElement>) => {
-    if (!(e.target instanceof HTMLElement)) {
+  const handlePointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
+    const clock = clockRef.current
+
+    if (!clock) {
       return
     }
 
-    const digit = Number(e.target.getAttribute("data-digit-value"))
-    setHour(digit)
-    setPhase("minute")
-    setHoveredDigit(null)
+    const bounds = clock.getBoundingClientRect()
+    const pointerPosition = {
+      left: ((e.clientX - bounds.left) / bounds.width) * 100,
+      top: ((e.clientY - bounds.top) / bounds.height) * 100,
+    }
+    const digits = phase === "minute"
+      ? minuteDigits
+      : [...hourDigits, ...innerHourDigits]
+
+    const nearestDigit = digits.reduce((nearest, digit) => {
+      const nearestDistance = Math.hypot(
+        nearest.left - pointerPosition.left,
+        nearest.top - pointerPosition.top,
+      )
+      const digitDistance = Math.hypot(
+        digit.left - pointerPosition.left,
+        digit.top - pointerPosition.top,
+      )
+
+      return digitDistance < nearestDistance ? digit : nearest
+    })
+
+    setHoveredDigit(nearestDigit)
   }
-
-  const handleSelectMinute = (e: ReactMouseEvent<HTMLDivElement>) => {
-    if (!(e.target instanceof HTMLElement)) {
+  const handlePointerUp = () => {
+    if (!hoveredDigit) {
       return
     }
 
-    const digit = Number(e.target.getAttribute("data-digit-value"))
+    if (phase === "hour") {
+      setHour(hoveredDigit.value)
+      setPhase("minute")
+      setHoveredDigit(null)
+      return
+    }
+
     elRef.current?.togglePopover(false)
-    onValueChange?.([hour, digit])
+    onValueChange?.([hour, hoveredDigit.value])
   }
 
   const sharedDigitStyles = cn("inline-grid size-[2.5ch] place-items-center rounded-full data-[digit-hovered]:bg-blue-400  data-[digit-hovered]:text-gray-900 data-[digit-hovered]:ring-blue-400/30 cursor-pointer absolute -translate-x-1/2 -translate-y-1/2")
@@ -161,8 +188,11 @@ function PickerPopover(props: PickerPopoverProps) {
       }}
     >
       <div
-        className="relative aspect-square w-full"
-        onMouseLeave={() => setHoveredDigit(null)}
+        className="relative aspect-square w-full touch-none select-none"
+        ref={clockRef}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={() => setHoveredDigit(null)}
       >
         <div className="absolute pointer-events-none inset-0 size-full z-[1]">
           {hoveredDigit && (
@@ -183,8 +213,7 @@ function PickerPopover(props: PickerPopoverProps) {
             <Fragment>
               {hourDigits.map((digit) => (
                 <span
-                  onClick={handleSelectHour}
-                  onMouseEnter={() => setHoveredDigit(digit)}
+                  onPointerEnter={() => setHoveredDigit(digit)}
                   // onMouseLeave={() => setHoveredDigit(null)}
                   data-digit-value={String(digit.value)}
                   key={digit.value}
@@ -201,8 +230,7 @@ function PickerPopover(props: PickerPopoverProps) {
               ))}
               {innerHourDigits.map((digit) => (
                 <span
-                  onClick={handleSelectHour}
-                  onMouseEnter={() => setHoveredDigit(digit)}
+                  onPointerEnter={() => setHoveredDigit(digit)}
                   data-digit-hovered={hoveredDigit?.value === digit.value ? "true" : undefined}
                   // onMouseLeave={() => setHoveredDigit(null)}
                   data-digit-value={String(digit.value)}
@@ -238,8 +266,7 @@ function PickerPopover(props: PickerPopoverProps) {
                 role="button"
                 data-digit-value={String(digit.value)}
                 data-digit-hovered={hoveredDigit?.value === digit.value ? "true" : undefined}
-                onClick={handleSelectMinute}
-                onMouseEnter={() => setHoveredDigit(digit)}
+                onPointerEnter={() => setHoveredDigit(digit)}
               // onMouseLeave={() => setHoveredDigit(null)}
               >
                 {digit.value}
