@@ -89,7 +89,6 @@ function PickerPopover(props: PickerPopoverProps) {
 
   const [phase, setPhase] = useState<"hour" | "minute">("minute")
   const [hour, setHour] = useState(12)
-  const [minute, setMinute] = useState(25)
   const [hoveredDigit, setHoveredDigit] = useState<DigitPosition | null>(hourDigits[0])
 
   const handleOnToggle = (e: ToggleEvent<HTMLDivElement>) => {
@@ -97,7 +96,6 @@ function PickerPopover(props: PickerPopoverProps) {
       setPhase("hour")
       setHoveredDigit(hourDigits[0])
       setHour(12)
-      setMinute(25)
     }
   }
 
@@ -121,15 +119,7 @@ function PickerPopover(props: PickerPopoverProps) {
 
     const digit = Number(e.target.getAttribute("data-digit-value"))
     setMinute(digit)
-    elRef.current
-      ?.animate(
-        { transform: "scale(0)", opacity: 0 },
-        { duration: 600, easing }
-      )
-      .addEventListener("finish", () => {
-        elRef.current?.togglePopover(false)
-      })
-
+    elRef.current?.togglePopover(false)
     onValueChange?.([hour, digit])
   }
 
@@ -149,7 +139,7 @@ function PickerPopover(props: PickerPopoverProps) {
   return (
     <div
       {...attrs}
-      className={cn("p-2 shadow-md starting:[transform:scale(0)] absolute bg-linear-90 from-slate-200 to-slate-100 shadow-[inset_0_0_20px_10px_rgba(0,0,0,0.3)] rounded-full", className)}
+      className={cn("p-2 shadow-md starting:open:scale-0 scale-0 open:scale-100 transition-discrete absolute bg-linear-90 from-slate-200 to-slate-100 shadow-[inset_0_0_20px_10px_rgba(0,0,0,0.3)] rounded-full", className)}
       popover="auto"
       onToggle={handleOnToggle}
       style={{
