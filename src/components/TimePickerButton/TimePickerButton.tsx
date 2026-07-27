@@ -3,10 +3,15 @@
 import { cn } from "@/lib/utils";
 import { Fragment, MouseEvent as ReactMouseEvent, ToggleEvent, useEffect, useId, useRef, useState, type ComponentProps } from "react";
 
-export function TimePickerButton(props: ComponentProps<"button">) {
+export type TimePickerButtonProps = ComponentProps<"button"> & {
+  onValueChange?: (value: [number, number]) => void
+}
+
+export function TimePickerButton(props: TimePickerButtonProps) {
   const {
     className,
     children,
+    onValueChange,
     ...attrs
   } = props;
 
@@ -34,65 +39,10 @@ export function TimePickerButton(props: ComponentProps<"button">) {
         id={anchorName}
         style={{ positionAnchor: anchorName }}
         ref={popoverEl}
+        onValueChange={onValueChange}
       />
     </>
   )
-}
-
-function ClockMouseFollowIcon(props: ComponentProps<"div">) {
-  const {
-    className,
-    ...attrs
-  } = props;
-
-  const iconRef = useRef<HTMLDivElement>(null)
-  const minuteHandRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    function handleMouseMove(event: MouseEvent) {
-      const icon = iconRef.current
-      const minuteHand = minuteHandRef.current
-
-      if (!icon || !minuteHand) {
-        return
-      }
-
-      const bounds = icon.getBoundingClientRect()
-      const centerX = bounds.left + bounds.width / 2
-      const centerY = bounds.top + bounds.height / 2
-
-      const angle = Math.atan2(event.clientY - centerY, event.clientX - centerX) * (180 / Math.PI) + 90
-      minuteHand.style.transform = `rotate(${angle}deg)`
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-    }
-  }, [])
-
-  const handStyles = cn("rounded-full w-[2px] bg-current origin-[50%_calc(100%-1px)]")
-
-  return (
-    <div
-      ref={iconRef}
-      className={cn("relative border-[2px] w-[1em] h-[1em] border-current rounded-full", className)}
-      {...attrs}
-    >
-      <div className="flex justify-center items-end absolute top-[15%] left-0 right-0 pt-[5px] h-[35%] rounded-full">
-        <div
-          className={cn("shrink minute-hand absolute h-full", handStyles)}
-          ref={minuteHandRef}
-        />
-        <div
-          className={cn("shrink hour-hand absolute -rotate-90 h-2/3", handStyles)}
-        />
-
-        <div className="[anchor-name:var(--clock-anchor-name)] invisible pointer-events-none size-[1px] inset-0 m-auto" />
-      </div>
-    </div>
-  );
 }
 
 type PickerPopoverProps = ComponentProps<"div"> & {
@@ -180,7 +130,7 @@ function PickerPopover(props: PickerPopoverProps) {
         elRef.current?.togglePopover(false)
       })
 
-    onValueChange?.([hour, minute])
+    onValueChange?.([hour, digit])
   }
 
   const sharedDigitStyles = cn("inline-grid size-[2.5ch] place-items-center rounded-full data-[digit-hovered]:bg-blue-400  data-[digit-hovered]:text-gray-900 data-[digit-hovered]:ring-blue-400/30 cursor-pointer absolute -translate-x-1/2 -translate-y-1/2")
@@ -311,4 +261,60 @@ function PickerPopover(props: PickerPopoverProps) {
       </div>
     </div >
   )
+}
+
+function ClockMouseFollowIcon(props: ComponentProps<"div">) {
+  const {
+    className,
+    ...attrs
+  } = props;
+
+  const iconRef = useRef<HTMLDivElement>(null)
+  const minuteHandRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleMouseMove(event: MouseEvent) {
+      const icon = iconRef.current
+      const minuteHand = minuteHandRef.current
+
+      if (!icon || !minuteHand) {
+        return
+      }
+
+      const bounds = icon.getBoundingClientRect()
+      const centerX = bounds.left + bounds.width / 2
+      const centerY = bounds.top + bounds.height / 2
+
+      const angle = Math.atan2(event.clientY - centerY, event.clientX - centerX) * (180 / Math.PI) + 90
+      minuteHand.style.transform = `rotate(${angle}deg)`
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [])
+
+  const handStyles = cn("rounded-full w-[2px] bg-current origin-[50%_calc(100%-1px)]")
+
+  return (
+    <div
+      ref={iconRef}
+      className={cn("relative border-[2px] w-[1em] h-[1em] border-current rounded-full", className)}
+      {...attrs}
+    >
+      <div className="flex justify-center items-end absolute top-[15%] left-0 right-0 pt-[5px] h-[35%] rounded-full">
+        <div
+          className={cn("shrink minute-hand absolute h-full", handStyles)}
+          ref={minuteHandRef}
+        />
+        <div
+          className={cn("shrink hour-hand absolute -rotate-90 h-2/3", handStyles)}
+        />
+
+        <div className="[anchor-name:var(--clock-anchor-name)] invisible pointer-events-none size-[1px] inset-0 m-auto" />
+      </div>
+    </div>
+  );
 }
