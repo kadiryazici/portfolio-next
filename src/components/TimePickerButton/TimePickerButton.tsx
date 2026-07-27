@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import { Fragment, MouseEvent, ToggleEvent, useEffect, useId, useRef, useState, type ComponentProps } from "react";
+import { Fragment, MouseEvent as ReactMouseEvent, ToggleEvent, useEffect, useId, useRef, useState, type ComponentProps } from "react";
 
 export function TimePickerButton(props: ComponentProps<"button">) {
   const {
@@ -11,16 +11,17 @@ export function TimePickerButton(props: ComponentProps<"button">) {
   } = props;
 
   const anchorName = `--${useId()}`
-  const [popoverVisible, setPopoverVisible] = useState(false)
+  const popoverEl = useRef<HTMLDivElement>(null)
 
   return (
     <>
       <button
         {...attrs}
         className={cn("active:bg-blue-600 font-semibold flex items-center gap-3 cursor-pointer rounded-lg py-2 px-4 bg-blue-500 hover:bg-[color-mix(in_srgb,currentColor_20%,var(--color-blue-500))]", className)}
-        onClick={() => void setPopoverVisible(v => !v)}
-        popoverTarget={anchorName}
-        popoverTargetAction="toggle"
+        onClick={() => {
+          console.log(popoverEl)
+          popoverEl.current?.togglePopover(true)
+        }}
       >
         <ClockMouseFollowIcon
           className="text-[24px]"
@@ -32,6 +33,7 @@ export function TimePickerButton(props: ComponentProps<"button">) {
       <PickerPopover
         id={anchorName}
         style={{ positionAnchor: anchorName }}
+        ref={popoverEl}
       />
     </>
   )
@@ -109,6 +111,8 @@ function createDigitPosition(values: number[], radius: number) {
   })
 }
 
+type DigitPosition = ReturnType<typeof createDigitPosition>[number]
+
 const hourDigits = createDigitPosition(
   [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
   40,
@@ -116,7 +120,7 @@ const hourDigits = createDigitPosition(
 
 const minuteDigits = createDigitPosition(
   [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55],
-  40,
+  36,
 )
 
 const innerHourDigits = createDigitPosition(
@@ -136,10 +140,12 @@ function PickerPopover(props: PickerPopoverProps) {
   const [phase, setPhase] = useState<"hour" | "minute">("minute")
   const [hour, setHour] = useState(12)
   const [minute, setMinute] = useState(25)
+  const [hoveredDigit, setHoveredDigit] = useState<DigitPosition | null>(hourDigits[0])
 
   const handleOnToggle = (e: ToggleEvent<HTMLDivElement>) => {
-    setPhase("hour")
     if (e.newState === "open") {
+      setPhase("hour")
+      setHoveredDigit(hourDigits[0])
       setHour(12)
       setMinute(25)
     }
@@ -147,7 +153,7 @@ function PickerPopover(props: PickerPopoverProps) {
 
   const elRef = useRef<HTMLDivElement>(null)
 
-  const handleSelectHour = (e: MouseEvent<HTMLDivElement>) => {
+  const handleSelectHour = (e: ReactMouseEvent<HTMLDivElement>) => {
     if (!(e.target instanceof HTMLElement)) {
       return
     }
@@ -155,35 +161,53 @@ function PickerPopover(props: PickerPopoverProps) {
     const digit = Number(e.target.getAttribute("data-digit-value"))
     setHour(digit)
     setPhase("minute")
+    setHoveredDigit(null)
   }
 
-  const handleSelectMinute = (e: MouseEvent<HTMLDivElement>) => {
+  const handleSelectMinute = (e: ReactMouseEvent<HTMLDivElement>) => {
     if (!(e.target instanceof HTMLElement)) {
       return
     }
 
     const digit = Number(e.target.getAttribute("data-digit-value"))
     setMinute(digit)
-    elRef.current?.togglePopover(false)
+    elRef.current
+      ?.animate(
+        { transform: "scale(0)", opacity: 0 },
+        { duration: 600, easing }
+      )
+      .addEventListener("finish", () => {
+        elRef.current?.togglePopover(false)
+      })
+
     onValueChange?.([hour, minute])
   }
 
-  const sharedDigitStyles = cn("inline-grid size-[2.5ch] place-items-center rounded-full hover:bg-blue-400/60 hover:ring-blue-400/30 cursor-pointer absolute -translate-x-1/2 -translate-y-1/2")
-  const outerDigitStyles = cn(sharedDigitStyles, "text-gray-950 text-[16px] font-[500] hover:ring-5")
-  const innerHourDigitStyles = cn(sharedDigitStyles, "text-gray-600 text-[13px] hover:ring-3")
+  const sharedDigitStyles = cn("inline-grid size-[2.5ch] place-items-center rounded-full data-[digit-hovered]:bg-blue-400  data-[digit-hovered]:text-gray-900 data-[digit-hovered]:ring-blue-400/30 cursor-pointer absolute -translate-x-1/2 -translate-y-1/2")
+  const outerDigitStyles = cn(sharedDigitStyles, "text-gray-950 text-[16px] font-[500] data-[digit-hovered]:ring-5")
+  const innerHourDigitStyles = cn(sharedDigitStyles, "text-gray-600 text-[12px] data-[digit-hovered]:ring-3")
+
+  const handLength = hoveredDigit
+    ? Math.hypot(hoveredDigit.left - 50, hoveredDigit.top - 50)
+    : 0
+  const handAngle = hoveredDigit
+    ? Math.atan2(hoveredDigit.top - 50, hoveredDigit.left - 50) * (180 / Math.PI)
+    : 0
+
+  const easing = "linear(0, 0.013 1%, 0.051 2.2%, 0.404 9.8%, 0.51 12.6%, 0.602 15.5%, 0.683 18.7%, 0.754 22.2%, 0.813 26%, 0.861 30.2%, 0.9 34.8%, 0.931 40%, 0.972 52.7%, 0.992 70.2%, 1)"
 
   return (
     <div
       {...attrs}
-      className={cn("p-2 shadow-md open:starting:[transform:scale(0)] open:starting:opacity-0 open:starting:blur-[20px] absolute bg-slate-200 shadow-[inset_0_0_20px_10px_rgba(0,0,0,0.3)] rounded-full", className)}
+      className={cn("p-2 shadow-md starting:[transform:scale(0)] absolute bg-linear-90 from-slate-200 to-slate-100 shadow-[inset_0_0_20px_10px_rgba(0,0,0,0.3)] rounded-full", className)}
       popover="auto"
       onToggle={handleOnToggle}
       style={{
         width: "min(80vw, 220px)",
         positionArea: "center",
-        transitionTimingFunction: "linear(0, 0.013 1%, 0.051 2.2%, 0.404 9.8%, 0.51 12.6%, 0.602 15.5%, 0.683 18.7%, 0.754 22.2%, 0.813 26%, 0.861 30.2%, 0.9 34.8%, 0.931 40%, 0.972 52.7%, 0.992 70.2%, 1)",
+        transitionTimingFunction: easing,
         transitionProperty: "all",
-        transitionDuration: "500ms",
+        transitionDuration: "600ms",
         willChange: "transform, opacity, filter",
         ...style,
       }}
@@ -197,15 +221,75 @@ function PickerPopover(props: PickerPopoverProps) {
         }
       }}
     >
-      <div className="relative aspect-square w-full">
-        <div className="absolute inset-0 size-[8px] m-auto rounded-full bg-gray-700 shadow-xs" />
+      <div
+        className="relative aspect-square w-full"
+        onMouseLeave={() => setHoveredDigit(null)}
+      >
+        <div className="absolute pointer-events-none inset-0 size-full z-[1]">
+          {hoveredDigit && (
+            <div
+              className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[2px] origin-left rounded-full bg-blue-400"
+              style={{
+                width: `${handLength}%`,
+                transform: `translateY(-50%) rotate(${handAngle}deg)`,
+              }}
+            />
+          )}
 
-        {phase === "hour" && (
-          <Fragment>
-            {hourDigits.map((digit) => (
+          <div className="absolute inset-0 size-[8px] m-auto rounded-full bg-blue-600 shadow-xs" />
+        </div>
+
+        <div className="absolute inset-0 m-auto z-[5]">
+          {phase === "hour" && (
+            <Fragment>
+              {hourDigits.map((digit) => (
+                <span
+                  onClick={handleSelectHour}
+                  onMouseEnter={() => setHoveredDigit(digit)}
+                  // onMouseLeave={() => setHoveredDigit(null)}
+                  data-digit-value={String(digit.value)}
+                  key={digit.value}
+                  data-digit-hovered={hoveredDigit?.value === digit.value ? "true" : undefined}
+                  className={cn(outerDigitStyles)}
+                  style={{
+                    left: `${digit.left}%`,
+                    top: `${digit.top}%`,
+                  }}
+                  role="button"
+                >
+                  {digit.value}
+                </span>
+              ))}
+              {innerHourDigits.map((digit) => (
+                <span
+                  onClick={handleSelectHour}
+                  onMouseEnter={() => setHoveredDigit(digit)}
+                  data-digit-hovered={hoveredDigit?.value === digit.value ? "true" : undefined}
+                  // onMouseLeave={() => setHoveredDigit(null)}
+                  data-digit-value={String(digit.value)}
+                  key={digit.value}
+                  className={innerHourDigitStyles}
+                  style={{
+                    left: `${digit.left}%`,
+                    top: `${digit.top}%`,
+                  }}
+                  role="button"
+                >
+                  {digit.value}
+                </span>
+              ))}
+            </Fragment>
+          )}
+
+          {phase === "minute" && minuteDigits.map((digit) => (
+            <div
+              className="starting:scale-80 origin-center size-full absolute pointer-events-none *:pointer-events-auto starting:opacity-0 transition-all"
+              style={{
+                transitionTimingFunction: easing,
+                transitionDuration: "600ms"
+              }}
+            >
               <span
-                onClick={handleSelectHour}
-                data-digit-value={String(digit.value)}
                 key={digit.value}
                 className={outerDigitStyles}
                 style={{
@@ -213,43 +297,17 @@ function PickerPopover(props: PickerPopoverProps) {
                   top: `${digit.top}%`,
                 }}
                 role="button"
-              >
-                {digit.value}
-              </span>
-            ))}
-            {innerHourDigits.map((digit) => (
-              <span
-                onClick={handleSelectHour}
                 data-digit-value={String(digit.value)}
-                key={digit.value}
-                className={innerHourDigitStyles}
-                style={{
-                  left: `${digit.left}%`,
-                  top: `${digit.top}%`,
-                }}
-                role="button"
+                data-digit-hovered={hoveredDigit?.value === digit.value ? "true" : undefined}
+                onClick={handleSelectMinute}
+                onMouseEnter={() => setHoveredDigit(digit)}
+              // onMouseLeave={() => setHoveredDigit(null)}
               >
                 {digit.value}
               </span>
-            ))}
-          </Fragment>
-        )}
-
-        {phase === "minute" && minuteDigits.map((digit) => (
-          <span
-            key={digit.value}
-            className={outerDigitStyles}
-            style={{
-              left: `${digit.left}%`,
-              top: `${digit.top}%`,
-            }}
-            role="button"
-            data-digit-value={String(digit.value)}
-            onClick={handleSelectMinute}
-          >
-            {digit.value}
-          </span>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div >
   )
