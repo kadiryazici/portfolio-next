@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import { Fragment, PointerEvent as ReactPointerEvent, ToggleEvent, useEffect, useId, useRef, useState, type ComponentProps } from "react";
+import { CSSProperties, Fragment, PointerEvent as ReactPointerEvent, ToggleEvent, useEffect, useId, useRef, useState, type ComponentProps } from "react";
 
 export type TimePickerButtonProps = ComponentProps<"button"> & {
   onValueChange?: (value: [number, number]) => void
@@ -24,7 +24,6 @@ export function TimePickerButton(props: TimePickerButtonProps) {
         {...attrs}
         className={cn("active:bg-blue-600 font-semibold flex items-center gap-3 cursor-pointer rounded-lg py-2 px-4 bg-blue-500 hover:bg-[color-mix(in_srgb,currentColor_20%,var(--color-blue-500))]", className)}
         onClick={() => {
-          console.log(popoverEl)
           popoverEl.current?.togglePopover(true)
         }}
       >
@@ -53,10 +52,17 @@ function createDigitPosition(values: number[], radius: number) {
   return values.map((value, index) => {
     const angle = (index / values.length) * Math.PI * 2
 
+    const left = 50 + Math.sin(angle) * radius
+    const top = 50 - Math.cos(angle) * radius
+
     return {
       value,
-      left: 50 + Math.sin(angle) * radius,
-      top: 50 - Math.cos(angle) * radius,
+      left,
+      top,
+      cssStyles: {
+        left: `${left.toFixed(4)}%`,
+        top: `${top.toFixed(4)}%`,
+      } as CSSProperties
     }
   })
 }
@@ -218,16 +224,13 @@ function PickerPopover(props: PickerPopoverProps) {
             <Fragment>
               {hourDigits.map((digit) => (
                 <span
+                  key={`12-hour-${digit.value}`}
                   onPointerEnter={() => setHoveredDigit(digit)}
                   // onMouseLeave={() => setHoveredDigit(null)}
                   data-digit-value={String(digit.value)}
-                  key={digit.value}
                   data-digit-hovered={hoveredDigit?.value === digit.value ? "true" : undefined}
                   className={cn(outerDigitStyles)}
-                  style={{
-                    left: `${digit.left}%`,
-                    top: `${digit.top}%`,
-                  }}
+                  style={digit.cssStyles}
                   role="button"
                 >
                   {numFormatter.format(digit.value)}
@@ -235,16 +238,13 @@ function PickerPopover(props: PickerPopoverProps) {
               ))}
               {innerHourDigits.map((digit) => (
                 <span
+                  key={`24-hour-${digit.value}`}
                   onPointerEnter={() => setHoveredDigit(digit)}
                   data-digit-hovered={hoveredDigit?.value === digit.value ? "true" : undefined}
                   // onMouseLeave={() => setHoveredDigit(null)}
                   data-digit-value={String(digit.value)}
-                  key={digit.value}
                   className={innerHourDigitStyles}
-                  style={{
-                    left: `${digit.left}%`,
-                    top: `${digit.top}%`,
-                  }}
+                  style={digit.cssStyles}
                   role="button"
                 >
                   {numFormatter.format(digit.value)}
@@ -255,6 +255,7 @@ function PickerPopover(props: PickerPopoverProps) {
 
           {phase === "minute" && minuteDigits.map((digit) => (
             <div
+              key={`minute-${digit.value}`}
               className="starting:scale-80 origin-center size-full absolute pointer-events-none *:pointer-events-auto starting:opacity-0 transition-all"
               style={{
                 transitionTimingFunction: easing,
@@ -264,10 +265,7 @@ function PickerPopover(props: PickerPopoverProps) {
               <span
                 key={digit.value}
                 className={outerDigitStyles}
-                style={{
-                  left: `${digit.left}%`,
-                  top: `${digit.top}%`,
-                }}
+                style={digit.cssStyles}
                 role="button"
                 data-digit-value={String(digit.value)}
                 data-digit-hovered={hoveredDigit?.value === digit.value ? "true" : undefined}
