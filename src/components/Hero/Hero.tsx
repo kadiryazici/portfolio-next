@@ -77,8 +77,8 @@ export function Hero(props: HeroProps) {
             href="https://linkedin.com/in/kadiryzc"
             target="_blank"
             rel="noreferrer"
-            aria-label="GitHub profile"
-            title="GitHub"
+            aria-label="Linkedin profile"
+            title="Linkedin"
             variant="icon"
             padding="icon"
             leftIcon={<Icons.Linkedin />}
@@ -87,8 +87,8 @@ export function Hero(props: HeroProps) {
             href="https://x.com/kadiryazicidev"
             target="_blank"
             rel="noreferrer"
-            aria-label="GitHub profile"
-            title="GitHub"
+            aria-label="Twitter profile"
+            title="X / Twitter"
             variant="icon"
             padding="icon"
             leftIcon={<Icons.TwitterX />}
