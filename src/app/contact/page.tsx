@@ -6,6 +6,9 @@ import { PageMain } from "@/components/PageMain/PageMain"
 export const metadata = {
   title: "Contact — Kadir Yazıcı",
   description: "Get in touch with Kadir Yazıcı.",
+  alternates: {
+    canonical: "/contact",
+  },
 }
 
 export default function ContactPage() {

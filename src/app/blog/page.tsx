@@ -7,6 +7,9 @@ import { posts } from "@/lib/posts"
 export const metadata = {
   title: "Blog — Kadir Yazıcı",
   description: "Notes on software, tools, and the way I like to work.",
+  alternates: {
+    canonical: "/blog",
+  },
 }
 
 export default function BlogPage() {

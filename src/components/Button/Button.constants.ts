@@ -1,6 +1,6 @@
 export const ButtonVariantStyles = {
-  primary: "bg-accent text-bg hover:bg-yellow-500",
-  secondary: "border border-white/[0.1] bg-white/[0.06] text-ink hover:bg-white/[0.1]",
+  primary: "shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] bg-accent text-bg hover:bg-yellow-500",
+  secondary: "shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] border border-white/[0.1] bg-white/[0.06] text-ink hover:bg-white/[0.1]",
   icon: "border border-white/[0.1] bg-white/[0.06] text-ink hover:bg-white/[0.1]",
   ghost: "bg-transparent text-ink-soft hover:bg-white/[0.06] hover:text-ink",
 } as const

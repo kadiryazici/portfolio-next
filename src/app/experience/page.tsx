@@ -9,6 +9,9 @@ import { Fragment } from "react/jsx-runtime"
 export const metadata = {
   title: "Experience — Kadir Yazıcı",
   description: "Work history and software development experience.",
+  alternates: {
+    canonical: "/experience",
+  },
 }
 
 export default function ExperiencePage() {

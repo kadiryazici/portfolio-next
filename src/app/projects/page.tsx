@@ -7,6 +7,9 @@ import { Projects } from "@/components/Projects/Projects"
 export const metadata = {
   title: "Projects — Kadir Yazıcı",
   description: "Selected products and open-source projects by Kadir Yazıcı.",
+  alternates: {
+    canonical: "/projects",
+  },
 }
 
 export default function ProjectsPage() {

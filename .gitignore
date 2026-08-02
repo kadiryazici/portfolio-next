@@ -4,4 +4,10 @@ dist/
 .output/
 .vercel/
 .DS_Store
+.env
+.env.*
+!.env.example
 *.local
+*.pem
+*.key
+*.p12

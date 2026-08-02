@@ -1,15 +1,10 @@
 "use client"
 
-import { ReactNode, useRef, type ComponentProps } from "react"
-import type { AppIconName } from "@/components/AppIcon/AppIcon"
-import { AppIcon } from "@/components/AppIcon/AppIcon"
-import type { SettingsDialogInstance } from "@/components/SettingsDialog/SettingsDialog"
-import { SettingsDialog } from "@/components/SettingsDialog/SettingsDialog"
 import { cn } from "@/lib/utils"
-import { posts } from "@/lib/posts"
-import { Icons } from "../Icons"
-import Link from "vinext/shims/link"
 import { motion } from "motion/react"
+import { ReactNode, type ComponentProps } from "react"
+import Link from "vinext/shims/link"
+import { Icons } from "../Icons"
 
 const sectionLinks = [
   {
@@ -62,7 +57,7 @@ export function Sidebar(props: SidebarProps) {
           )}
         >
           {pathname === "/" && (
-            <motion.div className="bg-neutral-900 rounded-[inherit] inset-0 absolute z-[-1]" />
+            <motion.div className="shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] bg-neutral-900 rounded-[inherit] inset-0 absolute z-[-1]" />
           )}
 
           <img
@@ -153,7 +148,7 @@ function SidebarLink(props: SidebarLinkProps) {
       )}
     >
       {active && (
-        <motion.div className="bg-neutral-900 rounded-[inherit] inset-0 absolute z-[-1]" />
+        <motion.div className="shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] bg-neutral-900 rounded-[inherit] inset-0 absolute z-[-1]" />
       )}
 
       <span className={cn("size-[24px] shrink-0 grid place-items-center text-[24px] align-middle", active && "text-accent")}>

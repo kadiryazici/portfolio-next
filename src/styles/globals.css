@@ -3,11 +3,11 @@
 @theme {
   --color-bg: rgb(18, 18, 18);
   --color-bg-2: rgb(33, 33, 33);
-  --color-sidebar: rgb(8, 8, 8);
+  --color-sidebar: rgb(12, 12, 12);
   --color-dialog: rgba(237, 238, 241, 0.96);
 
   --color-ink: rgb(240, 240, 240);
-  --color-ink-muted: #606166;
+  --color-ink-muted: #77787f;
   --color-ink-soft: #8b8c91;
 
   --color-line: rgba(29, 29, 31, 0.1);
@@ -83,7 +83,6 @@ html {
 
   .blog-post-content strong::before,
   .blog-post-content strong::after {
-    color: var(--color-accent);
     font-family: monospace;
     font-weight: 500;
   }

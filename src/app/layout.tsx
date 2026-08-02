@@ -1,6 +1,8 @@
 import type { ReactNode } from "react"
 import "@/styles/globals.css"
 import { Background } from "@/components/Background/Background"
+import { JsonLd } from "@/components/JsonLd/JsonLd"
+import { siteUrl } from "@/lib/site"
 import { usePathname } from "vinext/shims/navigation"
 import { Sora as UIFont } from "next/font/google"
 
@@ -10,6 +12,7 @@ const uiFont = UIFont({
 })
 
 export const metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Kadir Yazıcı — Software Developer",
   description:
     "Software developer working mostly in TypeScript and React. Experience and ways to get in touch.",
@@ -42,6 +45,10 @@ export const metadata = {
       },
     ],
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout(props: { children: ReactNode }) {
@@ -71,6 +78,32 @@ export default function RootLayout(props: { children: ReactNode }) {
         />
       </head>
       <body>
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebSite",
+                name: "Kadir Yazıcı",
+                url: siteUrl,
+              },
+              {
+                "@type": "Person",
+                name: "Kadir Yazıcı",
+                url: siteUrl,
+                jobTitle: "Software Developer",
+                sameAs: ["https://github.com/kadiryazici"],
+                knowsAbout: [
+                  "TypeScript",
+                  "React",
+                  "Frontend development",
+                  "Web accessibility",
+                  "Performance optimization",
+                ],
+              },
+            ],
+          }}
+        />
         {pathName.includes("/preview") && <Background noMask />}
         {children}
       </body>

@@ -2,6 +2,8 @@ import { Page } from "@/components/Page/Page"
 import { BlogPost } from "@/components/BlogPost/BlogPost"
 import { Header } from "@/components/BlogPost/Header"
 import { Highlight } from "@/components/BlogPost/Highlight"
+import { JsonLd } from "@/components/JsonLd/JsonLd"
+import { getSiteUrl } from "@/lib/site"
 
 export const metadata = {
   title: "Surviving AI World as a Stubborn Old Developer — Kadir Yazıcı",
@@ -20,6 +22,9 @@ export const metadata = {
     description:
       "Suggestions from a stubborn old developer on using AI tools daily without handing over the whole job.",
   },
+  alternates: {
+    canonical: "/blog/surviving-ai-world-as-a-stubborn-old-developer",
+  },
 }
 
 export default function SurvivingAiWorldPage() {
@@ -28,6 +33,27 @@ export default function SurvivingAiWorldPage() {
       pathname="/blog/surviving-ai-world-as-a-stubborn-old-developer"
       title="Blog"
     >
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: "Surviving AI World as a Stubborn Old Developer",
+          description:
+            "Suggestions from a stubborn old developer on using AI tools daily without handing over the whole job.",
+          datePublished: "2026-07-04",
+          dateModified: "2026-07-04",
+          mainEntityOfPage: getSiteUrl("/blog/surviving-ai-world-as-a-stubborn-old-developer"),
+          author: {
+            "@type": "Person",
+            name: "Kadir Yazıcı",
+            url: getSiteUrl(),
+          },
+          publisher: {
+            "@type": "Person",
+            name: "Kadir Yazıcı",
+          },
+        }}
+      />
       <BlogPost
         title="Surviving AI World as a Stubborn Old Developer"
         date="July 4, 2026"

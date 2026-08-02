@@ -1,150 +1,198 @@
 # AGENTS.md
 
-Read this first. It's the onboarding for anyone (human or agent) working on this
-project — what it is, how it's built, and the conventions you must follow.
+This is the onboarding guide for the Kadir Yazici portfolio. Read it before
+changing code. It documents the application as it exists today, not an earlier
+version of the design.
 
-A single-page personal portfolio for Kadir Yazıcı, plus a small blog. Dark,
-restrained, **Zed-inspired** aesthetic: near-black background, off-white text,
-one blue accent used sparingly, monospace labels, thin dividers, generous
-whitespace. No gradients.
+## Product and visual direction
 
-## Stack
+`kadiryazici.dev` is a personal software-developer portfolio with experience,
+projects, contact details, and a small technical blog.
 
-- **vinext** (Vite-based Next.js reimplementation) — App Router style (`src/app`)
-- **React 19**, **TypeScript**
-- **Tailwind CSS v4** (config-less, `@theme` in CSS)
-- `cn()` helper = `clsx` + `tailwind-merge` (`src/lib/utils.ts`)
+The UI is a dark, desktop-workspace-inspired portfolio rather than a marketing
+landing page. The persistent navigation is a tall sidebar on desktop and a
+compact top block on small screens. Content lives in a narrow editorial column
+beside it.
 
-## Run & verify
+- Near-black main canvas (`--color-bg`) and a darker sidebar (`--color-sidebar`)
+- Off-white primary copy; muted gray for supporting copy
+- Yellow is the single active accent. Use it for state, emphasis, and small
+  signals, not broad background fills.
+- Repeated content is displayed in dark translucent panels with subtle white
+  borders, backdrop blur, inset highlights, and soft shadows.
+- Cards commonly use `18px` radii; the sidebar uses `24px`; compact controls
+  use smaller radii.
+- The UI font is Sora, loaded in `src/app/layout.tsx` and exposed as
+  `--font-body`. Do not introduce another display font without a clear reason.
+- Motion is intentionally restrained: the sidebar uses Motion for the selected
+  route surface and cards use short color/border transitions.
+
+Do not add gradients, colorful decoration, large marketing heroes, light-theme
+variants, or generic dashboard chrome. Keep the interface quiet and direct.
+
+## Stack and commands
+
+- **vinext** App Router with Vite and Nitro
+- **React 19** and TypeScript
+- **Tailwind CSS v4** via `@tailwindcss/vite`; there is no Tailwind config file
+- **motion** for the small amount of layout animation
+- `cn()` in `src/lib/utils.ts` combines `clsx` and `tailwind-merge`
 
 ```bash
-pnpm dev      # dev server on http://localhost:3000
-pnpm build
-pnpm start
+pnpm dev       # local vinext development server
+pnpm build     # production Vite build
+pnpm preview   # preview the production build
+npx tsc --noEmit
 ```
 
-- **The owner usually keeps their own dev server running on port 3000. Do NOT
-  start `pnpm dev` or bind port 3000 yourself** — you'll conflict with theirs.
-- Verify changes with `npx tsc --noEmit` (there is no `next` package installed,
-  only vinext — see the caveat below). For a live look, ask the owner to check
-  their running server.
-- vinext sometimes needs a clean restart to pick up **newly created** files
-  (module-resolution cache): `pkill -f vinext; pnpm dev`. Only the owner should
-  do this on their own server.
+There is no test runner configured. For UI work, verify the affected desktop
+and mobile states in the browser after type checking and building. Do not assume
+that a standard `next` command exists: this project uses vinext.
 
-## Structure
+## Route structure
 
 ```
-src/
-  app/
-    layout.tsx                 # <html>, fonts, viewport meta, mounts <Background/> only
-    page.tsx                   # <Page pathname="/"> + <Hero/> + <Experience/> + <Contact/>
-    blog/
-      page.tsx                 # blog index — `posts` array + thin-divider list
-      <slug>/page.tsx          # one file per post, renders <BlogPost>
-  components/
-    Background/                # fixed monochrome backdrop (faint grid + soft glow, no color)
-    Page/                      # shell: sticky glass nav + footer, wraps children (was "Notebook")
-    Section/                   # section wrapper: mono index ("01") + label + content
-    Hero/                      # "About" — name, role, bio, buttons, avatar
-    Experience/                # six roles, data in the `jobs` array in-file
-    Contact/                   # email link + GitHub (username)
-    GithubIcon/                # shared GitHub SVG, used by Contact + Page footer
-    BlogPost/                  # blog content primitives (see below)
-  styles/globals.css           # @theme tokens, base layer, fade-up utility
-  lib/utils.ts                 # cn()
+src/app/
+  layout.tsx                               # fonts, global metadata, JSON-LD
+  page.tsx                                 # home / hero
+  experience/page.tsx                      # work history
+  projects/page.tsx                        # products and open source
+  contact/page.tsx                         # contact channels
+  blog/page.tsx                            # blog index
+  blog/<slug>/page.tsx                     # individual posts
+  preview/time-picker-button/page.tsx      # isolated UI experiment; noindex
+  robots.ts                                # /robots.txt metadata route
+  sitemap.ts                               # /sitemap.xml metadata route
 ```
 
-## Routes
+Every public page wraps its content in `<Page pathname="..." title="...">`.
+`Page` owns the responsive application shell and mounts `Sidebar`. Put regular
+page content inside `PageMain`, which maintains the readable content width.
+Use `ContentHeader` for titled subpages. `Page`'s `pathname` drives the active
+sidebar state, so it must match the route exactly.
 
-- `/` — the home page. About / Experience / Contact are **sections on this one
-  page** (`#about`, `#experience`, `#contact`).
-- `/blog` — blog index. Posts are a module-level `posts` array (`slug/title/date`)
-  in `app/blog/page.tsx`.
-- `/blog/<slug>` — one folder per post; the page renders `<BlogPost>`.
+Route modules use default exports because the App Router requires them. Named
+exports are used everywhere else.
 
-### Nav (`components/Page/Page.tsx`)
+## Components and ownership
 
-- Two items only: **About** (`/`) and **Blog** (`/blog`). The logo links to `/`.
-- Active state is derived from the `pathname` prop, passed by each page at the
-  route level. `Page` is a server component — no client hooks needed.
-  Every page module wraps its content in `<Page pathname="…">`.
-
-## Blog content system (`components/BlogPost/`)
-
-The blog is intentionally **"markdown but not markdown"** — the markup symbols
-are visible, but content is composed from components, not parsed markdown.
-
-- `BlogPost.tsx` — wrapper. Props: `title`, `date`, `children`. Renders a
-  `← Blog` back link, the title, a mono date label, then the content.
-- `Header.tsx` — a section heading that renders a visible `##` (accent mono)
-  before the text.
-- `Highlight.tsx` — inline `<code>` chip that renders visible backticks around
-  its content.
-
-A post page is minimal boilerplate:
-
-```tsx
-<BlogPost title="..." date="July 4, 2026">
-  <p>...</p>
-  <Header>Section title</Header>
-  <p>... <Highlight>inline code</Highlight> ...</p>
-</BlogPost>
+```
+src/components/
+  Sidebar/              # persistent navigation, social links, active motion
+  Page/                 # outer app shell
+  PageMain/             # constrained main-content wrapper
+  ContentHeader/        # eyebrow + page H1
+  Hero/                 # homepage introduction and primary links
+  ExperienceCard/       # client-side rotating work media card
+  Projects/             # selected product data and cards
+  OpenSource/           # open-source project data and cards
+  ProjectCard/          # linked project presentation
+  Contact/              # email and GitHub rows
+  BlogPost/             # post wrapper, headings, highlights, blockquotes
+  Button/               # button/link primitive and visual variants
+  LinkCard/             # large navigational call-to-action card
+  AppIcon/              # small stroke-icon set
+  Icons.tsx             # shared filled navigation/social icon collection
+  JsonLd/               # JSON-LD script helper
+  TimePickerButton/     # standalone client interaction experiment
+  SettingsDialog/       # unused settings-dialog experiment
 ```
 
-To add a post: create `app/blog/<slug>/page.tsx` using `<BlogPost>`, then add an
-entry to the `posts` array in `app/blog/page.tsx`.
+Keep one primary component per folder as `components/Name/Name.tsx`. Constants
+for that component can live beside it as `Name.constants.ts`. `Icons.tsx` is an
+intentional shared-file exception. Do not move content data into a CMS or add a
+state layer unless the feature genuinely needs one.
 
-## Design system (`src/styles/globals.css`)
+## Content locations
 
-Tokens live in `@theme`, so they're usable as Tailwind utilities (`bg-bg`,
-`text-ink`, `text-ink-muted`, `border-line`, `text-accent`, `font-mono`, …):
+- **Homepage copy and primary links:** `src/components/Hero/Hero.tsx`
+- **Experience entries, media, tags, and achievements:**
+  `src/app/experience/page.tsx`
+- **Selected product:** `src/components/Projects/Projects.tsx`
+- **Open-source projects:** `src/components/OpenSource/OpenSource.tsx`
+- **Contact page:** `src/components/Contact/Contact.tsx`
+- **Persistent email and social links:** `src/components/Sidebar/Sidebar.tsx`
+- **Blog index data:** `src/lib/posts.ts`
+- **Site URL and absolute URL helper:** `src/lib/site.ts`
 
-- **Background**: `--color-bg` `#08080a`, `--color-bg-2` `#0d0d10`
-- **Text**: `--color-ink` (off-white), `--color-ink-muted`, `--color-ink-soft`
-- **Lines/surfaces**: `--color-line`, `--color-line-strong`, `--color-surface`, `--color-surface-hover`
-- **Accent**: `--color-accent` `#4c8dff`, `--color-accent-hover` — the ONLY color; use sparingly
-- **Fonts**: `--font-body` = Inter, `--font-mono` = JetBrains Mono (loaded in `layout.tsx`)
-- **Utility**: `fade-up` (entrance animation)
+When adding a blog post:
 
-## Conventions (follow these — several are load-bearing)
+1. Add its `slug`, display `date`, and ISO `publishedAt` date to `src/lib/posts.ts`.
+2. Create `src/app/blog/<slug>/page.tsx` using `Page` and `BlogPost`.
+3. Add unique metadata with title, description, Open Graph article fields, and
+   an `alternates.canonical` path.
+4. Add a `BlogPosting` JSON-LD block through `JsonLd`.
 
-1. **Coding style is Kadir's `code-like-me` style.** `function` declarations
-   (never `const X = () =>` for named functions); props typed as
-   `ComponentProps<"x"> & {…}` and **destructured in the body**, never the
-   signature; `cn()` for any conditional class; named exports only (no default
-   exports); `type` over `interface`; object maps over enums; early returns;
-   `const` over `let`; **no semicolons**; **double quotes**; Stroustrup braces;
-   trailing commas; one JSX prop per line. Invoke the `code-like-me` skill at the
-   start of a session before writing code.
-2. **Mobile-first breakpoints.** Base classes = mobile; `md:` = desktop. Do NOT
-   use `max-[…]` breakpoints.
-3. **Link colors live in `@layer base`.** The global `a { color }` rule is inside
-   `@layer base` on purpose so Tailwind `text-*` utilities win. If you move it
-   out, every link turns blue again (real bug). Links with no `text-*` class fall
-   back to the blue accent; add `text-ink`/`text-ink-muted` where you want
-   otherwise.
-4. **No ancestor `overflow` on the sticky header's chain.** `position: sticky`
-   breaks if any ancestor has `overflow-x/y: hidden|clip|auto`. Don't reintroduce
-   `overflow-x: hidden` on `html`/`body`/wrappers.
-5. **One component per folder**: `components/Name/Name.tsx`. File-local helpers go
-   below the component; module constants above.
+The sitemap reads `posts` automatically. Do not add preview or experimental
+routes to it.
 
-## Content — where to edit
+## SEO and metadata
 
-- **Bio / name / buttons**: `components/Hero/Hero.tsx`
-- **Jobs**: the `jobs` array in `components/Experience/Experience.tsx`
-  (`name, website (string | null), period, role, type, detail, stack`;
-  `website: null` → non-link row, no `↗`).
-- **Email / GitHub**: `components/Contact/Contact.tsx` (email `kyzc411@gmail.com`,
-  GitHub `github.com/kadiryazici`). The footer GitHub link lives in
-  `components/Page/Page.tsx`.
-- **Site metadata**: `app/layout.tsx`; per-page metadata via `export const metadata`.
+- `src/lib/site.ts` defines the production origin. Use `getSiteUrl()` to build
+  absolute URLs rather than hardcoding the domain.
+- `layout.tsx` owns the site-wide metadata, `metadataBase`, Open Graph/Twitter
+  defaults, and `WebSite`/`Person` JSON-LD.
+- Every indexable page has a route-level canonical URL. Maintain this when
+  adding a public route.
+- `robots.ts` allows the site but blocks `/preview/`; `sitemap.ts` lists the
+  indexable routes and posts.
+- Keep `/preview/*` pages `noindex, nofollow`.
+- Preserve semantic heading order, descriptive image alt text, and unique page
+  titles/descriptions. Decorative media uses empty alt text.
 
-## Known open items
+## Styling rules
 
-- Verify narrow-mobile (~360px) on a real device / DevTools — headless macOS
-  screenshots clamp to ~500px min width and misrepresent the render.
-- CryptoSea and House in Korea have `website: null` (no URL yet).
-- Tech-stack lines in `jobs` are curated (~5 items); expand if you want full lists.
-- Avatar is the GitHub avatar URL; swap for a local `public/*` if preferred.
+Global theme tokens and base element styles live in `src/styles/globals.css`.
+Use the token-backed Tailwind utilities (`bg-bg`, `bg-sidebar`, `text-ink`,
+`text-ink-muted`, `text-ink-soft`, `text-accent`, and so on) before adding raw
+values. Existing panels deliberately use a few precise translucent white and
+neutral utilities; match them for visual consistency.
+
+- Write mobile-first Tailwind classes. Add `md:` and `lg:` enhancements for the
+  desktop shell and panel layouts.
+- Keep content columns readable (`PageMain` is `max-w-3xl`) rather than making
+  every page full-width.
+- Use `AppIcon` or `Icons` before drawing another SVG. Add an icon to the
+  appropriate shared set only when it will be reused.
+- Buttons use the `Button` component when the existing variants fit. Use actual
+  links for navigation and external destinations.
+- Include visible keyboard focus states and retain `aria-current` on active nav
+  items. Client interactions must work with pointer, keyboard, and reduced
+  motion where applicable.
+- Do not add `overflow` to an ancestor of the sticky desktop sidebar. It breaks
+  sticky positioning.
+- The base link color rule intentionally lives in `@layer base`, so Tailwind
+  `text-*` utilities can override it. Keep it there.
+
+## Code conventions
+
+Follow the `code-like-me` skill for implementation work.
+
+- Use function declarations for named functions and `type` aliases instead of
+  interfaces.
+- Component props extend `ComponentProps<"...">`; destructure props inside the
+  function body and forward remaining attributes to the root element.
+- Use named exports for components and helpers; App Router page/layout defaults
+  are the required exception.
+- Use `cn()` for class composition, especially when a class is conditional.
+- Prefer `const`, early returns, explicit data, and object maps over clever
+  abstractions or enums.
+- Use double quotes, no semicolons, trailing commas, and one JSX prop per line.
+- Keep file-local helpers below their component and module constants above it.
+- Do not revert or reformat unrelated in-progress work. This repository may be
+  intentionally dirty during visual iteration.
+
+## Assets
+
+```
+public/
+  me.png, me.jpg                    # portrait assets
+  logos/                             # company logos for experience cards
+  projects/                          # project screenshots and logos
+  videos/<company>/                  # experience-card screen recordings
+```
+
+Use local paths beginning with `/`. Preserve intrinsic aspect ratios and add
+descriptive `alt` text to content images. Experience videos are muted and
+autoplayed by `ExperienceCard`; avoid adding large media to the initial home
+route without a performance reason.

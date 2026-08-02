@@ -20,7 +20,7 @@ export function LinkCard(props: LinkCardProps) {
       )}
     >
       <span className="flex min-w-0 items-center gap-4">
-        <span className="grid size-11 shrink-0 place-items-center rounded-[11px] border border-white/[0.1] bg-white/[0.06] hover:text-accent shadow-[0_5px_14px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.08)]">
+        <span className="grid size-11 shrink-0 place-items-center rounded-[11px] text-accent border border-white/[0.1] bg-white/[0.06] shadow-[0_5px_14px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.08)]">
           {icon}
         </span>
         <span className="min-w-0 text-[19px] font-semibold leading-6 text-ink md:text-xl">
@@ -29,7 +29,7 @@ export function LinkCard(props: LinkCardProps) {
       </span>
       <AppIcon
         name="arrow"
-        className="size-5 shrink-0 text-ink-soft transition-colors group-hover:text-accent"
+        className="size-5 shrink-0 transition-colors text-accent"
       />
     </a>
   )

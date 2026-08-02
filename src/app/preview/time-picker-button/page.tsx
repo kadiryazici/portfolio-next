@@ -1,8 +1,15 @@
-import { TimePickerButtonClient } from "./client";
+import { TimePickerButtonClient } from "./client"
+
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
 export default function PreviewPage() {
   return (
-    <div className="h-screen w-screen flex items-center justify-center">
+    <div className="flex h-screen w-screen items-center justify-center">
       <TimePickerButtonClient />
     </div>
   )

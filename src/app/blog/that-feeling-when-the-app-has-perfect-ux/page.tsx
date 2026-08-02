@@ -3,6 +3,8 @@ import { BlogPost } from "@/components/BlogPost/BlogPost"
 import { Header } from "@/components/BlogPost/Header"
 import { Highlight } from "@/components/BlogPost/Highlight"
 import { Blockquote } from "@/components/BlogPost/Blockquote"
+import { JsonLd } from "@/components/JsonLd/JsonLd"
+import { getSiteUrl } from "@/lib/site"
 
 export const metadata = {
   title: "That Feeling When the App Has Perfect UX — Kadir Yazıcı",
@@ -21,6 +23,9 @@ export const metadata = {
     description:
       "A frontend developer's reflections on what makes UI/UX feel right — hotkey pools, z-index management, and the chase for cohesive design.",
   },
+  alternates: {
+    canonical: "/blog/that-feeling-when-the-app-has-perfect-ux",
+  },
 }
 
 export default function PerfectUxPage() {
@@ -29,6 +34,27 @@ export default function PerfectUxPage() {
       pathname="/blog/that-feeling-when-the-app-has-perfect-ux"
       title="Blog"
     >
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: "That Feeling When the App Has Perfect UX",
+          description:
+            "A frontend developer's reflections on what makes UI/UX feel right — hotkey pools, z-index management, and the chase for cohesive design.",
+          datePublished: "2026-07-09",
+          dateModified: "2026-07-09",
+          mainEntityOfPage: getSiteUrl("/blog/that-feeling-when-the-app-has-perfect-ux"),
+          author: {
+            "@type": "Person",
+            name: "Kadir Yazıcı",
+            url: getSiteUrl(),
+          },
+          publisher: {
+            "@type": "Person",
+            name: "Kadir Yazıcı",
+          },
+        }}
+      />
       <BlogPost
         title="That Feeling When the App Has Perfect UX"
         date="July 9, 2026"
