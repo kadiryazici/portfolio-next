@@ -23,6 +23,26 @@ const projects = [
     stack: ["TypeScript", "VS Code API", "Autocomplete", "tsconfig"],
     subtitle: "VS Code extension",
   },
+  {
+    name: "Wowerlay",
+    description:
+      "A popover library for Vue 3 applications, powered by Floating UI.",
+    purpose:
+      "It provides scoped overlays, transitions, and lifecycle-aware mounting for floating Vue components.",
+    website: "https://github.com/wopehq/wowerlay",
+    stack: ["Vue 3", "TypeScript", "Floating UI", "Popovers"],
+    subtitle: "Vue popover library",
+  },
+  {
+    name: "Vue 3 Replacer",
+    description:
+      "A focused text replacer component for Vue 3 applications.",
+    purpose:
+      "Built as a small, reusable interface primitive for text replacement workflows.",
+    website: "https://github.com/kadiryazici/vue3-replacer",
+    stack: ["Vue 3", "TypeScript", "Vite", "Component Library"],
+    subtitle: "Vue component library",
+  },
 ] as const
 
 export type OpenSourceProps = ComponentProps<"section">

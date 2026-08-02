@@ -1,4 +1,3 @@
-import { Page } from "@/components/Page/Page"
 import { BlogPost } from "@/components/BlogPost/BlogPost"
 import { Header } from "@/components/BlogPost/Header"
 import { Highlight } from "@/components/BlogPost/Highlight"
@@ -30,10 +29,7 @@ export const metadata = {
 
 export default function PerfectUxPage() {
   return (
-    <Page
-      pathname="/blog/that-feeling-when-the-app-has-perfect-ux"
-      title="Blog"
-    >
+    <>
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -153,6 +149,6 @@ export default function PerfectUxPage() {
           Dialogs, but I use positioner libraries like floating-ui.
         </p>
       </BlogPost>
-    </Page>
+    </>
   )
 }

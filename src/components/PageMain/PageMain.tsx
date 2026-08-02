@@ -9,7 +9,7 @@ export function PageMain(props: PageMainProps) {
   return (
     <main
       {...attrs}
-      className={cn("mx-auto w-full max-w-3xl px-5 pb-20", className)}
+      className={cn("mx-auto w-full max-w-3xl px-4 pb-20", className)}
     >
       {children}
     </main>

@@ -1,15 +1,11 @@
-import type { ComponentProps, ReactNode } from "react"
+import type { ComponentProps } from "react"
 import { Sidebar } from "@/components/Sidebar/Sidebar"
 import { cn } from "@/lib/utils"
 
-export type PageProps = ComponentProps<"div"> & {
-  pathname: string
-  title: string
-  children: ReactNode
-}
+export type PageProps = ComponentProps<"div">
 
 export function Page(props: PageProps) {
-  const { pathname, title, children, className, ...attrs } = props
+  const { children, className, ...attrs } = props
 
   return (
     <div
@@ -20,12 +16,9 @@ export function Page(props: PageProps) {
         className,
       )}
     >
-      <Sidebar pathname={pathname} />
+      <Sidebar />
 
       <article className="min-w-0">
-        {/*<header className="sticky top-0 z-20 flex h-14 items-center bg-bg/85 px-5 backdrop-blur-2xl md:px-8 lg:px-12">
-          <span className="text-[13px] font-semibold text-ink-muted">{title}</span>
-        </header>*/}
         {children}
       </article>
     </div>

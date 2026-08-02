@@ -63,7 +63,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
         </div>
       </div>
 
-      <div className="flex flex-row flex-nowrap items-center gap-3 px-5 pb-0 pt-5 md:gap-4 md:px-6 md:pt-6">
+      <div className="flex flex-row flex-nowrap items-start gap-3 px-5 pb-0 pt-5 md:gap-4 md:px-6 md:pt-6">
         <img
           src={logoUrl}
           className="size-12 shrink-0 rounded-[11px] border border-white/[0.1] bg-white/[0.06] object-contain shadow-[0_5px_14px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.08)] md:size-14"

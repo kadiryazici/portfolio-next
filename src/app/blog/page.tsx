@@ -1,6 +1,5 @@
 import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { ContentHeader } from "@/components/ContentHeader/ContentHeader"
-import { Page } from "@/components/Page/Page"
 import { PageMain } from "@/components/PageMain/PageMain"
 import { posts } from "@/lib/posts"
 
@@ -14,11 +13,7 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
-    <Page
-      pathname="/blog"
-      title="Blog"
-    >
-      <PageMain>
+    <PageMain>
         <ContentHeader
           eyebrow="Writing"
           title="Blog"
@@ -47,7 +42,6 @@ export default function BlogPage() {
             </li>
           ))}
         </ul>
-      </PageMain>
-    </Page>
+    </PageMain>
   )
 }

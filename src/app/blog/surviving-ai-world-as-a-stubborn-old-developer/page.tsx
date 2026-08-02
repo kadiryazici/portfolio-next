@@ -1,4 +1,3 @@
-import { Page } from "@/components/Page/Page"
 import { BlogPost } from "@/components/BlogPost/BlogPost"
 import { Header } from "@/components/BlogPost/Header"
 import { Highlight } from "@/components/BlogPost/Highlight"
@@ -29,10 +28,7 @@ export const metadata = {
 
 export default function SurvivingAiWorldPage() {
   return (
-    <Page
-      pathname="/blog/surviving-ai-world-as-a-stubborn-old-developer"
-      title="Blog"
-    >
+    <>
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -136,6 +132,6 @@ export default function SurvivingAiWorldPage() {
           and then I let the agent code what I strictly detailed in the file.
         </p>
       </BlogPost>
-    </Page>
+    </>
   )
 }

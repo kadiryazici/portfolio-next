@@ -65,11 +65,11 @@ src/app/
   sitemap.ts                               # /sitemap.xml metadata route
 ```
 
-Every public page wraps its content in `<Page pathname="..." title="...">`.
-`Page` owns the responsive application shell and mounts `Sidebar`. Put regular
-page content inside `PageMain`, which maintains the readable content width.
-Use `ContentHeader` for titled subpages. `Page`'s `pathname` drives the active
-sidebar state, so it must match the route exactly.
+`layout.tsx` wraps public routes in `Page`, so the application shell and sidebar
+persist across navigation. Put regular route content inside `PageMain`, which
+maintains the readable content width. Use `ContentHeader` for titled subpages.
+`Sidebar` reads the active path with `usePathname()`; do not pass route state
+through page props. Preview routes intentionally render outside this shell.
 
 Route modules use default exports because the App Router requires them. Named
 exports are used everywhere else.
@@ -78,7 +78,8 @@ exports are used everywhere else.
 
 ```
 src/components/
-  Sidebar/              # persistent navigation, social links, active motion
+  Sidebar/              # desktop navigation and shared SidebarLink
+  MobileSidebar/        # portal-based mobile navigation drawer
   Page/                 # outer app shell
   PageMain/             # constrained main-content wrapper
   ContentHeader/        # eyebrow + page H1

@@ -2,6 +2,7 @@ import type { ReactNode } from "react"
 import "@/styles/globals.css"
 import { Background } from "@/components/Background/Background"
 import { JsonLd } from "@/components/JsonLd/JsonLd"
+import { Page } from "@/components/Page/Page"
 import { siteUrl } from "@/lib/site"
 import { usePathname } from "vinext/shims/navigation"
 import { Sora as UIFont } from "next/font/google"
@@ -24,24 +25,24 @@ export const metadata = {
     siteName: "Kadir Yazıcı",
     images: [
       {
-        url: "/me.png",
-        width: 640,
-        height: 640,
-        alt: "Kadir Yazıcı",
+        url: "/me-banner-wide.webp",
+        width: 1280,
+        height: 680,
+        alt: "Kadir Yazıcı with a bicycle beside a lake",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Kadir Yazıcı — Software Developer",
     description:
       "Software developer working mostly in TypeScript and React. Experience and ways to get in touch.",
     images: [
       {
-        url: "/me.png",
-        width: 640,
-        height: 640,
-        alt: "Kadir Yazıcı",
+        url: "/me-banner-wide.webp",
+        width: 1280,
+        height: 680,
+        alt: "Kadir Yazıcı with a bicycle beside a lake",
       },
     ],
   },
@@ -104,8 +105,14 @@ export default function RootLayout(props: { children: ReactNode }) {
             ],
           }}
         />
-        {pathName.includes("/preview") && <Background noMask />}
-        {children}
+        {pathName.includes("/preview") ? (
+          <>
+            <Background noMask />
+            {children}
+          </>
+        ) : (
+          <Page>{children}</Page>
+        )}
       </body>
     </html>
   )
