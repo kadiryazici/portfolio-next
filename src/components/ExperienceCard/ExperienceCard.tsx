@@ -62,6 +62,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
               autoPlay
               loop={videoUrls.length === 1}
               muted
+              playsInline
               className="size-full object-cover scale-101"
               key={activeVideoUrls[0]}
               onEnded={handleVideoEnd}
@@ -70,6 +71,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
                 <source
                   src={videoUrl}
                   key={videoUrl}
+                  type={getVideoMimeType(videoUrl)}
                 />
               ))}
             </video>
@@ -114,4 +116,12 @@ export function ExperienceCard(props: ExperienceCardProps) {
       </div>
     </div>
   )
+}
+
+function getVideoMimeType(videoUrl: string) {
+  if (videoUrl.endsWith(".mp4")) {
+    return "video/mp4"
+  }
+
+  return "video/webm"
 }
