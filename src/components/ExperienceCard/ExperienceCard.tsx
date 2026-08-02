@@ -43,7 +43,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
     <div
       {...attrs}
       className={cn(
-        "flex flex-col gap-2"
+        "flex flex-col gap-4 max-w-[700px]"
       )}
     >
       <div className="overflow-hidden justify-center items-center flex flex-row gap-12 *:shrink-0 flex-nowrap">
@@ -52,7 +52,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
             src={activeVideoUrl}
             autoPlay
             muted
-            className="overflow-hidden w-full max-w-[700px] "
+            className="overflow-hidden w-full max-w-[700px] aspect-[13/7] "
             key={activeVideoUrl}
             onEnded={handleVideoEnd}
           />
