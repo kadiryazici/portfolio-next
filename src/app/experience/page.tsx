@@ -21,10 +21,10 @@ export default function ExperiencePage() {
           </h1>
         </header>
 
-        <div className="flex flex-col gap-16 *:mx-auto">
+        <div className="flex flex-col gap-8 *:mx-auto">
           <ExperienceCard
             className="w-full"
-            tags={["Next.js", "React", "Web Components", "Open Source", "State Management", "Performance"]}
+            tags={["Next.js", "Strapi", "Web Components", "Zustand", "Accessibility", "Performance"]}
             videoUrls={[
               "/videos/seam/seam-1.mov",
               "/videos/seam/seam-2.mov",
@@ -32,7 +32,7 @@ export default function ExperiencePage() {
             title="Seam"
             subtitle="Software Developer - Full Time"
             fromTo={["2024/10", "2026/08"]}
-            logoUrl="/logos/seam.png"
+            logoUrl="/logos/seam.webp"
             description={
               <Fragment>
                 Building web components and complex UI systems with Next.js and React — API and state management,
@@ -41,17 +41,26 @@ export default function ExperiencePage() {
                 <br />
                 <strong>Achievements:</strong>
                 <br />
-                • Reduced page load time from 80 seconds to 10 seconds by parallelizing independent API requests.
+                • Recreated the marketing website frontend with Next.js and Strapi.
                 <br />
-                • Simplified product searching by implementing an optimized querying algorithm for lightning fast results
-                and caching.
+                • Implemented Strapi integration and API endpoints.
+                <br />
+                • Optimized the marketing network through caching, reducing load times by 80%.
+                <br />
+                • Developed reusable Web Components for customers.
+                <br />
+                • Handled state management with Zustand.
+                <br />
+                • Implemented accessible UI components.
+                <br />
+                • Resolved performance issues in the dashboard application.
               </Fragment>
             }
           />
 
           <ExperienceCard
             className="w-full"
-            tags={["Next.js", "React", "Web Components", "Open Source", "State Management", "Performance"]}
+            tags={["Vue", "AG Grid", "Web Workers", "Pinia", "Onboarding", "Network Optimization"]}
             videoUrls={[
               "/videos/wope/wope-1.mov",
               "/videos/wope/wope-2.mov",
@@ -70,12 +79,43 @@ export default function ExperiencePage() {
                 <br />
                 <strong>Achievements:</strong>
                 <br />
-                • Built a component library for the entire company.
+                • Built a comprehensive UI component library from scratch with Vue.
                 <br />
-                • Implemented a new state management system with Pinia, which improved performance and reduced complexity.
+                • Implemented performant table rendering with AG Grid virtualization.
                 <br />
-                • Improved large-table performance by virtualizing rows and columns and moving expensive calculations to Web
-                Workers.
+                • Used Web Workers to improve table performance.
+                <br />
+                • Handled state management with Pinia.
+                <br />
+                • Implemented onboarding for new customers.
+                <br />
+                • Implemented custom network handling to improve performance and optimize requests.
+              </Fragment>
+            }
+          />
+
+          <ExperienceCard
+            className="w-full"
+            tags={["Vue", "TypeScript", "Qwik", "SSR", "Stripe"]}
+            videoUrls={["/videos/cryptosea/cryptosea-1.mov"]}
+            title="CryptoSea"
+            subtitle="Frontend Web Developer - Contract"
+            fromTo={["2024/05", "2024/07"]}
+            logoUrl="/logos/cryptosea.jpg"
+            description={
+              <Fragment>
+                Building payment, analytics, backend integration, and user management flows with server-side rendering.
+                <br />
+                <br />
+                <strong>Achievements:</strong>
+                <br />
+                • Implemented Stripe payment flows.
+                <br />
+                • Integrated analytics and backend APIs.
+                <br />
+                • Built user management flows.
+                <br />
+                • Implemented server-side rendering with Qwik.
               </Fragment>
             }
           />

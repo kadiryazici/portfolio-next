@@ -49,47 +49,49 @@ export function Sidebar(props: SidebarProps) {
     <aside
       {...attrs}
       className={cn(
-        "ring-1 ring-neutral-800/50 relative z-30 flex w-full flex-col rounded-[24px] bg-sidebar gap-2 p-2.5 shadow-sidebar",
+        "ring-1 ring-neutral-800/50 flex flex-col gap-2 relative z-30 w-full rounded-[24px] bg-sidebar p-2.5 shadow-sidebar",
         "md:sticky md:top-3 md:h-[calc(100dvh-24px)]",
         className,
       )}
     >
-      <Link
-        href="/"
-        className={cn(
-          "relative flex group items-center gap-3 rounded-[16px] px-2.5 py-3 text-ink no-underline",
-        )}
-      >
-        {pathname === "/" && (
-          <motion.div layoutId="sidebar-active-highlight" className="bg-neutral-900 rounded-[inherit] inset-0 absolute z-[-1]" />
-        )}
+      <motion.div layoutRoot layout className="flex w-full flex-col gap-2">
+        <Link
+          href="/"
+          className={cn(
+            "relative flex group items-center gap-3 rounded-[16px] px-2.5 py-3 text-ink no-underline",
+          )}
+        >
+          {pathname === "/" && (
+            <motion.div className="bg-neutral-900 rounded-[inherit] inset-0 absolute z-[-1]" />
+          )}
 
-        <img
-          src="/me.png"
-          alt="Kadir Yazıcı"
-          className="size-10 rounded-[11px] object-cover shadow-avatar"
-        />
-        <span className="min-w-0">
-          <span className="group-hover:text-yellow-500 block truncate text-[15px] font-semibold leading-5">Kadir Yazıcı</span>
-          <span className="block truncate text-[12px] text-ink-soft">Software Developer</span>
-        </span>
-      </Link>
+          <img
+            src="/me.png"
+            alt="Kadir Yazıcı"
+            className="size-10 rounded-[11px] object-cover shadow-avatar"
+          />
+          <span className="min-w-0">
+            <span className="group-hover:text-yellow-500 block truncate text-[15px] font-semibold leading-5">Kadir Yazıcı</span>
+            <span className="block truncate text-[12px] text-ink-soft">Software Developer</span>
+          </span>
+        </Link>
 
-      <nav
-        aria-label="Portfolio"
-        className="flex flex-col gap-0.5"
-      >
-        {sectionLinks.map((link) => (
-          <SidebarLink
-            key={link.href}
-            href={link.href}
-            icon={link.icon}
-            active={link.href === pathname}
-          >
-            {link.name}
-          </SidebarLink>
-        ))}
-      </nav>
+        <nav
+          aria-label="Portfolio"
+          className="flex flex-col gap-0.5"
+        >
+          {sectionLinks.map((link) => (
+            <SidebarLink
+              key={link.href}
+              href={link.href}
+              icon={link.icon}
+              active={link.href === pathname}
+            >
+              {link.name}
+            </SidebarLink>
+          ))}
+        </nav>
+      </motion.div>
 
       <div className="mt-auto flex flex-col">
         <SidebarLink
@@ -150,7 +152,7 @@ function SidebarLink(props: SidebarLinkProps) {
       )}
     >
       {active && (
-        <motion.div layoutId="sidebar-active-highlight" className="bg-neutral-900 rounded-[inherit] inset-0 absolute z-[-1]" />
+        <motion.div className="bg-neutral-900 rounded-[inherit] inset-0 absolute z-[-1]" />
       )}
 
       <span className={cn("size-[24px] shrink-0 grid place-items-center text-[24px] align-middle", active && "text-accent")}>
