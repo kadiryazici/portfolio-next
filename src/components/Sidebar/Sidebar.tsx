@@ -66,7 +66,7 @@ export function Sidebar(props: SidebarProps) {
             )}
 
             <img
-              src="/me.png"
+              src="/me.webp"
               alt="Kadir Yazıcı"
               className="size-10 rounded-[11px] object-cover shadow-avatar"
             />
