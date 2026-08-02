@@ -12,7 +12,7 @@ export function Highlight(props: HighlightProps) {
     <code
       {...attrs}
       className={cn(
-        "rounded-md border border-line bg-surface px-1.5 py-0.5 font-mono text-[14px] text-ink",
+        "rounded-[5px] border border-line bg-surface px-1.5 py-0.5 text-[14px] font-medium text-ink",
         className,
       )}
     >

@@ -1,85 +1,33 @@
 import type { ComponentProps, ReactNode } from "react"
-import { GithubIcon } from "@/components/GithubIcon/GithubIcon"
+import { Sidebar } from "@/components/Sidebar/Sidebar"
 import { cn } from "@/lib/utils"
 
 export type PageProps = ComponentProps<"div"> & {
   pathname: string
+  title: string
   children: ReactNode
 }
 
-const links = [
-  { name: "About", href: "/" },
-  { name: "Blog", href: "/blog" },
-] as const
-
 export function Page(props: PageProps) {
-  const { pathname, children, className, ...attrs } = props
+  const { pathname, title, children, className, ...attrs } = props
 
   return (
     <div
       {...attrs}
       className={cn(
-        "mx-auto w-full max-w-4xl px-[12px] min-h-screen",
+        "min-h-screen w-full p-2.5 md:grid md:grid-cols-[260px_minmax(0,1fr)] md:items-start md:gap-10 md:p-3",
+        "lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-16",
         className,
       )}
     >
-      <header className="z-30 flex items-center justify-between gap-6 rounded-xl border border-line bg-bg/70 px-4 py-3 backdrop-blur-xl sticky top-4">
-        <a
-          href="/"
-          className="flex items-center gap-2.5 no-underline"
-        >
-          <span className="flex h-8 w-8 items-center justify-center rounded-md border border-line bg-surface font-mono text-[13px] font-medium text-ink">
-            ky
-          </span>
-          <span className="font-mono text-[13px] text-ink-muted">
-            kadiryazici.dev
-          </span>
-        </a>
+      <Sidebar pathname={pathname} />
 
-        <nav
-          aria-label="Sections"
-          className="flex items-center gap-1 text-[14px]"
-        >
-          {links.map((link) => {
-            const isActive =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.href)
-
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "rounded-md px-3 py-1.5 no-underline transition-colors",
-                  isActive
-                    ? "text-ink"
-                    : "text-ink-soft hover:text-ink-muted",
-                )}
-              >
-                {link.name}
-              </a>
-            )
-          })}
-        </nav>
-      </header>
-
-      <article className="lg:px-[64px]">
+      <article className="min-w-0">
+        {/*<header className="sticky top-0 z-20 flex h-14 items-center bg-bg/85 px-5 backdrop-blur-2xl md:px-8 lg:px-12">
+          <span className="text-[13px] font-semibold text-ink-muted">{title}</span>
+        </header>*/}
         {children}
       </article>
-
-      <footer className="mt-24 flex flex-col items-center justify-between gap-4 border-t border-line pb-10 pt-8 text-center font-mono text-[12px] text-ink-soft md:flex-row md:text-left">
-        <span>© {new Date().getFullYear()} Kadir Yazıcı</span>
-
-        <a
-          href="https://github.com/kadiryazici"
-          target="_blank"
-          className="inline-flex items-center gap-2 text-ink-soft no-underline transition-colors hover:text-ink"
-        >
-          <GithubIcon className="h-4 w-4" />
-          kadiryazici
-        </a>
-      </footer>
     </div>
   )
 }

@@ -24,7 +24,10 @@ export const metadata = {
 
 export default function SurvivingAiWorldPage() {
   return (
-    <Page pathname="/blog">
+    <Page
+      pathname="/blog/surviving-ai-world-as-a-stubborn-old-developer"
+      title="Blog"
+    >
       <BlogPost
         title="Surviving AI World as a Stubborn Old Developer"
         date="July 4, 2026"

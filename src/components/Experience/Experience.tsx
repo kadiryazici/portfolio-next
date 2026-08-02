@@ -1,4 +1,5 @@
 import { Fragment, type ComponentProps } from "react"
+import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { Section } from "@/components/Section/Section"
 import { cn } from "@/lib/utils"
 
@@ -10,14 +11,16 @@ const jobs = [
     role: "Software Developer",
     type: "Full-time · Remote",
     detail: <Fragment>
-      Building web components and complex UI systems with Next.js and React — API and state management, performance optimization and refactoring, plus open-source libraries.
+      Building web components and complex UI systems with Next.js and React — API and state management,
+      performance optimization and refactoring, plus open-source libraries.
       <br />
       <br />
       <strong>Achievements:</strong>
       <br />
       • Reduced page load time from 80 seconds to 10 seconds by parallelizing independent API requests.
       <br />
-      • Simplified product searching by implementing an optimized querying algorithm for lightning fast results and caching.
+      • Simplified product searching by implementing an optimized querying algorithm for lightning fast results
+      and caching.
     </Fragment>,
     stack: "Next.js · React · Web Components · State · Performance",
   },
@@ -37,7 +40,8 @@ const jobs = [
       <br />
       • Implemented a new state management system with Pinia, which improved performance and reduced complexity.
       <br />
-      • Improved large-table performance by virtualizing rows and columns and moving expensive calculations to Web Workers.
+      • Improved large-table performance by virtualizing rows and columns and moving expensive calculations to Web
+      Workers.
     </Fragment>,
     stack: "Vue · TypeScript · Pinia · Storybook · SCSS",
   },
@@ -73,55 +77,55 @@ const jobs = [
   },
 ] as const
 
-export type ExperienceProps = ComponentProps<"section"> & {
-  step: string
-}
+export type ExperienceProps = ComponentProps<"section">
 
 export function Experience(props: ExperienceProps) {
-  const { step, ...attrs } = props
+  const { ...attrs } = props
 
   return (
     <Section
       {...attrs}
       id="experience"
-      step={step}
-      label="Experience"
+      label="Work history"
     >
       <div className="flex flex-col">
         {jobs.map((job) => {
           const body = (
             <>
-              <div className="pt-1 font-mono text-[13px] text-ink-soft">
+              <div className="pt-0.5 text-[13px] text-ink-soft">
                 {job.period}
               </div>
 
               <div>
                 <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="m-0 text-[18px] font-semibold text-ink">
+                  <h3 className="m-0 text-[19px] font-semibold text-ink">
                     {job.name}
                   </h3>
                   {job.website != null && (
-                    <span className="shrink-0 text-[13px] text-ink-soft transition-transform group-hover:-translate-y-px group-hover:text-accent">
-                      ↗
-                    </span>
+                    <AppIcon
+                      name="arrow"
+                      className="size-4 shrink-0 text-ink-soft group-hover:text-accent"
+                    />
                   )}
                 </div>
 
-                <div className="mt-0.5 text-[14px] text-ink-muted">
+                <div className="mt-1 text-[14px] text-ink-muted">
                   {job.role} · {job.type}
                 </div>
 
-                <p className="mb-0 mt-3 max-w-xl text-[15px]">{job.detail}</p>
+                <p className="mb-0 mt-4 max-w-2xl text-[15px] leading-6">{job.detail}</p>
 
-                <div className="mt-3 font-mono text-[12px] text-ink-soft">
+                <div className="mt-4 text-[12px] text-ink-soft">
                   {job.stack}
                 </div>
               </div>
             </>
           )
 
-          const rowClass =
-            "flex flex-col gap-2 border-b border-line p-7 no-underline last:border-b-0"
+          const rowClass = cn(
+            "grid gap-3 border-t border-line py-7 no-underline first:border-t-0",
+            "md:grid-cols-[150px_1fr] md:gap-8",
+          )
 
           if (job.website == null) {
             return (
@@ -139,10 +143,11 @@ export function Experience(props: ExperienceProps) {
               key={job.name}
               href={job.website}
               target="_blank"
+              rel="noreferrer"
               className={cn(
                 "group",
                 rowClass,
-                "transition-colors hover:bg-surface",
+                "hover:text-ink",
               )}
             >
               {body}

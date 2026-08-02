@@ -12,11 +12,11 @@ export function Header(props: HeaderProps) {
     <h2
       {...attrs}
       className={cn(
-        "mb-4 mt-14 text-[22px] font-semibold tracking-[-0.02em] text-ink md:text-[26px]",
+        "mb-4 mt-14 text-[22px] font-semibold text-ink md:text-[26px]",
         className,
       )}
     >
-      <span className="mr-2 font-mono font-normal text-accent">##</span>
+      <span className="mr-2 font-normal text-accent">##</span>
       {children}
     </h2>
   )

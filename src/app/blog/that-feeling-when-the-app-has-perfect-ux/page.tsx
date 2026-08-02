@@ -25,7 +25,10 @@ export const metadata = {
 
 export default function PerfectUxPage() {
   return (
-    <Page pathname="/blog">
+    <Page
+      pathname="/blog/that-feeling-when-the-app-has-perfect-ux"
+      title="Blog"
+    >
       <BlogPost
         title="That Feeling When the App Has Perfect UX"
         date="July 9, 2026"

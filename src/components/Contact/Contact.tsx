@@ -1,46 +1,67 @@
 import type { ComponentProps } from "react"
+import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { GithubIcon } from "@/components/GithubIcon/GithubIcon"
-import { Section } from "@/components/Section/Section"
+import { cn } from "@/lib/utils"
 
-export type ContactProps = ComponentProps<"section"> & {
-  step: string
-}
+export type ContactProps = ComponentProps<"section">
 
 export function Contact(props: ContactProps) {
-  const { step, ...attrs } = props
+  const { className, ...attrs } = props
 
   return (
-    <Section
+    <section
       {...attrs}
       id="contact"
-      step={step}
-      label="Contact"
+      className={cn("border-t border-line py-14 md:py-16", className)}
     >
-      <p className="m-0 max-w-xl text-[17px] text-ink-muted">
+      <h2 className="mb-0 mt-0 text-[13px] font-semibold uppercase text-ink-soft">Direct channels</h2>
+      <p className="mb-0 mt-5 max-w-xl text-[17px] leading-7 text-ink-muted">
         I keep communication simple. Email is the best place for a direct
         message — I&apos;m happy to talk about work, projects or ideas.
       </p>
 
-      <a
-        href="mailto:kyzc411@gmail.com"
-        className="group mt-6 inline-flex items-center gap-3 text-[24px] font-semibold tracking-[-0.02em] text-ink no-underline transition-colors hover:text-accent md:text-[30px]"
-      >
-        kyzc411@gmail.com
-        <span className="text-ink-soft transition-transform group-hover:translate-x-1 group-hover:text-accent">
-          →
-        </span>
-      </a>
+      <div className="mt-9 overflow-hidden rounded-[8px] bg-surface shadow-control">
+        <a
+          href="mailto:kyzc411@gmail.com"
+          className="group flex items-center gap-3 px-4 py-3.5 text-ink no-underline hover:bg-surface-hover"
+        >
+          <span className="grid size-8 shrink-0 place-items-center rounded-[8px] bg-accent text-white">
+            <AppIcon
+              name="contact"
+              className="size-4"
+            />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-[14px] font-medium">Email</span>
+            <span className="block truncate text-[12px] text-ink-soft">kyzc411@gmail.com</span>
+          </span>
+          <AppIcon
+            name="chevron"
+            className="size-3.5 text-ink-soft group-hover:text-accent"
+          />
+        </a>
 
-      <div className="mt-8">
+        <div className="ml-15 border-t border-line" />
+
         <a
           href="https://github.com/kadiryazici"
           target="_blank"
-          className="group inline-flex items-center gap-2.5 text-ink no-underline transition-colors hover:text-accent"
+          rel="noreferrer"
+          className="group flex items-center gap-3 px-4 py-3.5 text-ink no-underline hover:bg-surface-hover"
         >
-          <GithubIcon className="h-5 w-5" />
-          <span className="font-mono text-[15px]">kadiryazici</span>
+          <span className="grid size-8 shrink-0 place-items-center rounded-[8px] bg-ink text-white">
+            <GithubIcon className="size-4" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-[14px] font-medium">GitHub</span>
+            <span className="block truncate text-[12px] text-ink-soft">github.com/kadiryazici</span>
+          </span>
+          <AppIcon
+            name="arrow"
+            className="size-3.5 text-ink-soft group-hover:text-accent"
+          />
         </a>
       </div>
-    </Section>
+    </section>
   )
 }

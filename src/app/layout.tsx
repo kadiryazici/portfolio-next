@@ -2,6 +2,12 @@ import type { ReactNode } from "react"
 import "@/styles/globals.css"
 import { Background } from "@/components/Background/Background"
 import { usePathname } from "vinext/shims/navigation"
+import { Sora as UIFont } from "next/font/google"
+
+const uiFont = UIFont({
+  subsets: ["latin"],
+  variable: "--ui-font",
+})
 
 export const metadata = {
   title: "Kadir Yazıcı — Software Developer",
@@ -15,7 +21,7 @@ export const metadata = {
     siteName: "Kadir Yazıcı",
     images: [
       {
-        url: "/me.jpg",
+        url: "/me.png",
         width: 640,
         height: 640,
         alt: "Kadir Yazıcı",
@@ -29,7 +35,7 @@ export const metadata = {
       "Software developer working mostly in TypeScript and React. Experience and ways to get in touch.",
     images: [
       {
-        url: "/me.jpg",
+        url: "/me.png",
         width: 640,
         height: 640,
         alt: "Kadir Yazıcı",
@@ -44,7 +50,7 @@ export default function RootLayout(props: { children: ReactNode }) {
   const pathName = usePathname()
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${uiFont.variable}`}>
       <head>
         <meta
           name="viewport"
@@ -60,12 +66,12 @@ export default function RootLayout(props: { children: ReactNode }) {
           crossOrigin=""
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
           rel="stylesheet"
         />
       </head>
       <body>
-        <Background noMask={pathName.includes("/preview")} />
+        {pathName.includes("/preview") && <Background noMask />}
         {children}
       </body>
     </html>

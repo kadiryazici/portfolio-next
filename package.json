@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "clsx": "^2.1.0",
+    "motion": "^12.43.0",
     "nitro": "latest",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
