@@ -51,7 +51,7 @@ export function Hero(props: HeroProps) {
 
         <div className="mt-9 flex flex-wrap items-center gap-2.5">
           <Button
-            href="/contact"
+            href={"mailto:kyzc411@gmail.com"}
             variant="secondary"
             padding="md"
             leftIcon={
