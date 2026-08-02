@@ -51,7 +51,7 @@ export default function ExperiencePage() {
                 <br />
                 • Handled state management with Zustand.
                 <br />
-                • Implemented accessible UI components.
+                • Implemented accessible UI components for the dashboard application.
                 <br />
                 • Resolved performance issues in the dashboard application.
               </Fragment>
@@ -60,7 +60,7 @@ export default function ExperiencePage() {
 
           <ExperienceCard
             className="w-full"
-            tags={["Vue", "AG Grid", "Web Workers", "Pinia", "Onboarding", "Network Optimization"]}
+            tags={["Vue", "AG Grid", "Web Workers", "Pinia", "Onboarding", "Network Optimization", "Stripe"]}
             videoUrls={[
               "/videos/wope/wope-1.mov",
               "/videos/wope/wope-2.mov",
@@ -88,6 +88,8 @@ export default function ExperiencePage() {
                 • Handled state management with Pinia.
                 <br />
                 • Implemented onboarding for new customers.
+                <br />
+                • Implemented Stripe payment flows.
                 <br />
                 • Implemented custom network handling to improve performance and optimize requests.
               </Fragment>

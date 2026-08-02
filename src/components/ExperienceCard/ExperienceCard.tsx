@@ -74,8 +74,8 @@ export function ExperienceCard(props: ExperienceCardProps) {
             <h2 className="m-0 text-[17px] font-semibold leading-6 tracking-normal text-ink md:text-lg">
               {title}
             </h2>
-            <span className="shrink-0 font-mono text-[11px] leading-5 text-ink-muted">
-              {fromTo[0]} - {fromTo[1]}
+            <span className="text-yellow-500 shrink-0 font-mono text-[11px] leading-5 text-ink-muted">
+              {fromTo[0]} → {fromTo[1]}
             </span>
           </div>
           <p className="m-0 mt-0.5 text-[13px] leading-5 text-ink-soft md:text-sm">
