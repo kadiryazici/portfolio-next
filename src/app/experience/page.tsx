@@ -26,8 +26,8 @@ export default function ExperiencePage() {
           className="w-full"
           tags={["Next.js", "Strapi", "Web Components", "Zustand", "Accessibility", "Performance"]}
           videoUrls={[
-            ["/videos/seam/seam-2.webm", "/videos/seam/seam-2.mp4"],
-            ["/videos/seam/seam-1.webm", "/videos/seam/seam-1.mp4"],
+            ["/videos/seam/seam-2.mp4", "/videos/seam/seam-2.webm"],
+            ["/videos/seam/seam-1.mp4", "/videos/seam/seam-1.webm"],
           ]}
           title="Seam"
           subtitle="Software Developer - Full Time"
@@ -66,11 +66,11 @@ export default function ExperiencePage() {
           className="w-full"
           tags={["Vue", "AG Grid", "Web Workers", "Pinia", "Onboarding", "Network Optimization", "Stripe"]}
           videoUrls={[
-            ["/videos/wope/wope-1.webm", "/videos/wope/wope-1.mp4"],
-            ["/videos/wope/wope-2.webm", "/videos/wope/wope-2.mp4"],
-            ["/videos/wope/wope-3.webm", "/videos/wope/wope-3.mp4"],
-            ["/videos/wope/wope-4.webm", "/videos/wope/wope-4.mp4"],
-            ["/videos/wope/wope-5.webm", "/videos/wope/wope-5.mp4"],
+            ["/videos/wope/wope-1.mp4", "/videos/wope/wope-1.webm"],
+            ["/videos/wope/wope-2.mp4", "/videos/wope/wope-2.webm"],
+            ["/videos/wope/wope-3.mp4", "/videos/wope/wope-3.webm"],
+            ["/videos/wope/wope-4.mp4", "/videos/wope/wope-4.webm"],
+            ["/videos/wope/wope-5.mp4", "/videos/wope/wope-5.webm"],
           ]}
           title="Wope"
           subtitle="Frontend Developer - Full Time"
@@ -103,7 +103,7 @@ export default function ExperiencePage() {
         <ExperienceCard
           className="w-full"
           tags={["Vue", "TypeScript", "Qwik", "SSR", "Stripe"]}
-          videoUrls={[["/videos/cryptosea/cryptosea-1.webm", "/videos/cryptosea/cryptosea-1.mp4"]]}
+          videoUrls={[["/videos/cryptosea/cryptosea-1.mp4", "/videos/cryptosea/cryptosea-1.webm"]]}
           title="CryptoSea"
           subtitle="Frontend Web Developer - Contract"
           fromTo={["2024/04", "2024/07"]}
