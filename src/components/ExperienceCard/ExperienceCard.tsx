@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import { useInView } from "motion/react"
 
 export type ExperienceCardProps = ComponentProps<"div"> & {
-  videoUrls: string[]
+  videoUrls: string[][]
   title: ReactNode
   subtitle: ReactNode,
   description: ReactNode,
@@ -28,19 +28,18 @@ export function ExperienceCard(props: ExperienceCardProps) {
     ...attrs
   } = props
 
-  const [activeVideoUrl, setActiveVideoUrl] = useState(videoUrls[0])
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0)
   const videoRef = useRef<HTMLDivElement>(null)
   const isVideoInView = useInView(videoRef, { once: true })
+  const activeVideoUrls = videoUrls[activeVideoIndex]
 
   function handleVideoEnd() {
-    const index = videoUrls.indexOf(activeVideoUrl)
-
-    if (index === videoUrls.length - 1) {
-      setActiveVideoUrl(videoUrls[0])
+    if (activeVideoIndex === videoUrls.length - 1) {
+      setActiveVideoIndex(0)
       return
     }
 
-    setActiveVideoUrl(videoUrls[index + 1])
+    setActiveVideoIndex(activeVideoIndex + 1)
   }
 
   return (
@@ -60,14 +59,20 @@ export function ExperienceCard(props: ExperienceCardProps) {
 
           {isVideoInView && (
             <video
-              src={activeVideoUrl}
               autoPlay
               loop={videoUrls.length === 1}
               muted
               className="size-full object-cover scale-101"
-              key={activeVideoUrl}
+              key={activeVideoUrls[0]}
               onEnded={handleVideoEnd}
-            />
+            >
+              {activeVideoUrls.map((videoUrl) => (
+                <source
+                  src={videoUrl}
+                  key={videoUrl}
+                />
+              ))}
+            </video>
           )}
         </div>
       </div>

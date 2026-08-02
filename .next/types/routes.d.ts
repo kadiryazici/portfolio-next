@@ -20,17 +20,16 @@ declare global {
 }
 
 declare namespace VinextRouteTypes {
-  type PageRoute = "/" | "/blog" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux" | "/contact" | "/experience" | "/preview/time-picker-button" | "/projects";
+  type PageRoute = "/" | "/blog" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux" | "/experience" | "/preview/time-picker-button" | "/projects";
   type LayoutRoute = "/";
   type RouteHandlerRoute = never;
-  type AppRoute = "/" | "/blog" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux" | "/contact" | "/experience" | "/preview/time-picker-button" | "/projects";
+  type AppRoute = "/" | "/blog" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux" | "/experience" | "/preview/time-picker-button" | "/projects";
 
   interface ParamMap {
     "/": {};
     "/blog": {};
     "/blog/surviving-ai-world-as-a-stubborn-old-developer": {};
     "/blog/that-feeling-when-the-app-has-perfect-ux": {};
-    "/contact": {};
     "/experience": {};
     "/preview/time-picker-button": {};
     "/projects": {};
