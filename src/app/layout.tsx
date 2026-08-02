@@ -12,15 +12,16 @@ const uiFont = UIFont({
   variable: "--ui-font",
 })
 
+const siteTitle = "Kadir Yazıcı — Frontend-Focused Engineer"
+const siteDescription = "Kadir Yazıcı builds accessible, high-performance frontend systems and thoughtful product experiences."
+
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Kadir Yazıcı — Software Developer",
-  description:
-    "Software developer working mostly in TypeScript and React. Experience and ways to get in touch.",
+  title: siteTitle,
+  description: siteDescription,
   openGraph: {
-    title: "Kadir Yazıcı — Software Developer",
-    description:
-      "Software developer working mostly in TypeScript and React. Experience and ways to get in touch.",
+    title: siteTitle,
+    description: siteDescription,
     type: "website",
     siteName: "Kadir Yazıcı",
     images: [
@@ -34,9 +35,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kadir Yazıcı — Software Developer",
-    description:
-      "Software developer working mostly in TypeScript and React. Experience and ways to get in touch.",
+    title: siteTitle,
+    description: siteDescription,
     images: [
       {
         url: "/me-banner-wide.webp",
@@ -92,13 +92,14 @@ export default function RootLayout(props: { children: ReactNode }) {
                 "@type": "Person",
                 name: "Kadir Yazıcı",
                 url: siteUrl,
-                jobTitle: "Software Developer",
+                jobTitle: "Frontend-Focused Engineer",
                 sameAs: ["https://github.com/kadiryazici"],
                 knowsAbout: [
                   "TypeScript",
                   "React",
-                  "Frontend development",
-                  "Web accessibility",
+                  "Frontend systems",
+                  "Accessible interfaces",
+                  "Product design",
                   "Performance optimization",
                 ],
               },
