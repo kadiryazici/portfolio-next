@@ -2,6 +2,7 @@ import type { ComponentProps, ReactNode } from "react"
 import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { PageMain } from "@/components/PageMain/PageMain"
 import { cn } from "@/lib/utils"
+import Link from "vinext/shims/link"
 
 export type BlogPostProps = ComponentProps<"article"> & {
   title: string
@@ -18,7 +19,7 @@ export function BlogPost(props: BlogPostProps) {
         {...attrs}
         className={cn("w-full", className)}
       >
-        <a
+        <Link
           href="/blog"
           className="group inline-flex items-center gap-2 text-[13px] font-medium text-ink-soft no-underline transition-colors hover:text-ink"
         >
@@ -29,7 +30,7 @@ export function BlogPost(props: BlogPostProps) {
             />
           </span>
           Blog
-        </a>
+        </Link>
 
         <h1 className="mb-0 mt-8 max-w-3xl text-[36px] font-semibold leading-[1.08] text-ink md:mt-10 md:text-[46px]">
           {title}
