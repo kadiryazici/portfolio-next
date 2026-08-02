@@ -43,7 +43,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
     <div
       {...attrs}
       className={cn(
-        "flex max-w-[700px] flex-col overflow-hidden rounded-[18px] border border-white/[0.09] bg-white/[0.035] shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-[border-color,background-color,transform,box-shadow] duration-300",
+        "flex flex-col overflow-hidden rounded-[18px] border border-white/[0.09] bg-white/[0.035] shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-[border-color,background-color,transform,box-shadow] duration-300",
         className,
       )}
     >
@@ -56,7 +56,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
             autoPlay
             loop={videoUrls.length === 1}
             muted
-            className="aspect-[13/7] w-full max-w-[700px] object-cover"
+            className="aspect-[13/7] w-full object-cover"
             key={activeVideoUrl}
             onEnded={handleVideoEnd}
           />

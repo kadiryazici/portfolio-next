@@ -1,5 +1,6 @@
 import { Page } from "@/components/Page/Page"
 import { Hero } from "@/components/Hero/Hero"
+import { PageMain } from "@/components/PageMain/PageMain"
 
 export default function HomePage() {
   return (
@@ -7,9 +8,9 @@ export default function HomePage() {
       pathname="/"
       title="Home"
     >
-      <main className="mx-auto w-full max-w-[980px] px-5 pb-20 md:px-8 lg:px-12">
+      <PageMain>
         <Hero />
-      </main>
+      </PageMain>
     </Page>
   )
 }

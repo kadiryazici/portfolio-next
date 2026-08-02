@@ -1,23 +1,38 @@
-import type { ComponentProps, ReactNode } from "react"
+import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 
 export type HeaderProps = ComponentProps<"h2"> & {
-  children: ReactNode
+  children: string
 }
 
 export function Header(props: HeaderProps) {
-  const { children, className, ...attrs } = props
+  const { children, className, id, ...attrs } = props
+  const headingId = id ?? createHeadingId(children)
 
   return (
     <h2
       {...attrs}
+      id={headingId}
       className={cn(
-        "mb-4 mt-14 text-[22px] font-semibold text-ink md:text-[26px]",
+        "mb-4 mt-12 flex items-baseline gap-2 text-[20px] font-semibold leading-7 text-ink md:mt-14 md:text-[24px]",
         className,
       )}
     >
-      <span className="mr-2 font-normal text-accent">##</span>
-      {children}
+      <span className="font-mono text-[13px] font-medium text-accent">##</span>
+      <a
+        href={`#${headingId}`}
+        className="text-ink no-underline transition-colors hover:text-accent"
+      >
+        {children}
+      </a>
     </h2>
   )
+}
+
+function createHeadingId(children: string) {
+  return children
+    .toLowerCase()
+    .trim()
+    .replaceAll(/[^a-z0-9]+/g, "-")
+    .replaceAll(/(^-|-$)/g, "")
 }

@@ -75,6 +75,28 @@ html {
   a:hover {
     color: var(--color-accent-hover);
   }
+
+  .blog-post-content strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  .blog-post-content strong::before,
+  .blog-post-content strong::after {
+    color: var(--color-accent);
+    font-family: monospace;
+    font-weight: 500;
+  }
+
+  .blog-post-content strong::before {
+    content: "*";
+    margin-right: 0.2em;
+  }
+
+  .blog-post-content strong::after {
+    content: "*";
+    margin-left: 0.2em;
+  }
 }
 
 ::selection {

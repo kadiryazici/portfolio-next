@@ -1,7 +1,7 @@
 import { ButtonPaddingStyles, ButtonVariantStyles } from "@/components/Button/Button.constants"
 import { cn } from "@/lib/utils"
-import Link from "next/link"
 import type { ComponentProps, ReactNode } from "react"
+import Link from "vinext/shims/link"
 
 export type ButtonProps = ComponentProps<"button"> & {
   leftIcon?: ReactNode
@@ -32,8 +32,8 @@ export function Button(props: ButtonProps) {
   } = props
 
   const buttonClassName = cn(
-    "relative inline-flex shrink-0 items-center justify-center gap-2 rounded-xl font-semibold",
-    "transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-300",
+    "relative inline-flex shrink-0 items-center justify-center gap-2 rounded-[9px] font-medium no-underline",
+    "transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
     ButtonVariantStyles[variant],
     ButtonPaddingStyles[padding],
     (disabled || loading) && "pointer-events-none opacity-50",
@@ -42,16 +42,18 @@ export function Button(props: ButtonProps) {
 
   const content = (
     <>
-      {leftIcon && (
-        <span className={cn("inline-grid shrink-0 place-items-center text-base", loading && "opacity-0")}>
+      {leftIcon != null && (
+        <span className={cn("inline-grid shrink-0 place-items-center", loading && "opacity-0")}>
           {leftIcon}
         </span>
       )}
-      <span className={cn("inline-block", loading && "opacity-0")}>
-        {children}
-      </span>
-      {rightIcon && (
-        <span className={cn("inline-grid shrink-0 place-items-center text-base", loading && "opacity-0")}>
+      {children != null && (
+        <span className={cn("inline-block", loading && "opacity-0")}>
+          {children}
+        </span>
+      )}
+      {rightIcon != null && (
+        <span className={cn("inline-grid shrink-0 place-items-center", loading && "opacity-0")}>
           {rightIcon}
         </span>
       )}
@@ -67,6 +69,7 @@ export function Button(props: ButtonProps) {
   if (href) {
     return (
       <Link
+        {...attrs as any}
         href={href}
         target={target}
         rel={rel ?? (target === "_blank" ? "noopener noreferrer" : undefined)}

@@ -12,7 +12,7 @@ export function Blockquote(props: BlockquoteProps) {
     <blockquote
       {...attrs}
       className={cn(
-        "my-8 border-l-2 border-accent pl-5 text-[15px] italic leading-relaxed text-ink-muted",
+        "my-8 rounded-r-[8px] border-l-2 border-accent bg-white/[0.035] px-5 py-4 text-[15px] italic leading-relaxed text-ink-soft",
         className,
       )}
     >

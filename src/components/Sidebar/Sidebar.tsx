@@ -85,7 +85,7 @@ export function Sidebar(props: SidebarProps) {
               key={link.href}
               href={link.href}
               icon={link.icon}
-              active={link.href === pathname}
+              active={pathname.startsWith(link.href)}
             >
               {link.name}
             </SidebarLink>
@@ -94,6 +94,7 @@ export function Sidebar(props: SidebarProps) {
       </motion.div>
 
       <div className="mt-auto flex flex-col">
+        <div className="h-px w-full bg-neutral-800 mb-2" />
         <SidebarLink
           href={"mailto:kyzc411@gmail.com"}
           icon={<Icons.Message />}

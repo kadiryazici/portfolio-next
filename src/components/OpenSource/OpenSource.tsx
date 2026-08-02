@@ -1,5 +1,5 @@
 import type { ComponentProps } from "react"
-import { AppIcon } from "@/components/AppIcon/AppIcon"
+import { ProjectCard } from "@/components/ProjectCard/ProjectCard"
 import { Section } from "@/components/Section/Section"
 
 const projects = [
@@ -36,45 +36,20 @@ export function OpenSource(props: OpenSourceProps) {
       id="open-source"
       label="Open Source"
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-8 *:mx-auto">
         {projects.map((project) => (
-          <a
+          <ProjectCard
             key={project.name}
             href={project.website}
             target="_blank"
             rel="noreferrer"
-            className="group block border-t border-line py-7 text-ink no-underline first:border-t-0"
-          >
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <h3 className="m-0 text-[19px] font-semibold text-ink">
-                  {project.name}
-                </h3>
-                <div className="mt-1 text-[12px] text-ink-soft">
-                  {project.subtitle}
-                </div>
-              </div>
-
-              <AppIcon
-                name="arrow"
-                className="size-4 shrink-0 text-ink-soft group-hover:text-accent"
-              />
-            </div>
-
-            <p className="mb-0 mt-5 max-w-2xl text-[15px] leading-7 text-ink-muted">
-              {project.description}
-            </p>
-
-            <p className="mb-0 mt-3 max-w-2xl text-[14px] leading-6 text-ink-soft">
-              {project.purpose}
-            </p>
-
-            <div className="mt-5 flex flex-wrap gap-x-3 gap-y-2 text-[11px] font-medium text-ink-soft">
-              {project.stack.map((technology) => (
-                <span key={technology}>{technology}</span>
-              ))}
-            </div>
-          </a>
+            className="w-full"
+            title={project.name}
+            subtitle={project.subtitle}
+            description={project.description}
+            purpose={project.purpose}
+            tags={project.stack}
+          />
         ))}
       </div>
     </Section>

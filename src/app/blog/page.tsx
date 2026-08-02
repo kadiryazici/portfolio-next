@@ -1,5 +1,7 @@
 import { AppIcon } from "@/components/AppIcon/AppIcon"
+import { ContentHeader } from "@/components/ContentHeader/ContentHeader"
 import { Page } from "@/components/Page/Page"
+import { PageMain } from "@/components/PageMain/PageMain"
 import { posts } from "@/lib/posts"
 
 export const metadata = {
@@ -13,40 +15,36 @@ export default function BlogPage() {
       pathname="/blog"
       title="Blog"
     >
-      <section className="mx-auto w-full max-w-[900px] px-5 pb-20 pt-12 md:px-8 md:pt-20 lg:px-12">
-        <p className="mb-3 mt-0 text-[13px] font-medium text-accent">Writing</p>
-        <h1 className="m-0 text-[42px] font-semibold leading-[1.05] text-ink md:text-[50px]">
-          Blog
-        </h1>
-        <p className="mt-4 max-w-xl text-[17px] leading-7 text-ink-muted">
-          Notes on software, tools, and the way I like to work.
-        </p>
-
-        <ul className="mt-14 flex flex-col gap-0">
+      <PageMain>
+        <ContentHeader
+          eyebrow="Writing"
+          title="Blog"
+        />
+        <ul className="overflow-hidden rounded-[18px] border border-white/[0.09] bg-white/[0.035] shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl">
           {posts.map((post) => (
             <li
               key={post.slug}
-              className="border-t border-line last:border-b"
+              className="border-b border-white/[0.08] last:border-b-0"
             >
               <a
                 href={`/blog/${post.slug}`}
-                className="group grid gap-3 py-7 no-underline md:grid-cols-[1fr_auto_auto] md:items-center md:gap-8"
+                className="group grid gap-3 px-5 py-5 no-underline transition-colors hover:bg-white/[0.045] md:grid-cols-[1fr_auto_auto] md:items-center md:gap-8 md:px-6 md:py-6"
               >
-                <span className="text-[19px] font-semibold text-ink group-hover:text-accent">
+                <span className="text-[17px] font-semibold text-ink transition-colors group-hover:text-accent md:text-lg">
                   {post.title}
                 </span>
-                <span className="shrink-0 text-[12px] text-ink-soft">
+                <span className="shrink-0 text-[12px] text-ink-soft md:text-[13px]">
                   {post.date}
                 </span>
                 <AppIcon
                   name="arrow"
-                  className="hidden size-4 text-ink-soft group-hover:text-accent md:block"
+                  className="hidden size-4 text-ink-soft transition-colors group-hover:text-accent md:block"
                 />
               </a>
             </li>
           ))}
         </ul>
-      </section>
+      </PageMain>
     </Page>
   )
 }

@@ -1,5 +1,6 @@
 import type { ComponentProps, ReactNode } from "react"
 import { AppIcon } from "@/components/AppIcon/AppIcon"
+import { PageMain } from "@/components/PageMain/PageMain"
 import { cn } from "@/lib/utils"
 
 export type BlogPostProps = ComponentProps<"article"> & {
@@ -12,34 +13,35 @@ export function BlogPost(props: BlogPostProps) {
   const { title, date, children, className, ...attrs } = props
 
   return (
-    <article
-      {...attrs}
-      className={cn(
-        "mx-auto w-full max-w-[780px] px-5 pb-24 pt-12 md:px-8 md:pt-20 lg:px-12",
-        className,
-      )}
-    >
-      <a
-        href="/blog"
-        className="inline-flex items-center gap-2 text-[13px] font-medium text-ink-soft no-underline hover:text-ink"
+    <PageMain className="pt-8 md:pt-12">
+      <article
+        {...attrs}
+        className={cn("w-full", className)}
       >
-        <AppIcon
-          name="chevron"
-          className="size-3.5 rotate-180"
-        />
-        Blog
-      </a>
+        <a
+          href="/blog"
+          className="group inline-flex items-center gap-2 text-[13px] font-medium text-ink-soft no-underline transition-colors hover:text-ink"
+        >
+          <span className="grid size-6 place-items-center rounded-[7px] border border-white/[0.1] bg-white/[0.05] transition-colors group-hover:bg-white/[0.09]">
+            <AppIcon
+              name="chevron"
+              className="size-3.5 rotate-180"
+            />
+          </span>
+          Blog
+        </a>
 
-      <h1 className="mt-9 text-[36px] font-semibold leading-[1.08] text-ink md:text-[46px]">
-        {title}
-      </h1>
-      <p className="mt-4 text-[13px] text-ink-soft">
-        {date}
-      </p>
+        <h1 className="mb-0 mt-8 max-w-3xl text-[36px] font-semibold leading-[1.08] text-ink md:mt-10 md:text-[46px]">
+          {title}
+        </h1>
+        <p className="mb-0 mt-4 text-[13px] text-ink-soft">
+          {date}
+        </p>
 
-      <div className="mt-12 w-full border-t border-line pt-9 md:mt-14 md:pt-11">
-        {children}
-      </div>
-    </article>
+        <div className="blog-post-content mt-10 w-full md:mt-12">
+          {children}
+        </div>
+      </article>
+    </PageMain>
   )
 }

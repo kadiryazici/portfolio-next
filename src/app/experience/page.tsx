@@ -1,6 +1,9 @@
-import { Experience } from "@/components/Experience/Experience"
+import { AppIcon } from "@/components/AppIcon/AppIcon"
+import { ContentHeader } from "@/components/ContentHeader/ContentHeader"
 import { ExperienceCard } from "@/components/ExperienceCard/ExperienceCard"
+import { LinkCard } from "@/components/LinkCard/LinkCard"
 import { Page } from "@/components/Page/Page"
+import { PageMain } from "@/components/PageMain/PageMain"
 import { Fragment } from "react/jsx-runtime"
 
 export const metadata = {
@@ -14,20 +17,19 @@ export default function ExperiencePage() {
       pathname="/experience"
       title="Experience"
     >
-      <main className="mx-auto w-full max-w-[980px] px-5 pb-20 md:px-8 lg:px-12">
-        <header className="pb-12 pt-8 md:pb-16 md:pt-12">
-          <h1 className=" max-w-[700px] mx-auto m-0 max-w-2xl text-[40px] font-semibold leading-[1.05] text-ink md:text-[48px]">
-            Experience shaped by product work.
-          </h1>
-        </header>
+      <PageMain>
+        <ContentHeader
+          eyebrow="Experience"
+          title="Experience shaped by product work."
+        />
 
         <div className="flex flex-col gap-8 *:mx-auto">
           <ExperienceCard
             className="w-full"
             tags={["Next.js", "Strapi", "Web Components", "Zustand", "Accessibility", "Performance"]}
             videoUrls={[
-              "/videos/seam/seam-1.mov",
               "/videos/seam/seam-2.mov",
+              "/videos/seam/seam-1.mov",
             ]}
             title="Seam"
             subtitle="Software Developer - Full Time"
@@ -123,9 +125,21 @@ export default function ExperiencePage() {
           />
         </div>
 
+        <LinkCard
+          href="/projects"
+          className="mx-auto mt-8"
+          icon={
+            <AppIcon
+              name="projects"
+              className="size-5"
+            />
+          }
+          title="Wanna See My Own Projects?"
+        />
+
 
         {/*<Experience />*/}
-      </main>
+      </PageMain>
     </Page>
   )
 }

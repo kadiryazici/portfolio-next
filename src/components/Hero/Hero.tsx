@@ -1,6 +1,8 @@
 import type { ComponentProps } from "react"
 import { AppIcon } from "@/components/AppIcon/AppIcon"
+import { Button } from "@/components/Button/Button"
 import { GithubIcon } from "@/components/GithubIcon/GithubIcon"
+import { LinkCard } from "@/components/LinkCard/LinkCard"
 import { cn } from "@/lib/utils"
 
 export type HeroProps = ComponentProps<"section">
@@ -33,46 +35,42 @@ export function Hero(props: HeroProps) {
         </p>
 
         <div className="mt-9 flex flex-wrap items-center gap-2.5">
-          <a
-            href="/projects"
-            className={cn(
-              "inline-flex h-10 items-center gap-2 rounded-[9px] bg-accent px-4",
-              "text-[14px] font-medium text-white no-underline hover:bg-accent-hover",
-            )}
-          >
-            <AppIcon
-              name="projects"
-              className="size-4"
-            />
-            View projects
-          </a>
-          <a
+          <Button
             href="/contact"
-            className={cn(
-              "inline-flex h-10 items-center gap-2 rounded-[9px] bg-surface px-4 shadow-control",
-              "text-[14px] font-medium text-ink no-underline hover:bg-surface-hover",
-            )}
+            variant="secondary"
+            padding="md"
+            leftIcon={
+              <AppIcon
+                name="contact"
+                className="size-4"
+              />
+            }
           >
-            <AppIcon
-              name="contact"
-              className="size-4"
-            />
             Contact me
-          </a>
-          <a
+          </Button>
+          <Button
             href="https://github.com/kadiryazici"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub profile"
             title="GitHub"
-            className={cn(
-              "inline-flex size-10 items-center justify-center rounded-[9px] bg-surface shadow-control",
-              "text-ink no-underline",
-            )}
-          >
-            <GithubIcon className="size-4" />
-          </a>
+            variant="icon"
+            padding="icon"
+            leftIcon={<GithubIcon className="size-4" />}
+          />
         </div>
+
+        <LinkCard
+          href="/experience"
+          className="mt-14"
+          icon={
+            <AppIcon
+              name="experience"
+              className="size-5"
+            />
+          }
+          title="Wanna See What I've Built?"
+        />
       </div>
     </section>
   )
