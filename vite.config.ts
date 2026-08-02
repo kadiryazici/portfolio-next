@@ -5,10 +5,10 @@ import tailwindcss from "@tailwindcss/vite"
 
 export default defineConfig(() => ({
   plugins: [
-    vinext(),
-    nitro({
-      // static: mode === "production",
+    vinext({
+      prerender: true
     }),
+    nitro(),
     tailwindcss(),
   ],
 }))
