@@ -1,8 +1,9 @@
 "use client"
 
 import type { ComponentProps, ReactNode } from "react"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { cn } from "@/lib/utils"
+import { useInView } from "motion/react"
 
 export type ExperienceCardProps = ComponentProps<"div"> & {
   videoUrls: string[][]
@@ -28,6 +29,8 @@ export function ExperienceCard(props: ExperienceCardProps) {
   } = props
 
   const [activeVideoIndex, setActiveVideoIndex] = useState(0)
+  const videoRef = useRef<HTMLDivElement>(null)
+  const isVideoInView = useInView(videoRef, { once: true })
   const activeVideoUrls = videoUrls[activeVideoIndex]
 
   function handleVideoEnd() {
@@ -49,27 +52,29 @@ export function ExperienceCard(props: ExperienceCardProps) {
     >
       <div className="flex items-center justify-center overflow-hidden border-b border-white/[0.08] bg-black/30 p-1.5 md:p-2">
         <div
+          ref={videoRef}
           className="relative aspect-[13/7] w-full overflow-hidden rounded-xl bg-black shadow-[0_8px_24px_rgba(0,0,0,0.28)]"
         >
           <div className="rounded-[inherit] z-[5] inset-0 absolute border border-neutral-700" />
-
-          <video
-            autoPlay
-            loop={videoUrls.length === 1}
-            muted
-            playsInline
-            className="size-full object-cover scale-101"
-            key={activeVideoUrls[0]}
-            onEnded={handleVideoEnd}
-          >
-            {activeVideoUrls.map((videoUrl) => (
-              <source
-                src={videoUrl}
-                key={videoUrl}
-                type={getVideoMimeType(videoUrl)}
-              />
-            ))}
-          </video>
+          {isVideoInView && (
+            <video
+              autoPlay
+              loop={videoUrls.length === 1}
+              muted
+              playsInline
+              className="size-full object-cover scale-101"
+              key={activeVideoUrls[0]}
+              onEnded={handleVideoEnd}
+            >
+              {activeVideoUrls.map((videoUrl) => (
+                <source
+                  src={videoUrl}
+                  key={videoUrl}
+                  type={getVideoMimeType(videoUrl)}
+                />
+              ))}
+            </video>
+          )}
         </div>
       </div>
 
