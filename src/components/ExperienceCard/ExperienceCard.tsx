@@ -56,7 +56,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
           ref={videoRef}
           className="relative aspect-[13/7] w-full overflow-hidden rounded-xl bg-black shadow-[0_8px_24px_rgba(0,0,0,0.28)]"
         >
-          <div className="rounded-[inherit] inset-0 absolute border border-neutral-700" />
+          <div className="rounded-[inherit] z-[5] inset-0 absolute border border-neutral-700" />
 
           {isVideoInView && (
             <video
@@ -64,7 +64,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
               autoPlay
               loop={videoUrls.length === 1}
               muted
-              className="size-full object-cover"
+              className="size-full object-cover scale-101"
               key={activeVideoUrl}
               onEnded={handleVideoEnd}
             />
