@@ -53,14 +53,14 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: "/me.png",
+        url: "/me.webp",
         type: "image/png",
         sizes: "678x678",
       },
     ],
     apple: [
       {
-        url: "/me.png",
+        url: "/me.webp",
         type: "image/png",
         sizes: "678x678",
       },

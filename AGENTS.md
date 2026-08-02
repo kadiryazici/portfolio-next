@@ -187,7 +187,7 @@ Follow the `code-like-me` skill for implementation work.
 
 ```
 public/
-  me.png, me.jpg                    # portrait assets
+  me.webp, me.jpg                    # portrait assets
   logos/                             # company logos for experience cards
   projects/                          # project screenshots and logos
   videos/<company>/                  # experience-card screen recordings

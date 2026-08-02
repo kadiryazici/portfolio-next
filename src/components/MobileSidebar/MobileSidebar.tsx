@@ -159,7 +159,7 @@ export function MobileSidebar(props: MobileSidebarProps) {
           className="group flex min-w-0 items-center gap-3 rounded-[12px] px-2.5 py-2 text-ink no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           <img
-            src="/me.png"
+            src="/me.webp"
             alt=""
             className="size-9 shrink-0 rounded-[10px] object-cover shadow-avatar"
           />
@@ -246,7 +246,7 @@ export function MobileSidebar(props: MobileSidebarProps) {
                   className="flex items-center gap-3 rounded-[16px] px-2.5 py-3 text-ink no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   <img
-                    src="/me.png"
+                    src="/me.webp"
                     alt="Kadir Yazıcı"
                     className="size-10 rounded-[11px] object-cover shadow-avatar"
                   />
