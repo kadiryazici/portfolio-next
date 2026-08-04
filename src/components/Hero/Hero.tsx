@@ -35,13 +35,13 @@ export function Hero(props: HeroProps) {
       </figure>
 
       <div className="relative z-10">
-        <p className="mb-3 mt-0 text-[13px] font-medium text-accent">Frontend-Focused Engineer</p>
+        <p className="mb-3 mt-0 text-[13px] font-medium text-accent">Full-Stack Engineer</p>
         <h1 className="m-0 text-[48px] font-bold leading-none text-ink md:text-[64px]">
           Kadir Yazıcı
         </h1>
 
         <p className="mt-5 max-w-2xl text-[24px] font-medium leading-8 text-ink-muted md:text-[28px] md:leading-9">
-          I build frontend systems for products people rely on.
+          I build full-stack systems for products people rely on.
         </p>
 
         <p className="mt-8 max-w-xl text-[17px] leading-7 text-ink-muted">

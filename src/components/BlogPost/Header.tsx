@@ -1,5 +1,6 @@
 import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
+import Link from "vinext/shims/link"
 
 export type HeaderProps = ComponentProps<"h2"> & {
   children: string
@@ -19,12 +20,12 @@ export function Header(props: HeaderProps) {
       )}
     >
       <span className="font-mono text-[13px] font-medium text-accent">##</span>
-      <a
+      <Link
         href={`#${headingId}`}
         className="text-ink no-underline transition-colors hover:text-accent"
       >
         {children}
-      </a>
+      </Link>
     </h2>
   )
 }

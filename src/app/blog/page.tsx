@@ -26,6 +26,7 @@ export default function BlogPage() {
             className="border-b border-white/[0.08] last:border-b-0"
           >
             <Link
+              prefetch={false}
               href={`/blog/${post.slug}`}
               className="group grid gap-3 px-5 py-5 no-underline transition-colors hover:bg-white/[0.045] md:grid-cols-[1fr_auto_auto] md:items-center md:gap-8 md:px-6 md:py-6"
             >

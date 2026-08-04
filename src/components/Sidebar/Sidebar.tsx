@@ -72,7 +72,7 @@ export function Sidebar(props: SidebarProps) {
             />
             <span className="min-w-0">
               <span className="group-hover:text-yellow-500 block truncate text-[15px] font-semibold leading-5">Kadir Yazıcı</span>
-              <span className="block truncate text-[12px] text-ink-soft">Frontend-Focused Engineer</span>
+              <span className="block truncate text-[12px] text-ink-soft">Full-Stack Engineer</span>
             </span>
           </Link>
 

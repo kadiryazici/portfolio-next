@@ -73,7 +73,7 @@ export default function ExperiencePage() {
             ["/videos/wope/wope-5.mp4", "/videos/wope/wope-5.webm"],
           ]}
           title="Wope"
-          subtitle="Frontend Developer - Full Time"
+          subtitle="Frontend Engineer - Full Time"
           fromTo={["2021/09", "2024/10"]}
           logoUrl="/logos/wope.png"
           description={
@@ -105,7 +105,7 @@ export default function ExperiencePage() {
           tags={["Vue", "TypeScript", "Qwik", "SSR", "Stripe"]}
           videoUrls={[["/videos/cryptosea/cryptosea-1.mp4", "/videos/cryptosea/cryptosea-1.webm"]]}
           title="CryptoSea"
-          subtitle="Frontend Web Developer - Contract"
+          subtitle="Frontend Engineer - Contract"
           fromTo={["2024/04", "2024/07"]}
           logoUrl="/logos/cryptosea.jpg"
           description={

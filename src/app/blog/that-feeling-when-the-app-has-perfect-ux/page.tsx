@@ -8,11 +8,11 @@ import { getSiteUrl } from "@/lib/site"
 export const metadata = {
   title: "That Feeling When the App Has Perfect UX — Kadir Yazıcı",
   description:
-    "A frontend developer's reflections on what makes UI/UX feel right — hotkey pools, z-index management, and the chase for cohesive design.",
+    "A full-stack engineer's reflections on what makes UI/UX feel right — hotkey pools, z-index management, and the chase for cohesive design.",
   openGraph: {
     title: "That Feeling When the App Has Perfect UX — Kadir Yazıcı",
     description:
-      "A frontend developer's reflections on what makes UI/UX feel right — hotkey pools, z-index management, and the chase for cohesive design.",
+      "A full-stack engineer's reflections on what makes UI/UX feel right — hotkey pools, z-index management, and the chase for cohesive design.",
     type: "article",
     publishedTime: "2026-07-09",
   },
@@ -20,7 +20,7 @@ export const metadata = {
     card: "summary",
     title: "That Feeling When the App Has Perfect UX — Kadir Yazıcı",
     description:
-      "A frontend developer's reflections on what makes UI/UX feel right — hotkey pools, z-index management, and the chase for cohesive design.",
+      "A full-stack engineer's reflections on what makes UI/UX feel right — hotkey pools, z-index management, and the chase for cohesive design.",
   },
   alternates: {
     canonical: "/blog/that-feeling-when-the-app-has-perfect-ux",
@@ -36,7 +36,7 @@ export default function PerfectUxPage() {
           "@type": "BlogPosting",
           headline: "That Feeling When the App Has Perfect UX",
           description:
-            "A frontend developer's reflections on what makes UI/UX feel right — hotkey pools, z-index management, and the chase for cohesive design.",
+            "A full-stack engineer's reflections on what makes UI/UX feel right — hotkey pools, z-index management, and the chase for cohesive design.",
           datePublished: "2026-07-09",
           dateModified: "2026-07-09",
           mainEntityOfPage: getSiteUrl("/blog/that-feeling-when-the-app-has-perfect-ux"),
@@ -61,7 +61,7 @@ export default function PerfectUxPage() {
           doing a task.
         </p>
         <p>
-          As a frontend developer who has been working in the field for 6 years,
+          As a full-stack engineer who has been working in the field for 6 years,
           I did reinvent the wheel a lot of times. I was obsessed with
           centralized management of the state, I was obsessed with a UI that
           every part of it communicating with each other.

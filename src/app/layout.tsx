@@ -12,8 +12,8 @@ const uiFont = UIFont({
   variable: "--ui-font",
 })
 
-const siteTitle = "Kadir Yazıcı — Frontend-Focused Engineer"
-const siteDescription = "Kadir Yazıcı builds accessible, high-performance frontend systems and thoughtful product experiences."
+const siteTitle = "Kadir Yazıcı — Full-Stack Engineer"
+const siteDescription = "Kadir Yazıcı builds accessible, high-performance full-stack systems and thoughtful product experiences."
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -108,12 +108,12 @@ export default function RootLayout(props: { children: ReactNode }) {
                 "@type": "Person",
                 name: "Kadir Yazıcı",
                 url: siteUrl,
-                jobTitle: "Frontend-Focused Engineer",
+                jobTitle: "Full-Stack Engineer",
                 sameAs: ["https://github.com/kadiryazici"],
                 knowsAbout: [
                   "TypeScript",
                   "React",
-                  "Frontend systems",
+                  "Full-stack systems",
                   "Accessible interfaces",
                   "Product design",
                   "Performance optimization",
