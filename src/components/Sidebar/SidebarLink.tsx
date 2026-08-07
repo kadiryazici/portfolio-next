@@ -1,7 +1,6 @@
 "use client"
 
 import type { ComponentProps, ReactNode } from "react"
-import { motion } from "motion/react"
 import Link from "vinext/shims/link"
 import { cn } from "@/lib/utils"
 
@@ -26,7 +25,7 @@ export function SidebarLink(props: SidebarLinkProps) {
       )}
     >
       {active && (
-        <motion.div className="absolute inset-0 z-[-1] rounded-[inherit] bg-neutral-900 shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)]" />
+        <div className="absolute inset-0 z-[-1] rounded-[inherit] bg-neutral-900 shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)]" />
       )}
 
       <span className={cn("grid size-6 shrink-0 place-items-center text-[24px]", active && "text-accent")}>

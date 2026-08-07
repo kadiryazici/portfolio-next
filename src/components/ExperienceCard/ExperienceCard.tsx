@@ -1,9 +1,8 @@
 "use client"
 
 import type { ComponentProps, ReactNode } from "react"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
-import { useInView } from "motion/react"
 
 export type ExperienceCardProps = ComponentProps<"div"> & {
   videoUrls: string[][]
@@ -29,9 +28,32 @@ export function ExperienceCard(props: ExperienceCardProps) {
   } = props
 
   const [activeVideoIndex, setActiveVideoIndex] = useState(0)
+  const [isVideoInView, setIsVideoInView] = useState(false)
   const videoRef = useRef<HTMLDivElement>(null)
-  const isVideoInView = useInView(videoRef, { once: true })
   const activeVideoUrls = videoUrls[activeVideoIndex]
+
+  useEffect(() => {
+    const videoElement = videoRef.current
+
+    if (!videoElement) {
+      return
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries[0]?.isIntersecting) {
+        return
+      }
+
+      setIsVideoInView(true)
+      observer.disconnect()
+    })
+
+    observer.observe(videoElement)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
 
   function handleVideoEnd() {
     if (activeVideoIndex === videoUrls.length - 1) {

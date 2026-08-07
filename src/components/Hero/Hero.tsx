@@ -5,6 +5,7 @@ import { GithubIcon } from "@/components/GithubIcon/GithubIcon"
 import { LinkCard } from "@/components/LinkCard/LinkCard"
 import { cn } from "@/lib/utils"
 import { Icons } from "../Icons"
+import { Constants } from "@/constants"
 
 export type HeroProps = ComponentProps<"section">
 
@@ -35,23 +36,23 @@ export function Hero(props: HeroProps) {
       </figure>
 
       <div className="relative z-10">
-        <p className="mb-3 mt-0 text-[13px] font-medium text-accent">Full-Stack Engineer</p>
+        <p className="mb-2 mt-0 text-[13px] font-medium text-accent">Full-Stack Engineer</p>
         <h1 className="m-0 text-[48px] font-bold leading-none text-ink md:text-[64px]">
           Kadir Yazıcı
         </h1>
 
-        <p className="mt-5 max-w-2xl text-[24px] font-medium leading-8 text-ink-muted md:text-[28px] md:leading-9">
+        <p className="mt-4 max-w-2xl text-[24px] font-medium leading-8 text-ink-muted md:text-[28px] md:leading-9">
           I build full-stack systems for products people rely on.
         </p>
 
         <p className="mt-8 max-w-xl text-[17px] leading-7 text-ink-muted">
-          From accessible interfaces and thoughtful interaction design to performance and complex product workflows,
-          I turn ambitious ideas into software that feels clear, fast, and reliable.
+          From accessible interfaces to performance and complex product workflows,
+          I turn ideas into software that feels clear, fast, and reliable.
         </p>
 
-        <div className="mt-9 flex flex-wrap items-center gap-2.5">
+        <div className="mt-8 flex flex-wrap items-center gap-2.5">
           <Button
-            href={"mailto:kyzc411@gmail.com"}
+            href={`mailto:${Constants.email}`}
             variant="secondary"
             padding="md"
             leftIcon={
@@ -84,7 +85,7 @@ export function Hero(props: HeroProps) {
             leftIcon={<Icons.Linkedin />}
           />
           <Button
-            href="https://x.com/kadiryazicidev"
+            href={Constants.twitter}
             target="_blank"
             rel="noreferrer"
             aria-label="Twitter profile"
@@ -97,7 +98,7 @@ export function Hero(props: HeroProps) {
 
         <LinkCard
           href="/experience"
-          className="mt-14"
+          className="mt-14 mt-8"
           icon={
             <AppIcon
               name="experience"

@@ -26,7 +26,7 @@ export default function ProjectsPage() {
         href="https://github.com/kadiryazici"
         target="_blank"
         rel="noopener noreferrer"
-        className="mx-auto mt-8"
+        className="mx-auto"
         icon={<GithubIcon className="size-5" />}
         title="Wanna see more?"
       />

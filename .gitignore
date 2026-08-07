@@ -11,3 +11,4 @@ dist/
 *.pem
 *.key
 *.p12
+*.tsbuildinfo

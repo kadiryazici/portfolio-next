@@ -103,6 +103,57 @@ html {
   color: var(--color-ink);
 }
 
+.mobile-navigation-dialog {
+  display: none;
+  opacity: 0;
+  transform: translateX(100%);
+  transition:
+    opacity 240ms ease-out,
+    transform 240ms ease-out,
+    display 240ms allow-discrete,
+    overlay 240ms allow-discrete;
+}
+
+.mobile-navigation-dialog[open] {
+  display: flex;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobile-navigation-dialog::backdrop {
+  background: transparent;
+  backdrop-filter: blur(0);
+  transition:
+    background-color 240ms ease-out,
+    backdrop-filter 240ms ease-out,
+    display 240ms allow-discrete,
+    overlay 240ms allow-discrete;
+}
+
+.mobile-navigation-dialog[open]::backdrop {
+  background: rgb(0 0 0 / 0.6);
+  backdrop-filter: blur(2px);
+}
+
+@starting-style {
+  .mobile-navigation-dialog[open] {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  .mobile-navigation-dialog[open]::backdrop {
+    background: transparent;
+    backdrop-filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-navigation-dialog,
+  .mobile-navigation-dialog::backdrop {
+    transition: none;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
