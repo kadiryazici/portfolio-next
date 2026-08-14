@@ -1,5 +1,12 @@
 export const posts = [
   {
+    slug: "from-swe-to-curtain",
+    title: "Making Curtains as a Software Developer",
+    shortTitle: "Making Curtains",
+    date: "August 15, 2026",
+    publishedAt: "2026-08-15",
+  },
+  {
     slug: "that-feeling-when-the-app-has-perfect-ux",
     title: "That Feeling When the App Has Perfect UX",
     shortTitle: "Perfect UX",

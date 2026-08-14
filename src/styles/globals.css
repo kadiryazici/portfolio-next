@@ -62,7 +62,7 @@ html {
     font-size: 16px;
     line-height: 1.75;
     margin: 12px 0;
-    color: var(--color-ink-muted);
+    color: var(--color-ink-soft);
   }
 
   /* base only — utility text-* classes must win, so keep this in the base layer */

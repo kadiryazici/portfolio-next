@@ -7,11 +7,12 @@ import Link from "vinext/shims/link"
 export type BlogPostProps = ComponentProps<"article"> & {
   title: string
   date: string
+  headerContent?: ReactNode
   children: ReactNode
 }
 
 export function BlogPost(props: BlogPostProps) {
-  const { title, date, children, className, ...attrs } = props
+  const { title, date, headerContent, children, className, ...attrs } = props
 
   return (
     <PageMain className="pt-8 md:pt-12">
@@ -38,6 +39,7 @@ export function BlogPost(props: BlogPostProps) {
         <p className="mb-0 mt-4 text-[13px] text-ink-soft">
           {date}
         </p>
+        {headerContent}
 
         <div className="blog-post-content mt-10 w-full md:mt-12">
           {children}
