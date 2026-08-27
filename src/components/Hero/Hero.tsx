@@ -3,6 +3,7 @@ import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { Button } from "@/components/Button/Button"
 import { GithubIcon } from "@/components/GithubIcon/GithubIcon"
 import { LinkCard } from "@/components/LinkCard/LinkCard"
+import { portfolioHome } from "@/lib/portfolio"
 import { cn } from "@/lib/utils"
 import { Icons } from "../Icons"
 import { Constants } from "@/constants"
@@ -36,18 +37,17 @@ export function Hero(props: HeroProps) {
       </figure>
 
       <div className="relative z-10">
-        <p className="mb-2 mt-0 text-[13px] font-medium text-accent">Full-Stack Engineer</p>
+        <p className="mb-2 mt-0 text-[13px] font-medium text-accent">{portfolioHome.role}</p>
         <h1 className="m-0 text-[48px] font-bold leading-none text-ink md:text-[64px]">
-          Kadir Yazıcı
+          {portfolioHome.title}
         </h1>
 
         <p className="mt-4 max-w-2xl text-[24px] font-medium leading-8 text-ink-muted md:text-[28px] md:leading-9">
-          I build full-stack systems for products people rely on.
+          {portfolioHome.tagline}
         </p>
 
         <p className="mt-8 max-w-xl text-[17px] leading-7 text-ink-muted">
-          From accessible interfaces to performance and complex product workflows,
-          I turn ideas into software that feels clear, fast, and reliable.
+          {portfolioHome.description}
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-2.5">
