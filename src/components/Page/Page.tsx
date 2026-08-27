@@ -1,4 +1,5 @@
 import type { ComponentProps } from "react"
+import { SSHChip } from "@/components/SSHChip/SSHChip"
 import { Sidebar } from "@/components/Sidebar/Sidebar"
 import { cn } from "@/lib/utils"
 
@@ -16,6 +17,7 @@ export function Page(props: PageProps) {
         className,
       )}
     >
+      <SSHChip />
       <Sidebar />
 
       <article className="min-w-0">
