@@ -3,6 +3,7 @@ import { createServer } from "@opentui/ssh";
 import { TerminalPortfolio } from "./components/TerminalPortfolio/TerminalPortfolio";
 
 const hostKeyPath = process.env.SSH_HOST_KEY_PATH
+const port = Number(process.env.SSH_PORT) || 2222
 
 const server = createServer({
   auth: "open",
@@ -16,4 +17,4 @@ const server = createServer({
     })
   })
 
-await server.listen(2222, "0.0.0.0")
+await server.listen(port, "0.0.0.0")
