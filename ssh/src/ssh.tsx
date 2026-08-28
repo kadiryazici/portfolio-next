@@ -1,6 +1,7 @@
 import { createRoot } from "@opentui/react";
 import { createServer } from "@opentui/ssh";
 import { TerminalPortfolio } from "./components/TerminalPortfolio/TerminalPortfolio";
+import { serveHttp } from "./http/http";
 
 const hostKeyPath = process.env.SSH_HOST_KEY_PATH
 const port = Number(process.env.SSH_PORT) || 2222
@@ -18,3 +19,5 @@ const server = createServer({
   })
 
 await server.listen(port, "0.0.0.0")
+
+serveHttp()

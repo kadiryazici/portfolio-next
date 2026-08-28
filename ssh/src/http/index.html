@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kadir Yazıcı Portfolio</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: grid;
+      min-height: 100vh;
+      margin: 0;
+      place-items: center;
+      background: rgb(6, 6, 6);
+      color: rgb(245, 245, 245);
+    }
+
+    main {
+      display: grid;
+      max-width: 36rem;
+      padding: 1.5rem;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    h2,
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .ssh-button {
+      padding: 0.65rem 0.9rem;
+      border: 1px solid rgb(80, 80, 80);
+      border-radius: 0.4rem;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      transition: border-color 150ms ease, background-color 150ms ease;
+    }
+
+    .ssh-button:hover {
+      border-color: rgb(160, 160, 160);
+      background: rgb(34, 34, 34);
+    }
+
+    .ssh-button:focus-visible {
+      outline: 2px solid rgb(245, 245, 245);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h2>You shouldn't be here!</h2>
+    <p>Go to <a href="https://kadiryazici.dev">kadiryazici.dev</a></p>
+    <p>OR</p>
+    <p>
+      <button type="button" class="ssh-button">ssh ssh.kadiryazici.dev</button>
+      <br>
+      <br>
+      Because we cool guys use
+    </p>
+  </main>
+
+  <script>
+    const sshButton = document.querySelector(".ssh-button")
+    const sshCommand = "ssh ssh.kadiryazici.dev"
+
+    sshButton.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(sshCommand)
+      sshButton.textContent = "Copied!"
+
+      window.setTimeout(() => {
+        sshButton.textContent = sshCommand
+      }, 1500)
+    })
+  </script>
+</body>
+
+</html>
