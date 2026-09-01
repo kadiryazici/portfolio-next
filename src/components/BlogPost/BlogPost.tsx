@@ -3,6 +3,7 @@ import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { PageMain } from "@/components/PageMain/PageMain"
 import { cn } from "@/lib/utils"
 import Link from "vinext/shims/link"
+import Script from "vinext/shims/script"
 
 export type BlogPostProps = ComponentProps<"article"> & {
   title: string
@@ -45,6 +46,24 @@ export function BlogPost(props: BlogPostProps) {
           {children}
         </div>
       </article>
+
+      <div className="giscus mt-24"></div>
+
+      <Script
+        src="https://giscus.app/client.js"
+        data-repo="kadiryazici/portfolio-next"
+        data-repo-id="R_kgDOTNI_gQ"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark"
+        data-lang="en"
+        data-loading="lazy"
+        crossOrigin="anonymous"
+        async
+      />
     </PageMain>
   )
 }
