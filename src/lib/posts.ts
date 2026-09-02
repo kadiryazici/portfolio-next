@@ -1,5 +1,31 @@
 export const posts = [
   {
+    slug: "building-an-ssh-portfolio",
+    title: "Building an SSH Portfolio",
+    shortTitle: "SSH Portfolio",
+    date: "September 2, 2026",
+    publishedAt: "2026-09-02",
+    description:
+      "How I learned SSH, terminal user interfaces, and virtual machines to build and host an SSH version of my portfolio.",
+    terminalContent: `I came across terminal.shop while surfing the web, and its SSH-based system amazed me instantly. I wondered how it worked and what SSH actually was. I had a lot to learn.
+
+SSH is a protocol built on TCP connections, mainly used for remote terminal access to virtual machines. You can also serve a terminal process over an SSH session, which makes it a great home for TUI apps. A TUI is like a frontend app rendered as text instead of graphics. That limits interface freedom, but the limits improve imagination.
+
+I decided to build an SSH version of my portfolio. I had never seen an SSH portfolio before, and I wanted to be one of the exceptions. First, I had to learn about SSH, virtual machines, and TUIs.
+
+## Learning TUI and VM
+
+Learning TUI was not difficult thanks to @opentui/react. It took about 30 minutes to get started, and serving it with Bun was straightforward.
+
+The bigger problem was serving it over my domain. My main HTTP server runs on Vercel, which does not support SSH functionality. I researched Oracle Free VM and set up a user account, a virtual machine, port forwarding, remote SSH control, an SSL certificate, a subdomain, and an automatic restart system for crashes.
+
+It took a whole night to set up a virtual machine for the first time. I would not have done it this quickly without ChatGPT: I asked for instructions one by one, and it answered my questions accurately. AI is an amazing learning opportunity.
+
+I am glad I learned SSH development. That is one more skill for my CV.
+
+Check it out with: ssh ssh.kadiryazici.dev`,
+  },
+  {
     slug: "from-swe-to-curtain",
     title: "Making Curtains as a Software Developer",
     shortTitle: "Making Curtains",

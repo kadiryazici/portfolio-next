@@ -12,7 +12,7 @@ export function ExperiencePage() {
       minWidth={0}
       padding={1}
     >
-      <box border={["bottom"]} borderColor="#3f3f46" flexDirection="column">
+      <box flexShrink={0} border={["bottom"]} borderColor="#3f3f46" flexDirection="column">
         <text fg="#fafafa" wrapMode="word">
           <strong>Experience shaped by product work.</strong>
         </text>
@@ -37,17 +37,13 @@ export function ExperiencePage() {
       >
         {experiences.map((experience) => (
           <box
-            border
-            borderColor="#3f3f46"
-            borderStyle="rounded"
             flexDirection="column"
             key={experience.company}
             marginBottom={1}
-            padding={1}
             width="100%"
           >
             <text fg="#fafafa" wrapMode="word">
-              <strong>{experience.company}</strong>
+              <strong>{">"} {experience.company}</strong>
             </text>
             <text fg="#a1a1aa" marginTop={1} wrapMode="word">
               {experience.role} | {experience.fromTo.join(" - ")}
@@ -59,6 +55,7 @@ export function ExperiencePage() {
               syntaxStyle={markdownStyle}
               width="100%"
             />
+            <box height={1} width="100%" border={["top"]} borderColor="#3f3f46" />
           </box>
         ))}
       </scrollbox>

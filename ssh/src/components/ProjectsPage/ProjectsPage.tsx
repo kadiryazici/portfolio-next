@@ -71,9 +71,6 @@ function ProjectCard(props: { project: TerminalProject }) {
 
   return (
     <box
-      border
-      borderColor="#3f3f46"
-      borderStyle="rounded"
       flexDirection="column"
       marginBottom={1}
       padding={1}
