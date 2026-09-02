@@ -53,6 +53,7 @@ export function BlogPost(props: BlogPostProps) {
         src="https://giscus.app/client.js"
         data-repo="kadiryazici/portfolio-next"
         data-repo-id="R_kgDOTNI_gQ"
+        data-category-id="DIC_kwDOTNI_gc4DEqZz"
         data-mapping="pathname"
         data-strict="0"
         data-reactions-enabled="1"
