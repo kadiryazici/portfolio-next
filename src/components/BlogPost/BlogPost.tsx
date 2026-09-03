@@ -5,6 +5,10 @@ import { cn } from "@/lib/utils"
 import Link from "vinext/shims/link"
 import Script from "vinext/shims/script"
 
+const giscusThemeUrl = import.meta.env.DEV
+  ? "http://localhost:3000/giscus-theme.css"
+  : "https://kadiryazici.dev/giscus-theme.css"
+
 export type BlogPostProps = ComponentProps<"article"> & {
   title: string
   date: string
@@ -59,7 +63,7 @@ export function BlogPost(props: BlogPostProps) {
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="dark"
+        data-theme={giscusThemeUrl}
         data-lang="en"
         data-loading="lazy"
         crossOrigin="anonymous"
