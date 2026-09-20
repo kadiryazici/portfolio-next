@@ -27,6 +27,7 @@ export function BlogPost(props: BlogPostProps) {
       >
         <Link
           href="/blog"
+          prefetch={false}
           className="group inline-flex items-center gap-2 text-[13px] font-medium text-ink-soft no-underline transition-colors hover:text-ink"
         >
           <span className="grid size-6 place-items-center rounded-[7px] border border-white/[0.1] bg-white/[0.05] transition-colors group-hover:bg-white/[0.09]">

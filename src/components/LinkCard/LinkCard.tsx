@@ -14,6 +14,7 @@ export function LinkCard(props: LinkCardProps) {
   return (
     <Link
       {...attrs}
+      prefetch={false}
       className={cn(
         "group flex w-full items-center justify-between gap-4 rounded-[18px] border border-white/[0.09] bg-white/[0.035] px-5 py-5 text-ink no-underline shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-[border-color,background-color,transform,box-shadow] duration-300",
         "hover:border-white/[0.15] hover:bg-white/[0.05]",

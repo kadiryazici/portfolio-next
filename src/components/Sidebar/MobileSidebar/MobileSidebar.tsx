@@ -1,7 +1,7 @@
 "use client"
 
 import type { ComponentProps, MouseEvent } from "react"
-import { useRef } from "react"
+import { useLayoutEffect, useRef } from "react"
 import Link from "vinext/shims/link"
 import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { SidebarContent } from "@/components/Sidebar/SidebarContent/SidebarContent"
@@ -33,6 +33,15 @@ export function MobileSidebar(props: MobileSidebarProps) {
     dialogRef.current?.close()
   }
 
+  useLayoutEffect(() => {
+    function handler() {
+      dialogRef.current?.close()
+    }
+
+    window.addEventListener("popstate", handler)
+    return () => void window.removeEventListener("popstate", handler)
+  })
+
   return (
     <>
       <header
@@ -44,6 +53,7 @@ export function MobileSidebar(props: MobileSidebarProps) {
       >
         <Link
           href="/"
+          prefetch={false}
           aria-current={pathname === "/" ? "page" : undefined}
           aria-label="Kadir Yazıcı home"
           className="group flex min-w-0 items-center gap-3 rounded-[12px] px-2.5 py-2 text-ink no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"

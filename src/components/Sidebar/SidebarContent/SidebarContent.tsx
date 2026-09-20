@@ -19,6 +19,7 @@ export function SidebarContent(props: SidebarContentProps) {
     >
       <div className="flex w-full flex-col gap-2">
         <Link
+          prefetch={false}
           href="/"
           aria-current={pathname === "/" ? "page" : undefined}
           onClick={onLinkClick}

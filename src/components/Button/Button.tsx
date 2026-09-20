@@ -72,6 +72,7 @@ export function Button(props: ButtonProps) {
         {...attrs as any}
         href={href}
         target={target}
+        prefetch={false}
         rel={rel ?? (target === "_blank" ? "noopener noreferrer" : undefined)}
         aria-disabled={disabled || loading}
         className={buttonClassName}

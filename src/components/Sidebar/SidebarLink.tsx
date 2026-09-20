@@ -15,6 +15,7 @@ export function SidebarLink(props: SidebarLinkProps) {
   return (
     <Link
       {...attrs}
+      prefetch={false}
       target={target}
       rel={rel ?? (target === "_blank" ? "noopener noreferrer" : undefined)}
       aria-current={active ? "page" : undefined}
