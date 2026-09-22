@@ -74,7 +74,7 @@ export default function RootLayout(props: { children: ReactNode }) {
   const pathName = usePathname()
 
   return (
-    <html lang="en" className={`${uiFont.variable}`}>
+    <html lang="en" className={`${uiFont.variable} md:scrollbar-gutter-both`}>
       <head>
         <meta
           name="viewport"

@@ -62,7 +62,7 @@ function Group(props: ComponentProps<"div">) {
     <div
       {...attrs}
       className={cn(
-        "isolate relative flex flex-col py-[6px] gap-[2px] bg-sidebar rounded-full ring-1 ring-neutral-800/50 inset-shadow-[0_1px_0_var(--color-neutral-800),0_-1px_0_var(--color-neutral-700)]",
+        "group/Wrapper isolate relative flex flex-col py-[6px] gap-[2px] bg-sidebar rounded-full ring-1 ring-neutral-800/50 inset-shadow-[0_1px_0_var(--color-neutral-800),0_-1px_0_var(--color-neutral-700)]",
         className,
       )}
     >
@@ -95,7 +95,7 @@ function GroupLinkItem(props: GroupLinkItemProps) {
         className,
       )}
     >
-      <div aria-hidden="true" className="transition-[translate,opacity] -translate-x-[4px] opacity-0 group-hover:translate-x-0 group-hover:opacity-100 ring-1 ring-neutral-800/50 whitespace-nowrap absolute left-[calc(100%+8px)] top-0 bottom-0 my-auto size-fit px-[6px] py-[2px] text-xs text-gray-300 bg-sidebar shadow-sidebar rounded-full">
+      <div aria-hidden="true" className="pointer-events-none transition-[translate,opacity] -translate-x-[4px] opacity-0 group-hover:translate-x-0 group-hover:opacity-100 ring-1 ring-neutral-800/50 whitespace-nowrap absolute left-[calc(100%+8px)] top-0 bottom-0 my-auto size-fit px-[6px] py-[2px] text-xs text-gray-300 bg-sidebar shadow-sidebar rounded-full">
         {title}
       </div>
 
