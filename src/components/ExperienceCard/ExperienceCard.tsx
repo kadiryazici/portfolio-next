@@ -68,14 +68,14 @@ export function ExperienceCard(props: ExperienceCardProps) {
     <div
       {...attrs}
       className={cn(
-        "flex flex-col overflow-hidden rounded-[18px] border border-white/[0.09] bg-white/[0.035] shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-[border-color,background-color,transform,box-shadow] duration-300",
+        "inset-shadow-liquid flex flex-col overflow-hidden rounded-3xl inset-shadow-liquid border border-white/[0.09] bg-white/[0.035] shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-[border-color,background-color,transform,box-shadow] duration-300",
         className,
       )}
     >
       <div className="flex items-center justify-center overflow-hidden border-b border-white/[0.08] bg-black/30 p-1.5 md:p-2">
         <div
           ref={videoRef}
-          className="relative aspect-[13/7] w-full overflow-hidden rounded-xl bg-black shadow-[0_8px_24px_rgba(0,0,0,0.28)]"
+          className="relative aspect-[13/7] w-full overflow-hidden rounded-2xl bg-black shadow-[0_8px_24px_rgba(0,0,0,0.28)]"
         >
           <div className="rounded-[inherit] z-[5] inset-0 absolute border border-neutral-700" />
           {isVideoInView && (
@@ -103,7 +103,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
       <div className="flex flex-row flex-nowrap items-start gap-3 px-5 pb-0 pt-5 md:gap-4 md:px-6 md:pt-6">
         <img
           src={logoUrl}
-          className="size-12 shrink-0 rounded-[11px] border border-white/[0.1] bg-white/[0.06] object-contain shadow-[0_5px_14px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.08)] md:size-14"
+          className="size-12 shrink-0 rounded-2xl border border-white/[0.1] bg-white/[0.06] object-contain shadow-[0_5px_14px_rgba(0,0,0,0.24),inset_0_1px_0_rgba(255,255,255,0.08)] md:size-14"
         />
 
         <div className="min-w-0 w-full">
@@ -128,7 +128,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
       <div className="flex w-full flex-wrap gap-2 px-5 pb-5 pt-4 md:px-6 md:pb-6 md:pt-5">
         {tags.map((tag) => (
           <span
-            className="inline-flex min-h-7 items-center rounded-full border border-white/[0.08] bg-white/[0.055] px-3 text-[12px] font-medium leading-none text-ink-soft"
+            className="inset-shadow-liquid inline-flex min-h-7 items-center rounded-full border border-white/[0.08] bg-white/[0.055] px-3 text-[12px] font-medium leading-none text-ink-soft"
             key={tag}
           >
             {tag}

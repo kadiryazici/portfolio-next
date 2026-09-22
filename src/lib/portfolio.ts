@@ -9,7 +9,7 @@ export const portfolioHome = {
 export const experiences = [
   {
     company: "Seam",
-    role: "Software Developer - Full Time",
+    role: "Full Stack Developer - Full Time",
     fromTo: ["2024/10", "2026/08"],
     logoUrl: "/logos/seam.webp",
     videoUrls: [
@@ -28,7 +28,7 @@ export const experiences = [
       "Implemented accessible UI components for the dashboard application.",
       "Implemented animated UI visuals and graphics.",
       "Resolved performance issues in the dashboard application.",
-      "Fixed minor bugs in Back-End endpoints.",
+      "Fixed existing bugs in Back-End endpoints.",
     ],
   },
   {

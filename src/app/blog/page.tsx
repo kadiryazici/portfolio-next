@@ -19,7 +19,7 @@ export default function BlogPage() {
         eyebrow="Writing"
         title="Blog"
       />
-      <ul className="overflow-hidden rounded-[18px] border border-white/[0.09] bg-white/[0.035] shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl">
+      <ul className="overflow-hidden rounded-3xl border border-white/[0.09] bg-white/[0.035] shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl">
         {posts.map((post) => (
           <li
             key={post.slug}

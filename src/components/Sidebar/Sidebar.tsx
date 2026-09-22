@@ -1,14 +1,10 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { MobileSidebar } from "@/components/Sidebar/MobileSidebar/MobileSidebar"
-import type { ComponentProps, ReactNode } from "react"
-import { usePathname } from "vinext/shims/navigation"
-import { SidebarContent } from "./SidebarContent/SidebarContent"
+import type { ComponentProps } from "react"
 import Link from "vinext/shims/link"
+import { usePathname } from "vinext/shims/navigation"
 import { navigationLinks, socialLinks } from "./Sidebar.constants"
-import { Icons } from "../Icons"
-import { LiquidBorders } from "../LiquidBorders/LiquidBorders"
 
 export type SidebarProps = ComponentProps<"aside">
 
@@ -62,7 +58,7 @@ function Group(props: ComponentProps<"div">) {
     <div
       {...attrs}
       className={cn(
-        "group/Wrapper isolate relative flex flex-col py-[6px] gap-[2px] bg-sidebar rounded-full ring-1 ring-neutral-800/50 inset-shadow-[0_1px_0_var(--color-neutral-800),0_-1px_0_var(--color-neutral-700)]",
+        "group/Wrapper isolate relative flex flex-col py-[6px] gap-[2px] bg-sidebar rounded-full ring-1 ring-neutral-800/50 inset-shadow-liquid",
         className,
       )}
     >

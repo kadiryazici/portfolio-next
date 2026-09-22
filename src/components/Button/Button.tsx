@@ -32,7 +32,7 @@ export function Button(props: ButtonProps) {
   } = props
 
   const buttonClassName = cn(
-    "relative inline-flex shrink-0 items-center justify-center gap-2 rounded-[9px] font-medium no-underline",
+    "relative inline-flex shrink-0 items-center justify-center gap-2 rounded-2xl font-medium no-underline",
     "transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
     ButtonVariantStyles[variant],
     ButtonPaddingStyles[padding],

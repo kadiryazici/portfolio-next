@@ -38,7 +38,7 @@ export function Hero(props: HeroProps) {
 
       <div className="relative z-10">
         <p className="mb-2 mt-0 text-[13px] font-medium text-accent">{portfolioHome.role}</p>
-        <h1 className="m-0 text-[48px] font-bold leading-none text-ink md:text-[64px]">
+        <h1 className="m-0 text-[32px] font-bold leading-none text-ink md:text-[64px]">
           {portfolioHome.title}
         </h1>
 
@@ -46,7 +46,7 @@ export function Hero(props: HeroProps) {
           {portfolioHome.tagline}
         </p>
 
-        <p className="mt-8 max-w-xl text-[17px] leading-7 text-ink-muted">
+        <p className="mt-8 max-w-xl text-[16px] md:text-[18px] leading-7 text-ink-muted">
           {portfolioHome.description}
         </p>
 
