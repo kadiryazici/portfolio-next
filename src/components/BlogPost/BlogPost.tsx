@@ -20,26 +20,12 @@ export function BlogPost(props: BlogPostProps) {
   const { title, date, headerContent, children, className, ...attrs } = props
 
   return (
-    <PageMain className="pt-8 md:pt-12">
+    <PageMain>
       <article
         {...attrs}
         className={cn("w-full", className)}
       >
-        <Link
-          href="/blog"
-          prefetch={false}
-          className="group inline-flex items-center gap-2 text-[13px] font-medium text-ink-soft no-underline transition-colors hover:text-ink"
-        >
-          <span className="grid size-6 place-items-center rounded-[7px] border border-white/[0.1] bg-white/[0.05] transition-colors group-hover:bg-white/[0.09]">
-            <AppIcon
-              name="chevron"
-              className="size-3.5 rotate-180"
-            />
-          </span>
-          Blog
-        </Link>
-
-        <h1 className="mb-0 mt-8 max-w-3xl text-[36px] font-semibold leading-[1.08] text-ink md:mt-10 md:text-[46px]">
+        <h1 className="mb-0 mt-8 md:mt-12 max-w-3xl text-[36px] font-semibold leading-[1.08] text-ink md:mt-10 md:text-[46px]">
           {title}
         </h1>
         <p className="mb-0 mt-4 text-[13px] text-ink-soft">

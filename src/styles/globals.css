@@ -3,7 +3,7 @@
 @theme {
   --color-bg: rgb(18, 18, 18);
   --color-bg-2: rgb(33, 33, 33);
-  --color-sidebar: rgb(12, 12, 12);
+  --color-sidebar: rgb(10, 10, 10);
   --color-dialog: rgba(237, 238, 241, 0.96);
 
   --color-ink: rgb(240, 240, 240);
@@ -148,6 +148,7 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .mobile-navigation-dialog,
   .mobile-navigation-dialog::backdrop {
     transition: none;

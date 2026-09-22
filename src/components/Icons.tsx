@@ -1,8 +1,9 @@
 import { SVGProps } from "react";
 
-export function LetsIconsBookOpenFill(props: SVGProps<SVGSVGElement>) {
+
+export function LetsIconsBookOpenDuotone(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Lets Icons by Leonid Tsvetkov - https://creativecommons.org/licenses/by/4.0/ */}<path fill="currentColor" d="M5 17h5a2 2 0 0 1 2 2v-9c0-2.828 0-4.243-.879-5.121C10.243 4 8.828 4 6 4H5c-.943 0-1.414 0-1.707.293S3 5.057 3 6v9c0 .943 0 1.414.293 1.707S4.057 17 5 17m14 0h-5a2 2 0 0 0-2 2v-9c0-2.828 0-4.243.879-5.121C13.757 4 15.172 4 18 4h1c.943 0 1.414 0 1.707.293S21 5.057 21 6v9c0 .943 0 1.414-.293 1.707S19.943 17 19 17" /></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Lets Icons by Leonid Tsvetkov - https://creativecommons.org/licenses/by/4.0/ */}<path fill="currentColor" fillOpacity=".25" d="M5 17h4a3 3 0 0 1 3 3V10c0-2.828 0-4.243-.879-5.121C10.243 4 8.828 4 6 4H5c-.943 0-1.414 0-1.707.293S3 5.057 3 6v9c0 .943 0 1.414.293 1.707S4.057 17 5 17" /><path fill="currentColor" d="M19 17h-3a3 3 0 0 0-3 3V10c0-2.828 0-4.243.879-5.121C14.757 4 16.172 4 19 4c.943 0 1.414 0 1.707.293S21 5.057 21 6v9c0 .943 0 1.414-.293 1.707S19.943 17 19 17M5 4.15A.15.15 0 0 1 5.15 4h2.7a.15.15 0 0 1 .15.15v4.246a.25.25 0 0 1-.427.177l-.896-.896a.25.25 0 0 0-.354 0l-.896.896A.25.25 0 0 1 5 8.396z" /></svg>
   )
 }
 
@@ -21,10 +22,18 @@ export function LetsIconsStarFill(props: SVGProps<SVGSVGElement>) {
 }
 
 
-
-export function LetsIconsMessageAltFill(props: SVGProps<SVGSVGElement>) {
+export function LetsIconsStarDuotone(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Lets Icons by Leonid Tsvetkov - https://creativecommons.org/licenses/by/4.0/ */}<path fill="currentColor" fillRule="evenodd" d="M3.013 9.151C3 9.691 3 10.302 3 11v2c0 2.828 0 4.243.879 5.121C4.757 19 6.172 19 9 19h6c2.828 0 4.243 0 5.121-.879C21 17.243 21 15.828 21 13v-2c0-.698 0-1.31-.013-1.849l-8.016 4.453a2 2 0 0 1-1.942 0zm.23-2.121q.125.03.243.096L12 11.856l8.514-4.73q.119-.065.243-.096c-.13-.474-.33-.845-.636-1.151C19.243 5 17.828 5 15 5H9c-2.828 0-4.243 0-5.121.879c-.307.306-.506.677-.636 1.15" clipRule="evenodd" /></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Lets Icons by Leonid Tsvetkov - https://creativecommons.org/licenses/by/4.0/ */}<path fill="currentColor" fillOpacity=".25" stroke="currentColor" d="M10.144 6.628c.786-1.961 1.18-2.942 1.856-2.942s1.07.98 1.856 2.942l.037.09c.444 1.109.666 1.663 1.12 2c.452.336 1.047.39 2.236.496l.214.019c1.946.174 2.92.261 3.127.88c.209.62-.514 1.277-1.96 2.591l-.481.44c-.732.665-1.098.998-1.268 1.434a2 2 0 0 0-.08.25c-.111.454-.004.937.21 1.902l.067.3c.393 1.775.59 2.662.247 3.045a1 1 0 0 1-.481.296c-.496.136-1.2-.438-2.61-1.586c-.925-.754-1.388-1.131-1.919-1.216a2 2 0 0 0-.63 0c-.532.085-.994.462-1.92 1.216c-1.408 1.148-2.113 1.722-2.609 1.586a1 1 0 0 1-.48-.296c-.344-.383-.147-1.27.246-3.044l.067-.301c.214-.966.321-1.448.21-1.903a2 2 0 0 0-.08-.25c-.17-.435-.536-.768-1.268-1.434l-.482-.439c-1.445-1.314-2.168-1.972-1.96-2.59c.209-.62 1.182-.707 3.128-.881l.214-.02c1.19-.106 1.784-.159 2.237-.496s.675-.89 1.12-1.998z" /></svg>
+  )
+}
+
+
+
+
+export function LetsIconsMessageDuotone(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Lets Icons by Leonid Tsvetkov - https://creativecommons.org/licenses/by/4.0/ */}<path fill="currentColor" d="M4 16v-5.757a.15.15 0 0 1 .217-.135l6.441 3.221a3 3 0 0 0 2.684 0l6.44-3.22a.15.15 0 0 1 .218.134V16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2" /><path fill="currentColor" fillOpacity=".25" d="M4 8v.907a.15.15 0 0 0 .083.134l6.575 3.288a3 3 0 0 0 2.684 0l6.575-3.288A.15.15 0 0 0 20 8.907V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2" /></svg>
   )
 }
 
@@ -33,6 +42,13 @@ export function LetsIconsMessageAltFill(props: SVGProps<SVGSVGElement>) {
 export function LetsIconsPaperFill(props: SVGProps<SVGSVGElement>) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Lets Icons by Leonid Tsvetkov - https://creativecommons.org/licenses/by/4.0/ */}<path fill="currentColor" fillRule="evenodd" d="M2 21V7c0-1.886 0-2.828.586-3.414S4.114 3 6 3h10c.832 0 1.478 0 2.004.027A4.5 4.5 0 0 0 14 7.5V11l-.099 9.967L11 20l-3 1l-3-1zm19-10h-5V7.5a2.5 2.5 0 0 1 5 0zM4 7a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1m0 4a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1m0 4a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1" clipRule="evenodd" /></svg>
+  )
+}
+
+
+export function LetsIconsExpandLeft(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Lets Icons by Leonid Tsvetkov - https://creativecommons.org/licenses/by/4.0/ */}<path fill="none" stroke="currentColor" strokeWidth="2" d="m15 6l-6 6l6 6" /></svg>
   )
 }
 
@@ -51,9 +67,10 @@ export function MingcuteLinkedinFill(props: SVGProps<SVGSVGElement>) {
 }
 
 
-export function LetsIcons3dBoxFill(props: SVGProps<SVGSVGElement>) {
+
+export function LetsIcons3dBoxDuotone(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Lets Icons by Leonid Tsvetkov - https://creativecommons.org/licenses/by/4.0/ */}<path fill="currentColor" fillRule="evenodd" d="m9.675 19.34l-3-2.144c-.821-.586-1.232-.88-1.453-1.31S5 14.95 5 13.942v-3.883c0-.322 0-.592.007-.825L11 13.514v6.717c-.357-.2-.773-.498-1.325-.892M13 20.23c.357-.2.773-.498 1.325-.892l3-2.143c.821-.586 1.232-.88 1.453-1.31S19 14.95 19 13.942v-3.883c0-.322 0-.592-.007-.825L13 13.514zm5.128-12.837L12 11.771L5.872 7.394c.212-.168.475-.356.803-.59l3-2.143C10.798 3.859 11.36 3.458 12 3.458s1.202.4 2.325 1.203l3 2.143c.329.234.591.422.803.59" clipRule="evenodd" /></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Lets Icons by Leonid Tsvetkov - https://creativecommons.org/licenses/by/4.0/ */}<g fill="none"><path fill="currentColor" fillOpacity=".25" d="M12 13v8l-7-5V8l7-5l7 5z" /><path stroke="currentColor" strokeLinejoin="round" strokeWidth="1.2" d="M12 21v-8m0 8l-6.162-4.402c-.411-.293-.616-.44-.727-.655S5 15.475 5 14.971V8m7 13l6.163-4.402c.41-.293.615-.44.726-.655s.111-.468.111-.972V8m-7 5L5 8m7 5l7-5M5 8l5.838-4.17c.56-.4.842-.601 1.162-.601s.601.2 1.162.601L19 8" /></g></svg>
   )
 }
 
@@ -66,12 +83,14 @@ export function MynauiXTwitterSolid(props: SVGProps<SVGSVGElement>) {
 
 export const Icons = {
   Paper: LetsIconsPaperFill,
-  BookOpen: LetsIconsBookOpenFill,
+  BookOpen: LetsIconsBookOpenDuotone,
+  ExpandLeft: LetsIconsExpandLeft,
   Home: LetsIconsHomeFill,
   Star: LetsIconsStarFill,
-  Message: LetsIconsMessageAltFill,
+  StarDuotone: LetsIconsStarDuotone,
+  Message: LetsIconsMessageDuotone,
   Github: UimGithub,
   Linkedin: MingcuteLinkedinFill,
-  Box: LetsIcons3dBoxFill,
+  Box: LetsIcons3dBoxDuotone,
   TwitterX: MynauiXTwitterSolid
 }

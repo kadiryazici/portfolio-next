@@ -12,17 +12,14 @@ export function Page(props: PageProps) {
     <div
       {...attrs}
       className={cn(
-        "min-h-screen w-full p-2.5 md:grid md:grid-cols-[260px_minmax(0,1fr)] md:items-start md:gap-10 md:p-3",
-        "lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-16",
+        "w-full max-w-5xl mx-auto min-h-screen",
+        "flex flex-row md:gap-12 md:px-12 gap-4 px-4",
         className,
       )}
     >
       <SSHChip />
       <Sidebar />
-
-      <article className="min-w-0">
-        {children}
-      </article>
+      {children}
     </div>
   )
 }
