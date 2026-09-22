@@ -24,7 +24,7 @@ export function SSHChip(props: SSHChipProps) {
       {...attrs}
       aria-label="Copy SSH command"
       className={cn(
-        "hidden md:visible fixed right-3 bottom-3 z-50 inline-flex h-9 items-center rounded-[9px] border border-white/10 bg-sidebar px-3 font-mono text-[12px] text-ink shadow-[0_10px_28px_rgba(0,0,0,0.3)] transition-colors hover:border-accent/60 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+        "max-md:hidden fixed right-3 bottom-3 z-50 inline-flex h-9 items-center rounded-[9px] border border-white/10 bg-sidebar px-3 font-mono text-[12px] text-ink shadow-[0_10px_28px_rgba(0,0,0,0.3)] transition-colors hover:border-accent/60 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
         className,
       )}
       onClick={(event) => void handleChipClick(event)}
