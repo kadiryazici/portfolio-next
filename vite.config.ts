@@ -8,9 +8,6 @@ export default defineConfig(({ command, isPreview }) => ({
   plugins: [
     vinext({
       prerender: true,
-      nextConfig: {
-        output: "export"
-      }
     }),
     cn({ content: ["src/**/*.{ts,tsx}"], out: "src/lib/cn-tables.ts" }),
     // Nitro's dev environment has no runner for the RSC request handler.
