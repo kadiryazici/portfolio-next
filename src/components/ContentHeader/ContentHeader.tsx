@@ -15,11 +15,11 @@ export function ContentHeader(props: ContentHeaderProps) {
       className={cn("pb-12 pt-8 md:pb-16 md:pt-12", className)}
     >
       {eyebrow != null && (
-        <p className="mb-3 mt-0 text-[13px] font-medium text-accent">
+        <p className="starting:opacity-0 starting:blur-xs delay-800 duration-600 mb-3 mt-0 text-[13px] font-medium text-accent">
           {eyebrow}
         </p>
       )}
-      <h1 className="m-0 max-w-2xl text-[40px] font-semibold leading-[1.05] text-ink md:text-[48px]">
+      <h1 className="transition-all starting:opacity-0 starting:blur-md duration-1000 m-0 max-w-2xl text-[40px] font-semibold leading-[1.05] text-ink md:text-[48px]">
         {title}
       </h1>
     </header>

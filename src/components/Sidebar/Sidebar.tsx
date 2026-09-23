@@ -23,7 +23,7 @@ export function Sidebar(props: SidebarProps) {
 
     const timeout = window.setTimeout(() => {
       setIsAnimating(false)
-    }, 300)
+    }, 400)
 
     return () => window.clearTimeout(timeout)
   }, [pathname])
@@ -42,10 +42,13 @@ export function Sidebar(props: SidebarProps) {
           {activeIndex >= 0 && (
             <div
               aria-hidden="true"
-              style={{ translate: `0px ${activeIndex * 50}px` }}
+              style={{
+                translate: `0px ${activeIndex * 50}px`,
+                transitionTimingFunction: "linear(0, 0.009 1.4%, 0.032 2.8%, 0.131 6%, 0.265 9.1%, 0.675 17.6%, 0.88 22.8%, 0.953 25.2%, 1.014 27.7%, 1.062 30.3%, 1.094 32.9%, 1.121 37.2%, 1.121 42.2%, 1.102 46.7%, 1.019 61.2%, 0.989 71.5%, 0.985 81.1%, 1)"
+              }}
               className={cn(
-                "border border-transparent pointer-events-none absolute left-0 right-0 mx-auto top-[2px] h-[56px] w-[44px] rounded-full bg-bg-2/100 transition-[translate,scale,border-color,box-shadow] duration-300 ease-out motion-reduce:transition-none",
-                isAnimating && "scale-135 inset-shadow-liquid"
+                "border border-transparent pointer-events-none absolute left-0 right-0 mx-auto top-[2px] h-[56px] w-[44px] rounded-full bg-bg-2/100 transition-all duration-650 ease-out motion-reduce:transition-none",
+                isAnimating && "scale-140 inset-shadow-liquid bg-bg-2/50"
               )}
             />
           )}
@@ -93,13 +96,12 @@ function Group(props: ComponentProps<"div">) {
   )
 }
 
-type GroupLinkItemProps = Omit<ComponentProps<typeof Link>, "title"> & {
+type GroupLinkItemProps = ComponentProps<typeof Link> & {
   inactive?: boolean
-  title: string
 }
 
 function GroupLinkItem(props: GroupLinkItemProps) {
-  const { className, children, inactive = false, href, title, ...attrs } = props
+  const { className, children, inactive = false, href, ...attrs } = props
   const pathname = usePathname()
 
   const active = !inactive && (href === "/"
@@ -110,7 +112,6 @@ function GroupLinkItem(props: GroupLinkItemProps) {
     <Link
       {...attrs}
       href={href}
-      title={title}
       aria-current={active ? "page" : undefined}
       className={cn(
         "transition-colors duration-400 group rounded-full relative isolate inline-grid place-items-center size-[48px] text-[28px] text-ink-muted",
@@ -118,10 +119,6 @@ function GroupLinkItem(props: GroupLinkItemProps) {
         className,
       )}
     >
-      <div aria-hidden="true" className="pointer-events-none transition-[translate,opacity] -translate-x-[4px] opacity-0 group-hover:translate-x-0 group-hover:opacity-100 ring-1 ring-neutral-800/50 whitespace-nowrap absolute left-[calc(100%+8px)] top-0 bottom-0 my-auto size-fit px-[6px] py-[2px] text-xs text-gray-300 bg-sidebar shadow-sidebar rounded-full">
-        {title}
-      </div>
-
       {children}
     </Link>
   )

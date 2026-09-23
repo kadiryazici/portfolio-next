@@ -21,7 +21,7 @@ export function OpenSource(props: OpenSourceProps) {
             href={project.website}
             target="_blank"
             rel="noreferrer"
-            className="w-full"
+            className="w-full "
             title={project.name}
             subtitle={project.subtitle}
             description={project.description}

@@ -26,7 +26,7 @@ export default function ExperiencePage() {
         {experiences.map((experience) => (
           <ExperienceCard
             key={experience.company}
-            className="w-full"
+            className="w-full transition-all starting:opacity-0 starting:[transform:translateY(24px)] duration-1000 delay-600"
             tags={experience.tags.slice()}
             videoUrls={experience.videoUrls.map((videoUrl) => videoUrl.slice())}
             title={experience.company}

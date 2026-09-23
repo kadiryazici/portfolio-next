@@ -12,7 +12,7 @@ export function Projects(props: ProjectsProps) {
     <section
       {...attrs}
       id="projects"
-      className={cn("flex flex-col gap-8 *:mx-auto", className)}
+      className={cn("flex", className)}
     >
       {featuredProjects.map((project) => (
         <ProjectCard
