@@ -13,7 +13,7 @@ export function Section(props: SectionProps) {
     <section
       {...attrs}
       className={cn(
-        "scroll-mt-6 border-t border-line py-14 md:py-20",
+        "scroll-mt-6 border-t border-line pt-14 md:pt-20",
         className,
       )}
     >

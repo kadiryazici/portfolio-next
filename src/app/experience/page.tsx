@@ -1,6 +1,7 @@
 import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { ContentHeader } from "@/components/ContentHeader/ContentHeader"
 import { ExperienceCard } from "@/components/ExperienceCard/ExperienceCard"
+import { Icons } from "@/components/Icons"
 import { LinkCard } from "@/components/LinkCard/LinkCard"
 import { PageMain } from "@/components/PageMain/PageMain"
 import { experiences } from "@/lib/portfolio"
@@ -42,10 +43,7 @@ export default function ExperiencePage() {
         href="/projects"
         className="mx-auto mt-8"
         icon={
-          <AppIcon
-            name="projects"
-            className="size-5"
-          />
+          <Icons.Box />
         }
         title="Wanna See My Own Projects?"
       />

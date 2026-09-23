@@ -38,7 +38,7 @@ export default function BlogPage() {
               </span>
               <AppIcon
                 name="arrow"
-                className="hidden size-4 text-ink-soft transition-colors group-hover:text-accent md:block"
+                className="size-4 text-ink-soft transition-colors group-hover:text-accent md:block"
               />
             </Link>
           </li>

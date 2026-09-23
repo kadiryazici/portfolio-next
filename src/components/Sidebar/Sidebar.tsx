@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { useLayoutEffect, useRef, useState, type ComponentProps } from "react"
+import { useLayoutEffect, useState, type ComponentProps } from "react"
 import Link from "vinext/shims/link"
 import { usePathname } from "vinext/shims/navigation"
 import { navigationLinks, socialLinks } from "./Sidebar.constants"

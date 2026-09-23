@@ -1,12 +1,10 @@
-import type { ComponentProps } from "react"
-import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { Button } from "@/components/Button/Button"
-import { GithubIcon } from "@/components/GithubIcon/GithubIcon"
 import { LinkCard } from "@/components/LinkCard/LinkCard"
+import { Constants } from "@/constants"
 import { portfolioHome } from "@/lib/portfolio"
 import { cn } from "@/lib/utils"
+import type { ComponentProps } from "react"
 import { Icons } from "../Icons"
-import { Constants } from "@/constants"
 
 export type HeroProps = ComponentProps<"section">
 
@@ -56,10 +54,7 @@ export function Hero(props: HeroProps) {
             variant="secondary"
             padding="md"
             leftIcon={
-              <AppIcon
-                name="contact"
-                className="size-4"
-              />
+              <Icons.Message className="text-2xl" />
             }
           >
             Contact me
@@ -72,7 +67,7 @@ export function Hero(props: HeroProps) {
             title="GitHub"
             variant="icon"
             padding="icon"
-            leftIcon={<GithubIcon className="size-4" />}
+            leftIcon={<Icons.Github className="text-xl" />}
           />
           <Button
             href="https://linkedin.com/in/kadiryzc"
@@ -82,7 +77,7 @@ export function Hero(props: HeroProps) {
             title="Linkedin"
             variant="icon"
             padding="icon"
-            leftIcon={<Icons.Linkedin />}
+            leftIcon={<Icons.Linkedin className="text-xl" />}
           />
           <Button
             href={Constants.twitter}
@@ -92,7 +87,7 @@ export function Hero(props: HeroProps) {
             title="X / Twitter"
             variant="icon"
             padding="icon"
-            leftIcon={<Icons.TwitterX />}
+            leftIcon={<Icons.TwitterX className="text-xl" />}
           />
         </div>
 
@@ -100,10 +95,7 @@ export function Hero(props: HeroProps) {
           href="/experience"
           className="mt-14 mt-8"
           icon={
-            <AppIcon
-              name="experience"
-              className="size-5"
-            />
+            <Icons.StarDuotone />
           }
           title="Wanna See What I've Built?"
         />

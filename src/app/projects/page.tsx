@@ -1,5 +1,5 @@
 import { ContentHeader } from "@/components/ContentHeader/ContentHeader"
-import { GithubIcon } from "@/components/GithubIcon/GithubIcon"
+import { Icons } from "@/components/Icons"
 import { LinkCard } from "@/components/LinkCard/LinkCard"
 import { OpenSource } from "@/components/OpenSource/OpenSource"
 import { PageMain } from "@/components/PageMain/PageMain"
@@ -26,8 +26,8 @@ export default function ProjectsPage() {
         href="https://github.com/kadiryazici"
         target="_blank"
         rel="noopener noreferrer"
-        className="mx-auto"
-        icon={<GithubIcon className="size-5" />}
+        className="mx-auto mt-8"
+        icon={<Icons.Github />}
         title="Wanna see more?"
       />
     </PageMain>
