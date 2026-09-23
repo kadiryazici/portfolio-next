@@ -44,7 +44,7 @@ export function Sidebar(props: SidebarProps) {
               aria-hidden="true"
               style={{
                 translate: `0px ${activeIndex * 50}px`,
-                transitionTimingFunction: "linear(0, 0.009 1.4%, 0.032 2.8%, 0.131 6%, 0.265 9.1%, 0.675 17.6%, 0.88 22.8%, 0.953 25.2%, 1.014 27.7%, 1.062 30.3%, 1.094 32.9%, 1.121 37.2%, 1.121 42.2%, 1.102 46.7%, 1.019 61.2%, 0.989 71.5%, 0.985 81.1%, 1)"
+                transitionTimingFunction: "linear(0, 0.013 1%, 0.051 2.2%, 0.404 9.8%, 0.51 12.6%, 0.602 15.5%, 0.683 18.7%, 0.754 22.2%, 0.813 26%, 0.861 30.2%, 0.9 34.8%, 0.931 40%, 0.972 52.7%, 0.992 70.2%, 1)"
               }}
               className={cn(
                 "border border-transparent pointer-events-none absolute left-0 right-0 mx-auto top-[2px] h-[56px] w-[44px] rounded-full bg-bg-2/100 transition-all duration-650 ease-out motion-reduce:transition-none",
