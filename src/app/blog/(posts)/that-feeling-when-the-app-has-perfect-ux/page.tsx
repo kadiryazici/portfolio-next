@@ -89,7 +89,7 @@ export default function PerfectUxPage() {
           good. I remember that I created a hotkey management pool system that
           was working perfectly. It was doing it by a{" "}
           <strong>request</strong> system. When a popover is opened it requires
-          a specific key from the pool, and every component has a
+          a specific key from the pool, and every component has a{" "}
           <strong>weight</strong> (means the one that weighs more goes down in
           the list gets picked up) a.k.a <strong>priority</strong>. If the key
           is already taken by a component with a higher priority, the lower
