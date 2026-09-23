@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import type { ComponentProps } from "react"
+import { useLayoutEffect, useRef, useState, type ComponentProps } from "react"
 import Link from "vinext/shims/link"
 import { usePathname } from "vinext/shims/navigation"
 import { navigationLinks, socialLinks } from "./Sidebar.constants"
@@ -12,18 +12,43 @@ export function Sidebar(props: SidebarProps) {
   const { className, ...attrs } = props
   const pathname = usePathname()
 
-  const isBlogContent = pathname.startsWith("/blog") && pathname.length > 8
+  // Each navigation row is 48px tall with a 2px gap; animate in group-local coordinates.
+  const activeIndex = navigationLinks.findIndex((link) => (
+    link.href === "/" ? pathname === "/" : pathname.startsWith(link.href)
+  ))
+
+  const [isAnimating, setIsAnimating] = useState(false)
+  useLayoutEffect(() => {
+    setIsAnimating(true)
+
+    const timeout = window.setTimeout(() => {
+      setIsAnimating(false)
+    }, 300)
+
+    return () => window.clearTimeout(timeout)
+  }, [pathname])
+
 
   return (
     <>
       <aside
         {...attrs}
         className={cn(
-          "z-[100] sticky shrink-0 py-8 md:py-12 top-0 gap-2 flex flex-col h-[100dvh]",
+          "z-[100] sticky shrink-0 py-8 md:py-12 top-0 gap-2 flex justify-between flex-col h-[100dvh]",
           className,
         )}
       >
-        <Group>
+        <Group className="delay-300">
+          {activeIndex >= 0 && (
+            <div
+              aria-hidden="true"
+              style={{ translate: `0px ${activeIndex * 50}px` }}
+              className={cn(
+                "border border-transparent pointer-events-none absolute left-0 right-0 mx-auto top-[2px] h-[56px] w-[44px] rounded-full bg-bg-2/100 transition-[translate,scale,border-color,box-shadow] duration-300 ease-out motion-reduce:transition-none",
+                isAnimating && "scale-135 inset-shadow-liquid"
+              )}
+            />
+          )}
           {navigationLinks.map((link) => (
             <GroupLinkItem
               href={link.href}
@@ -35,7 +60,7 @@ export function Sidebar(props: SidebarProps) {
           ))}
         </Group>
 
-        <Group className="mt-auto">
+        <Group className="delay-700">
           {socialLinks.map((link) => (
             <GroupLinkItem
               key={link.href}
@@ -59,6 +84,7 @@ function Group(props: ComponentProps<"div">) {
       {...attrs}
       className={cn(
         "group/Wrapper isolate relative flex flex-col py-[6px] gap-[2px] bg-sidebar rounded-full ring-1 ring-neutral-800/50 inset-shadow-liquid",
+        "duration-600 transition-[scale,filter,opacity] starting:blur-sm starting:opacity-0 starting:scale-125",
         className,
       )}
     >
@@ -85,6 +111,7 @@ function GroupLinkItem(props: GroupLinkItemProps) {
       {...attrs}
       href={href}
       title={title}
+      aria-current={active ? "page" : undefined}
       className={cn(
         "group rounded-full relative isolate inline-grid place-items-center size-[48px] text-[28px] text-ink-muted",
         active ? "text-yellow-500" : "hover:text-gray-300",
@@ -95,11 +122,6 @@ function GroupLinkItem(props: GroupLinkItemProps) {
         {title}
       </div>
 
-      {active && (
-        <div
-          className="pointer-events-none z-[-1] rounded-full absolute inset-0 m-auto w-[44px] h-[56px] bg-bg-2/100"
-        />
-      )}
       {children}
     </Link>
   )

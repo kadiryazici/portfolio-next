@@ -12,8 +12,8 @@ export function Page(props: PageProps) {
     <div
       {...attrs}
       className={cn(
-        "w-full max-w-5xl mx-auto min-h-screen",
-        "flex flex-row md:gap-12 md:px-12 gap-3 px-3",
+        "w-full max-w-4xl mx-auto min-h-screen",
+        "flex flex-row md:gap-12 md:px-6 gap-3 px-3",
         className,
       )}
     >
