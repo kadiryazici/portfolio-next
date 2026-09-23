@@ -17,6 +17,12 @@ export function Page(props: PageProps) {
         className,
       )}
     >
+      <div
+        className="z-[10] top-0 fixed left-0 right-0 mx-auto w-full h-[100dvh] backdrop-blur-md max-w-4xl pointer-events-none"
+        style={{
+          maskImage: "linear-gradient(to bottom, black 0px, transparent 32px, transparent calc(100% - 32px), black 100%)"
+        }}
+      />
       <SSHChip />
       <Sidebar />
       {children}

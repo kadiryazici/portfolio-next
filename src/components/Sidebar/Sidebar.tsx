@@ -113,7 +113,7 @@ function GroupLinkItem(props: GroupLinkItemProps) {
       title={title}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "group rounded-full relative isolate inline-grid place-items-center size-[48px] text-[28px] text-ink-muted",
+        "transition-colors duration-400 group rounded-full relative isolate inline-grid place-items-center size-[48px] text-[28px] text-ink-muted",
         active ? "text-yellow-500" : "hover:text-gray-300",
         className,
       )}
