@@ -23,22 +23,22 @@ export default function BlogPage() {
         {posts.map((post) => (
           <li
             key={post.slug}
-            className="border-b border-white/[0.08] last:border-b-0"
+            className="relative border-b border-white/[0.08] last:border-b-0"
           >
             <Link
               prefetch={false}
               href={`/blog/${post.slug}`}
-              className="group grid gap-3 px-5 py-5 no-underline transition-colors hover:bg-white/[0.045] md:grid-cols-[1fr_auto_auto] md:items-center md:gap-8 md:px-6 md:py-6"
+              className="group grid gap-2 px-5 py-5 no-underline transition-colors hover:bg-white/[0.045] md:grid-cols-[1fr_auto_auto] md:items-center md:gap-8 md:px-6 md:py-6"
             >
-              <span className="text-[17px] font-semibold text-ink transition-colors group-hover:text-accent md:text-lg">
+              <span className="text-base font-semibold text-ink transition-colors group-hover:text-accent md:text-lg">
                 {post.title}
               </span>
-              <span className="shrink-0 text-[12px] text-ink-soft md:text-[13px]">
+              <span className="shrink-0 text-[12px] text-ink-soft">
                 {post.date}
               </span>
               <AppIcon
                 name="arrow"
-                className="size-4 text-ink-soft transition-colors group-hover:text-accent md:block"
+                className="max-md:absolute max-md:right-3 max-md:top-5 size-4 text-ink-soft transition-colors group-hover:text-accent md:block"
               />
             </Link>
           </li>
