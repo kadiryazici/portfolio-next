@@ -6,6 +6,7 @@ import { Page } from "@/components/Page/Page"
 import { siteUrl } from "@/lib/site"
 import { usePathname } from "vinext/shims/navigation"
 import { Sora as UIFont } from "next/font/google"
+import { SSHChip } from "@/components/SSHChip/SSHChip"
 
 const uiFont = UIFont({
   subsets: ["latin"],
@@ -128,7 +129,10 @@ export default function RootLayout(props: { children: ReactNode }) {
             {children}
           </>
         ) : (
-          <Page>{children}</Page>
+          <>
+            <SSHChip />
+            <Page>{children}</Page>
+          </>
         )}
       </body>
     </html>

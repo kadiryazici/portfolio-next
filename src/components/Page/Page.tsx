@@ -1,7 +1,6 @@
-import type { ComponentProps } from "react"
-import { SSHChip } from "@/components/SSHChip/SSHChip"
 import { Sidebar } from "@/components/Sidebar/Sidebar"
 import { cn } from "@/lib/utils"
+import type { ComponentProps } from "react"
 
 export type PageProps = ComponentProps<"div">
 
@@ -17,10 +16,6 @@ export function Page(props: PageProps) {
         className,
       )}
     >
-      <div
-        className="z-[10] top-0 fixed left-0 right-0 mx-auto w-full backdrop-blur-md max-w-4xl pointer-events-none"
-      />
-      <SSHChip />
       <Sidebar />
       {children}
     </div>
