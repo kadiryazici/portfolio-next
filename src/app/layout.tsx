@@ -1,6 +1,7 @@
 import type { ReactNode } from "react"
 import "@/styles/globals.css"
 import { Background } from "@/components/Background/Background"
+import { BackgroundStar } from "@/components/BackgroundStar/BackgroundStar"
 import { JsonLd } from "@/components/JsonLd/JsonLd"
 import { Page } from "@/components/Page/Page"
 import { siteUrl } from "@/lib/site"
@@ -95,7 +96,8 @@ export default function RootLayout(props: { children: ReactNode }) {
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body className="relative isolate">
+        <BackgroundStar />
         <JsonLd
           data={{
             "@context": "https://schema.org",

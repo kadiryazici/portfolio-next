@@ -1,0 +1,43 @@
+.star {
+  position: absolute;
+  width: min(140px, 25vw);
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(to right, transparent, currentColor);
+  opacity: 0;
+  transform: rotate(var(--star-angle));
+  animation: shoot 1.2s linear both;
+}
+
+.star::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 4px currentColor;
+}
+
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(var(--star-angle));
+  }
+
+  25% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(var(--star-x), var(--star-y)) rotate(var(--star-angle));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star {
+    animation: none;
+  }
+}

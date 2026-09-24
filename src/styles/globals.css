@@ -45,6 +45,7 @@ html {
   background: var(--color-bg);
   max-width: 100%;
   overflow-x: clip;
+  isolation: isolate;
 }
 
 @layer base {
