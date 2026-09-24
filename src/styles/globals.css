@@ -43,6 +43,8 @@ html {
   scroll-behavior: auto;
   scroll-padding-top: 24px;
   background: var(--color-bg);
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 @layer base {

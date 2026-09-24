@@ -38,7 +38,9 @@ export function Sidebar(props: SidebarProps) {
           className,
         )}
       >
-        <Group className="delay-300">
+        <Group
+          className="delay-1500"
+        >
           {activeIndex >= 0 && (
             <div
               aria-hidden="true"
@@ -47,8 +49,8 @@ export function Sidebar(props: SidebarProps) {
                 transitionTimingFunction: "linear(0, 0.013 1%, 0.051 2.2%, 0.404 9.8%, 0.51 12.6%, 0.602 15.5%, 0.683 18.7%, 0.754 22.2%, 0.813 26%, 0.861 30.2%, 0.9 34.8%, 0.931 40%, 0.972 52.7%, 0.992 70.2%, 1)"
               }}
               className={cn(
-                "border border-transparent pointer-events-none absolute left-0 right-0 mx-auto top-[2px] h-[56px] w-[44px] rounded-full bg-bg-2/100 transition-all duration-650 ease-out motion-reduce:transition-none",
-                isAnimating && "scale-140 inset-shadow-liquid bg-bg-2/50"
+                "border inset-shadow-liquid border-transparent pointer-events-none absolute left-0 right-0 mx-auto top-[2px] h-[56px] w-[44px] rounded-full bg-bg-2/100 transition-all duration-650 ease-out motion-reduce:transition-none",
+                isAnimating && "scale-140 bg-bg-2/50",
               )}
             />
           )}
@@ -63,7 +65,7 @@ export function Sidebar(props: SidebarProps) {
           ))}
         </Group>
 
-        <Group className="delay-700">
+        <Group className="delay-2000">
           {socialLinks.map((link) => (
             <GroupLinkItem
               key={link.href}
@@ -87,7 +89,7 @@ function Group(props: ComponentProps<"div">) {
       {...attrs}
       className={cn(
         "group/Wrapper isolate relative flex flex-col py-[6px] gap-[2px] bg-sidebar rounded-full ring-1 ring-neutral-800/50 inset-shadow-liquid",
-        "duration-600 transition-[scale,filter,opacity] starting:blur-sm starting:opacity-0 starting:scale-125",
+        "duration-1000 transition-[scale,filter,opacity] starting:blur-sm starting:opacity-0 starting:scale-125",
         className,
       )}
     >

@@ -1,5 +1,6 @@
 import { Button } from "@/components/Button/Button"
 import { LinkCard } from "@/components/LinkCard/LinkCard"
+import { MePic } from "@/components/MePic/MePic"
 import { Constants } from "@/constants"
 import { portfolioHome } from "@/lib/portfolio"
 import { cn } from "@/lib/utils"
@@ -20,35 +21,21 @@ export function Hero(props: HeroProps) {
         className,
       )}
     >
-      <figure
-        className="relative aspect-[1280/340] w-full"
-      >
-        <img
-          src="/me-banner-wide.webp"
-          alt="Kadir Yazıcı with a bicycle beside a lake"
-          className="left-0 absolute top-0 z-0 h-auto rounded-[12px] object-cover object-top"
-          style={{
-            maskImage: "linear-gradient(27deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%)",
-            WebkitMaskImage: "linear-gradient(27deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%)",
-          }}
-        />
-      </figure>
+      <div className="w-full flex flex-nowrap justify-center -mb-8">
+        <MePic className="shrink-0" />
+      </div>
 
-      <div className="relative z-10">
+      <div className="starting:opacity-0 duration-1000 transition-all delay-1000 relative z-10">
         <p className="mb-2 mt-0 text-[13px] font-medium text-accent">{portfolioHome.role}</p>
         <h1 className="m-0 text-[32px] font-bold leading-none text-ink md:text-[64px]">
           {portfolioHome.title}
         </h1>
 
-        <p className="mt-4 max-w-2xl text-[24px] font-medium leading-8 text-ink-muted md:text-[28px] md:leading-9">
-          {portfolioHome.tagline}
-        </p>
-
-        <p className="mt-8 max-w-xl text-[16px] md:text-[18px] leading-7 text-ink-muted">
+        <p className="mt-4 max-w-xl text-[16px] md:text-[18px] leading-7 text-ink-muted">
           {portfolioHome.description}
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center gap-2.5">
+        <div className="mt-4 flex flex-wrap items-center gap-2.5">
           <Button
             href={`mailto:${Constants.email}`}
             variant="secondary"
@@ -59,7 +46,7 @@ export function Hero(props: HeroProps) {
           >
             Contact me
           </Button>
-          <Button
+          {/*<Button
             href="https://github.com/kadiryazici"
             target="_blank"
             rel="noreferrer"
@@ -68,7 +55,7 @@ export function Hero(props: HeroProps) {
             variant="icon"
             padding="icon"
             leftIcon={<Icons.Github className="text-xl" />}
-          />
+          />*/}
           <Button
             href="https://linkedin.com/in/kadiryzc"
             target="_blank"
@@ -93,7 +80,7 @@ export function Hero(props: HeroProps) {
 
         <LinkCard
           href="/experience"
-          className="mt-14 mt-8"
+          className="mt-8"
           icon={
             <Icons.StarDuotone />
           }

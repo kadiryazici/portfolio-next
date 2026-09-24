@@ -4,6 +4,8 @@ import { PageMain } from "@/components/PageMain/PageMain"
 import { cn } from "@/lib/utils"
 import Link from "vinext/shims/link"
 import Script from "vinext/shims/script"
+import { Button } from "../Button/Button"
+import { Icons } from "../Icons"
 
 const giscusThemeUrl = import.meta.env.DEV
   ? "http://localhost:3000/giscus-theme.css"
@@ -23,9 +25,22 @@ export function BlogPost(props: BlogPostProps) {
     <PageMain>
       <article
         {...attrs}
-        className={cn("w-full", className)}
+        className={cn(
+          "w-full pt-8 md:pt-12 starting:opacity-0 duration-1000 transition-opacity",
+          className
+        )}
       >
-        <h1 className="mb-0 mt-8 md:mt-12 max-w-3xl text-[36px] font-semibold leading-[1.08] text-ink md:mt-10 md:text-[46px]">
+        <Button
+          variant="ghost"
+          className="bg-bg-2 text-ink-muted text-xs inset-shadow-liquid"
+          leftIcon={<Icons.ChevronLeft className="inline-block" />}
+          padding="sm"
+          href="/blog"
+        >
+          Blog
+        </Button>
+
+        <h1 className="max-w-3xl mt-8 text-[36px] font-semibold leading-[1.08] text-ink md:text-[46px]">
           {title}
         </h1>
         <p className="mb-0 mt-4 text-[13px] text-ink-soft">

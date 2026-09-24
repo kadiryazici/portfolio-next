@@ -1,9 +1,8 @@
 export const portfolioHome = {
-  role: "Full-Stack Engineer",
+  role: "Software Engineer",
   title: "Kadir Yazıcı",
-  tagline: "I build full-stack systems for products people rely on.",
   description:
-    "From accessible interfaces to performance and complex product workflows, I turn ideas into software that feels clear, fast, and reliable.",
+    "I build software that is performant, flexible and clear.",
 } as const
 
 export const experiences = [
