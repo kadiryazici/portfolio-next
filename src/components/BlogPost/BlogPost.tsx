@@ -30,22 +30,27 @@ export function BlogPost(props: BlogPostProps) {
           className
         )}
       >
-        <Button
-          variant="ghost"
-          className="bg-bg-2 text-ink-muted text-xs inset-shadow-liquid"
-          leftIcon={<Icons.ChevronLeft className="inline-block" />}
-          padding="sm"
-          href="/blog"
-        >
-          Blog
-        </Button>
+        <div className="flex flex-row gap-2 items-center">
+          <Button
+            variant="ghost"
+            className="bg-bg-2 text-ink-muted text-xs inset-shadow-liquid"
+            leftIcon={<Icons.ChevronLeft className="inline-block" />}
+            padding="sm"
+            href="/blog"
+          >
+            Blog
+          </Button>
+
+          <span className="text-ink-soft">/</span>
+
+          <span className="text-[13px] text-ink-soft">
+            {date}
+          </span>
+        </div>
 
         <h1 className="max-w-3xl mt-8 text-[36px] font-semibold leading-[1.08] text-ink md:text-[46px]">
           {title}
         </h1>
-        <p className="mb-0 mt-4 text-[13px] text-ink-soft">
-          {date}
-        </p>
         {headerContent}
 
         <div className="blog-post-content mt-10 w-full md:mt-12">
