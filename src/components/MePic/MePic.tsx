@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 
-const markers = Array.from({ length: 120 }, (_, index) => index)
+const markers = Array.from({ length: 180 }, (_, index) => index)
 
 export type MePicProps = ComponentProps<"figure">
 
@@ -39,9 +39,9 @@ export function MePic(props: MePicProps) {
               y2={index % 5 === 0 ? 20 : 14}
               stroke="currentColor"
               strokeWidth={index % 5 === 0 ? 1 : 1}
-              strokeOpacity={index % 5 === 0 ? 0.8 : 0.35}
+              strokeOpacity={index % 5 === 0 ? 0.4 : 0.2}
               vectorEffect="non-scaling-stroke"
-              transform={`rotate(${index * 3} 197 197)`}
+              transform={`rotate(${index * 2} 197 197)`}
             />
           ))}
         </svg>

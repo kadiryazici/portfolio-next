@@ -22,20 +22,20 @@ export function Hero(props: HeroProps) {
       )}
     >
       <div className="w-full flex flex-nowrap justify-center">
-        <MePic className="shrink-0" />
+        <MePic className="shrink-0 mb-4" />
       </div>
 
-      <div className="starting:opacity-0 duration-1000 transition-all delay-1000 relative z-10">
+      <div className="text-center starting:opacity-0 duration-1000 transition-all delay-1000 relative z-10">
         <p className="mb-2 mt-0 text-[13px] font-medium text-accent">{portfolioHome.role}</p>
         <h1 className="m-0 text-[32px] font-bold leading-none text-ink md:text-[64px]">
           {portfolioHome.title}
         </h1>
 
-        <p className="mt-4 max-w-xl text-[16px] md:text-[18px] leading-7 text-ink-muted">
+        <p className="mt-4 text-center mx-auto max-w-xl text-[16px] md:text-[18px] leading-7 text-ink-muted">
           {portfolioHome.description}
         </p>
 
-        <div className="mt-4 flex flex-wrap items-center gap-2.5">
+        <div className="mt-4 flex justify-center flex-wrap items-center gap-2.5">
           <Button
             href={`mailto:${Constants.email}`}
             variant="secondary"

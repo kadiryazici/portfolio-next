@@ -31,7 +31,7 @@ export function LinkCard(props: LinkCardProps) {
       </span>
       <AppIcon
         name="arrow"
-        className="size-3 sm:size-5 shrink-0 transition-colors text-accent"
+        className="size-3 sm:size-5 shrink-0 transition-colors"
       />
     </Link>
   )
