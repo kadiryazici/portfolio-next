@@ -1,10 +1,11 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { useLayoutEffect, useState, type ComponentProps } from "react"
+import { useState, type ComponentProps } from "react"
 import Link from "vinext/shims/link"
 import { usePathname } from "vinext/shims/navigation"
 import { navigationLinks, socialLinks } from "./Sidebar.constants"
+import { useUpdateEffect } from "@/hooks/useUpdateEffect"
 
 export type SidebarProps = ComponentProps<"aside">
 
@@ -18,7 +19,7 @@ export function Sidebar(props: SidebarProps) {
   ))
 
   const [isAnimating, setIsAnimating] = useState(false)
-  useLayoutEffect(() => {
+  useUpdateEffect(() => {
     setIsAnimating(true)
 
     const timeout = window.setTimeout(() => {
@@ -39,7 +40,7 @@ export function Sidebar(props: SidebarProps) {
         )}
       >
         <Group
-          className="delay-1500"
+          className="z-[-1] delay-200"
         >
           {activeIndex >= 0 && (
             <div
@@ -65,7 +66,7 @@ export function Sidebar(props: SidebarProps) {
           ))}
         </Group>
 
-        <Group className="delay-2000">
+        <Group className="delay-500">
           {socialLinks.map((link) => (
             <SidebarLink
               key={link.href}
@@ -89,7 +90,7 @@ function Group(props: ComponentProps<"div">) {
       {...attrs}
       className={cn(
         "group/Wrapper isolate relative flex flex-col py-[6px] gap-[2px] bg-sidebar rounded-full ring-1 ring-neutral-800/50 inset-shadow-liquid",
-        "duration-1000 transition-[scale,filter,opacity] starting:blur-sm starting:opacity-0 starting:scale-125",
+        "duration-1000 transition-[scale,filter,opacity] ",
         className,
       )}
     >

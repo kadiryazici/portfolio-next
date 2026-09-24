@@ -14,7 +14,7 @@ const uiFont = UIFont({
   variable: "--ui-font",
 })
 
-const siteTitle = "Kadir Yazıcı — Full-Stack Engineer"
+const siteTitle = "Kadir Yazıcı — Software Engineer"
 const siteDescription = "Kadir Yazıcı builds accessible, high-performance full-stack systems and thoughtful product experiences."
 
 export const metadata = {
@@ -28,9 +28,9 @@ export const metadata = {
     siteName: "Kadir Yazıcı",
     images: [
       {
-        url: "/me-banner-wide.webp",
-        width: 1280,
-        height: 680,
+        url: "/me-big.webp",
+        width: 660,
+        height: 660,
         alt: "Kadir Yazıcı with a bicycle beside a lake",
       },
     ],
@@ -41,9 +41,9 @@ export const metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/me-banner-wide.webp",
-        width: 1280,
-        height: 680,
+        url: "/me-big.webp",
+        width: 660,
+        height: 660,
         alt: "Kadir Yazıcı with a bicycle beside a lake",
       },
     ],
@@ -111,12 +111,12 @@ export default function RootLayout(props: { children: ReactNode }) {
                 "@type": "Person",
                 name: "Kadir Yazıcı",
                 url: siteUrl,
-                jobTitle: "Full-Stack Engineer",
+                jobTitle: "Software Engineer",
                 sameAs: ["https://github.com/kadiryazici"],
                 knowsAbout: [
                   "TypeScript",
                   "React",
-                  "Full-stack systems",
+                  "Software systems",
                   "Accessible interfaces",
                   "Product design",
                   "Performance optimization",

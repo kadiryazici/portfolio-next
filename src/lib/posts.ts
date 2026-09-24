@@ -52,10 +52,10 @@ I still program. But making something by hand for part of the day is a much bett
     date: "July 9, 2026",
     publishedAt: "2026-07-09",
     description:
-      "A full-stack engineer's reflections on what makes UI/UX feel right: hotkey pools, z-index management, and the chase for cohesive design.",
+      "A software engineer's reflections on what makes UI/UX feel right: hotkey pools, z-index management, and the chase for cohesive design.",
     terminalContent: `Some applications are simply enjoyable to use. Moving through them feels intentional because every part of the UI understands the others.
 
-As a full-stack engineer, I have repeatedly built systems around that feeling: centralized state, components that can coordinate, and interfaces that keep working when their complexity grows.
+As a software engineer, I have repeatedly built systems around that feeling: centralized state, components that can coordinate, and interfaces that keep working when their complexity grows.
 
 ## Hotkey management
 

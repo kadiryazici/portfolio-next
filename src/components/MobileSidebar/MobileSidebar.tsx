@@ -2,8 +2,9 @@
 
 import { SidebarLink } from "@/components/Sidebar/Sidebar"
 import { navigationLinks } from "@/components/Sidebar/Sidebar.constants"
+import { useUpdateEffect } from "@/hooks/useUpdateEffect"
 import { cn } from "@/lib/utils"
-import { useLayoutEffect, useState } from "react"
+import { useState } from "react"
 import type { ComponentProps } from "react"
 import { usePathname } from "vinext/shims/navigation"
 
@@ -22,7 +23,7 @@ export function MobileSidebar(props: MobileSidebarProps) {
   ))
   const [isAnimating, setIsAnimating] = useState(false)
 
-  useLayoutEffect(() => {
+  useUpdateEffect(() => {
     setIsAnimating(true)
 
     const timeout = window.setTimeout(() => {
@@ -44,7 +45,7 @@ export function MobileSidebar(props: MobileSidebarProps) {
       <div
         className={cn(
           "pointer-events-auto w-full max-w-sm rounded-full bg-sidebar/50 backdrop-blur-sm p-1 ring-1 ring-neutral-800/50 inset-shadow-liquid",
-          "transition-[scale,filter,opacity] duration-1000 delay-1500 starting:scale-125 starting:blur-sm starting:opacity-0 motion-reduce:transition-none",
+          "transition-[scale,filter,opacity] duration-1000 delay-400 starting:scale-125 starting:blur-sm starting:opacity-0 motion-reduce:transition-none",
         )}
       >
         <div className="relative isolate grid grid-cols-4">

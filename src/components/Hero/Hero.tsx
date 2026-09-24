@@ -25,7 +25,7 @@ export function Hero(props: HeroProps) {
         <MePic className="shrink-0 mb-4" />
       </div>
 
-      <div className="text-center starting:opacity-0 duration-1000 transition-all delay-1000 relative z-10">
+      <div className="text-center starting:blur-sm starting:opacity-0 duration-1000 transition-all delay-1000 relative z-10">
         <p className="mb-2 mt-0 text-[13px] font-medium text-accent">{portfolioHome.role}</p>
         <h1 className="m-0 text-[32px] font-bold leading-none text-ink md:text-[64px]">
           {portfolioHome.title}
@@ -77,16 +77,16 @@ export function Hero(props: HeroProps) {
             leftIcon={<Icons.TwitterX className="text-xl" />}
           />
         </div>
-
-        <LinkCard
-          href="/experience"
-          className="mt-8"
-          icon={
-            <Icons.StarDuotone />
-          }
-          title="Wanna See What I've Built?"
-        />
       </div>
+
+      <LinkCard
+        href="/experience"
+        className="mt-8 starting:blur-sm starting:[transform:translateY(24px)] starting:opacity-0 duration-1000 delay-1400 transition-all"
+        icon={
+          <Icons.StarDuotone />
+        }
+        title="Wanna See What I've Built?"
+      />
     </section>
   )
 }
