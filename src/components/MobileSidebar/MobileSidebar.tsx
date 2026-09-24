@@ -4,7 +4,7 @@ import { SidebarLink } from "@/components/Sidebar/Sidebar"
 import { navigationLinks } from "@/components/Sidebar/Sidebar.constants"
 import { useUpdateEffect } from "@/hooks/useUpdateEffect"
 import { cn } from "@/lib/utils"
-import { useState } from "react"
+import { useLayoutEffect, useState } from "react"
 import type { ComponentProps } from "react"
 import { usePathname } from "vinext/shims/navigation"
 
@@ -22,9 +22,11 @@ export function MobileSidebar(props: MobileSidebarProps) {
     link.href === "/" ? pathname === "/" : pathname.startsWith(link.href)
   ))
   const [isAnimating, setIsAnimating] = useState(false)
+  const [shrinked, setShrinked] = useState(false)
 
   useUpdateEffect(() => {
     setIsAnimating(true)
+    setShrinked(false)
 
     const timeout = window.setTimeout(() => {
       setIsAnimating(false)
@@ -33,12 +35,26 @@ export function MobileSidebar(props: MobileSidebarProps) {
     return () => window.clearTimeout(timeout)
   }, [pathname])
 
+
+  useLayoutEffect(() => {
+    let oldScroll = document.documentElement.scrollTop
+    function handler() {
+      setShrinked(document.documentElement.scrollTop > oldScroll)
+      oldScroll = document.documentElement.scrollTop
+    }
+
+    document.addEventListener("scroll", handler)
+
+    return () => void document.removeEventListener("scroll", handler)
+  }, [])
+
   return (
     <nav
       aria-label="Main navigation"
       {...attrs}
       className={cn(
-        "pointer-events-none fixed inset-x-0 bottom-0 z-[100] flex justify-center px-3 pt-3 pb-[calc(env(safe-area-inset-bottom)+12px)] md:hidden",
+        "origin-bottom transition-transform duration-400 pointer-events-none fixed inset-x-0 bottom-0 z-[100] flex justify-center px-3 pt-3 pb-[calc(env(safe-area-inset-bottom)+16px)] md:hidden",
+        shrinked && "scale-80",
         className,
       )}
     >
@@ -68,7 +84,7 @@ export function MobileSidebar(props: MobileSidebarProps) {
               href={link.href}
               title={link.name}
               aria-label={link.name}
-              className="flex h-16 w-full min-w-0 flex-col items-center justify-center gap-0.5 text-[11px] font-medium"
+              className="flex h-16 w-full min-w-0 flex-col items-center justify-center gap-0.5 text-[10px] font-medium"
             >
               <span
                 aria-hidden="true"
