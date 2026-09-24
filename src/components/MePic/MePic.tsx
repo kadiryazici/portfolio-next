@@ -16,10 +16,9 @@ export function MePic(props: MePicProps) {
       <img
         aria-hidden="true"
         src="/me-big.webp"
-        alt="Kadir Yazıcı with a bicycle beside a lake"
         width={330}
         height={330}
-        className="starting:opacity-0 starting:blur-sm starting:scale-110 duration-1000 transition-all delay-300 block aspect-square h-auto w-full rounded-full object-cover"
+        className="z-[-1] absolute inset-0 blur-[150px] opacity-50 starting:opacity-0 starting:scale-0 delay-1000 duration-2000 block aspect-square h-auto w-full rounded-full object-cover"
       />
       <img
         src="/me-big.webp"

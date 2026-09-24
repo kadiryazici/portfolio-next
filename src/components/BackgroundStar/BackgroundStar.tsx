@@ -60,7 +60,11 @@ const backgroundStars = [
   { left: "49%", top: "83%", width: 2, opacity: 0.25 },
 ] satisfies CSSProperties[]
 
+const rayAngles = [0, 60, 120, 180, 240, 300]
+
 export type BackgroundStarProps = ComponentProps<"div">
+
+export type StarProps = ComponentProps<"span">
 
 export function BackgroundStar(props: BackgroundStarProps) {
   const { className, ...attrs } = props
@@ -76,7 +80,7 @@ export function BackgroundStar(props: BackgroundStarProps) {
         }
 
         scheduleNextStar()
-      }, 7000 + Math.random() * 8000)
+      }, 4000 + Math.random() * 6000)
     }
 
     scheduleNextStar()
@@ -89,17 +93,14 @@ export function BackgroundStar(props: BackgroundStarProps) {
       {...attrs}
       aria-hidden="true"
       className={cn(
-        "pointer-events-none fixed inset-0 -z-10 overflow-clip text-accent",
+        "pointer-events-none fixed inset-0 starting:opacity-0 duration-1000 delay-600 -z-10 overflow-clip text-accent",
         className,
       )}
     >
       {backgroundStars.map((star, index) => (
-        <span
+        <Star
           key={star.left}
-          className={cn(
-            "absolute aspect-square rounded-full bg-white blur-[0.6px]",
-            index >= 16 && "hidden md:block",
-          )}
+          className={cn(index >= 16 && "hidden md:block")}
           style={star}
         />
       ))}
@@ -111,5 +112,38 @@ export function BackgroundStar(props: BackgroundStarProps) {
         />
       )}
     </div>
+  )
+}
+
+export function Star(props: StarProps) {
+  const { className, style, ...attrs } = props
+  const [rotationDuration, setRotationDuration] = useState<number | null>(null)
+
+  useEffect(() => {
+    setRotationDuration(20 + Math.random() * 40)
+  }, [])
+
+  return (
+    <span
+      {...attrs}
+      className={cn(
+        "absolute aspect-square animate-spin rounded-full bg-white text-white blur-[0.6px] motion-reduce:animate-none",
+        styles.ambientStar,
+        className,
+      )}
+      style={{
+        ...style,
+        animationDuration: `${rotationDuration ?? 20}s`,
+        animationPlayState: rotationDuration === null ? "paused" : "running",
+      }}
+    >
+      {rayAngles.map((angle) => (
+        <span
+          key={angle}
+          className={styles.ray}
+          style={{ rotate: `${angle}deg` }}
+        />
+      ))}
+    </span>
   )
 }

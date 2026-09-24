@@ -1,3 +1,20 @@
+.ambientStar {
+  box-shadow: 0 0 5px currentColor;
+}
+
+.ray {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(100% + 4px);
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(to right, currentColor, transparent);
+  opacity: 0.65;
+  translate: 0 -50%;
+  transform-origin: left center;
+}
+
 .star {
   position: absolute;
   width: min(140px, 25vw);

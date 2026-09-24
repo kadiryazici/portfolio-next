@@ -40,7 +40,7 @@ export function Sidebar(props: SidebarProps) {
         )}
       >
         <Group
-          className="z-[-1] delay-200"
+          className="z-[-1] "
         >
           {activeIndex >= 0 && (
             <div
@@ -66,7 +66,7 @@ export function Sidebar(props: SidebarProps) {
           ))}
         </Group>
 
-        <Group className="delay-500">
+        <Group className="">
           {socialLinks.map((link) => (
             <SidebarLink
               key={link.href}
@@ -90,7 +90,7 @@ function Group(props: ComponentProps<"div">) {
       {...attrs}
       className={cn(
         "group/Wrapper isolate relative flex flex-col py-[6px] gap-[2px] bg-sidebar rounded-full ring-1 ring-neutral-800/50 inset-shadow-liquid",
-        "duration-1000 transition-[scale,filter,opacity] ",
+        "duration-1000 delay-800 transition-[scale,filter,opacity] starting:opacity-0",
         className,
       )}
     >
