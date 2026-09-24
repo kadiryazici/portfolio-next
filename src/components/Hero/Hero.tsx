@@ -21,7 +21,7 @@ export function Hero(props: HeroProps) {
         className,
       )}
     >
-      <div className="w-full flex flex-nowrap justify-center -mb-8">
+      <div className="w-full flex flex-nowrap justify-center">
         <MePic className="shrink-0" />
       </div>
 
@@ -46,7 +46,7 @@ export function Hero(props: HeroProps) {
           >
             Contact me
           </Button>
-          {/*<Button
+          <Button
             href="https://github.com/kadiryazici"
             target="_blank"
             rel="noreferrer"
@@ -55,7 +55,7 @@ export function Hero(props: HeroProps) {
             variant="icon"
             padding="icon"
             leftIcon={<Icons.Github className="text-xl" />}
-          />*/}
+          />
           <Button
             href="https://linkedin.com/in/kadiryzc"
             target="_blank"

@@ -55,26 +55,26 @@ export function Sidebar(props: SidebarProps) {
             />
           )}
           {navigationLinks.map((link) => (
-            <GroupLinkItem
+            <SidebarLink
               href={link.href}
               key={link.href}
               title={link.name}
             >
               {link.icon}
-            </GroupLinkItem>
+            </SidebarLink>
           ))}
         </Group>
 
         <Group className="delay-2000">
           {socialLinks.map((link) => (
-            <GroupLinkItem
+            <SidebarLink
               key={link.href}
               href={link.href}
               title={link.name}
               target={"target" in link ? link.target : undefined}
             >
               {link.icon}
-            </GroupLinkItem>
+            </SidebarLink>
           ))}
         </Group>
       </aside>
@@ -98,11 +98,11 @@ function Group(props: ComponentProps<"div">) {
   )
 }
 
-type GroupLinkItemProps = ComponentProps<typeof Link> & {
+export type SidebarLinkProps = ComponentProps<typeof Link> & {
   inactive?: boolean
 }
 
-function GroupLinkItem(props: GroupLinkItemProps) {
+export function SidebarLink(props: SidebarLinkProps) {
   const { className, children, inactive = false, href, ...attrs } = props
   const pathname = usePathname()
 
@@ -116,7 +116,7 @@ function GroupLinkItem(props: GroupLinkItemProps) {
       href={href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "transition-colors duration-400 group rounded-full relative isolate inline-grid place-items-center size-[48px] text-[28px] text-ink-muted",
+        "transition-colors duration-400 group rounded-full relative isolate inline-grid place-items-center size-[48px] text-[28px] text-ink-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none",
         active ? "text-yellow-500" : "hover:text-gray-300",
         className,
       )}
