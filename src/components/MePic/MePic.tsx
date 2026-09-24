@@ -18,7 +18,7 @@ export function MePic(props: MePicProps) {
         src="/me-big.webp"
         width={330}
         height={330}
-        className="z-[-1] absolute inset-0 blur-[150px] opacity-50 starting:opacity-0 starting:scale-0 delay-1000 duration-2000 block aspect-square h-auto w-full rounded-full object-cover"
+        className="animate-spin [animation-direction:reverse] [animation-duration:20s] z-[-1] absolute inset-0 blur-[150px] opacity-50 starting:opacity-0 starting:scale-0 delay-1000 duration-2000 block aspect-square h-auto w-full rounded-full object-cover"
       />
       <img
         src="/me-big.webp"
