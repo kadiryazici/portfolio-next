@@ -23,27 +23,29 @@ export function MePic(props: MePicProps) {
 
       <div
         aria-hidden="true"
-        className="starting:opacity-0 starting:blur-sm starting:scale-130 duration-2000 transition-all delay-1500 pointer-events-none absolute inset-0 animate-spin [animation-duration:120s] motion-reduce:animate-none"
+        className="starting:opacity-0 starting:blur-sm duration-2000 transition-[opacity,filter] delay-1500 pointer-events-none absolute inset-0 motion-reduce:transition-none"
       >
         <svg
           viewBox="0 0 394 394"
           fill="none"
           className="size-full text-accent"
         >
-          {markers.map((index) => (
-            <line
-              key={index}
-              x1={197}
-              y1={4}
-              x2={197}
-              y2={index % 5 === 0 ? 20 : 14}
-              stroke="currentColor"
-              strokeWidth={index % 5 === 0 ? 1 : 1}
-              strokeOpacity={index % 5 === 0 ? 0.4 : 0.2}
-              vectorEffect="non-scaling-stroke"
-              transform={`rotate(${index * 2} 197 197)`}
-            />
-          ))}
+          <g className="origin-center [transform-box:view-box] animate-spin [animation-duration:120s] starting:scale-90 transition-[scale] duration-2000 delay-1500 motion-reduce:animate-none motion-reduce:transition-none">
+            {markers.map((index) => (
+              <line
+                key={index}
+                x1={197}
+                y1={4}
+                x2={197}
+                y2={index % 5 === 0 ? 20 : 14}
+                stroke="currentColor"
+                strokeWidth={index % 5 === 0 ? 1 : 1}
+                strokeOpacity={index % 5 === 0 ? 0.4 : 0.2}
+                vectorEffect="non-scaling-stroke"
+                transform={`rotate(${index * 2} 197 197)`}
+              />
+            ))}
+          </g>
         </svg>
       </div>
     </figure>

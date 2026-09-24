@@ -25,7 +25,7 @@ export function LinkCard(props: LinkCardProps) {
         <span className="grid p-2 text-lg sm:text-[24px] shrink-0 place-items-center rounded-full text-accent border border-white/[0.1] bg-white/[0.06]">
           {icon}
         </span>
-        <span className="min-w-0 text-base font-semibold leading-6 text-ink md:text-xl">
+        <span className="text-left min-w-0 text-base font-semibold leading-6 text-ink md:text-xl">
           {title}
         </span>
       </span>
