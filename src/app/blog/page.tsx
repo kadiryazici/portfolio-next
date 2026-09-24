@@ -19,7 +19,7 @@ export default function BlogPage() {
         eyebrow="Blog"
         title="Notes & thoughts"
       />
-      <ul className="transition-all starting:opacity-0 starting:blur-sm starting:[transform:translateY(8px)] duration-1000 delay-400 overflow-hidden rounded-3xl border border-white/[0.09] bg-white/[0.035] shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl">
+      <ul className="transition-all starting:opacity-0 starting:blur-sm starting:[transform:translateY(8px)] duration-1000 delay-400 overflow-hidden rounded-3xl border border-white/[0.09] shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm bg-bg-2/40">
         {posts.map((post) => (
           <li
             key={post.slug}

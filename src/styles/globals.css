@@ -45,7 +45,8 @@ html {
   background: var(--color-bg);
   max-width: 100%;
   overflow-x: clip;
-  isolation: isolate;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-bg-2) transparent;
 }
 
 @layer base {
@@ -59,6 +60,7 @@ html {
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
     overscroll-behavior-y: auto;
+    isolation: isolate;
   }
 
   p {
@@ -106,79 +108,6 @@ html {
 }
 
 ::selection {
-  background: rgb(8 104 216 / 0.18);
+  background: rgb(8 104 216 / 0.2);
   color: var(--color-ink);
-}
-
-.mobile-navigation-dialog {
-  display: none;
-  opacity: 0;
-  transform: translateX(100%);
-  transition:
-    opacity 240ms ease-out,
-    transform 240ms ease-out,
-    display 240ms allow-discrete,
-    overlay 240ms allow-discrete;
-}
-
-.mobile-navigation-dialog[open] {
-  display: flex;
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.mobile-navigation-dialog::backdrop {
-  background: transparent;
-  backdrop-filter: blur(0);
-  transition:
-    background-color 240ms ease-out,
-    backdrop-filter 240ms ease-out,
-    display 240ms allow-discrete,
-    overlay 240ms allow-discrete;
-}
-
-.mobile-navigation-dialog[open]::backdrop {
-  background: rgb(0 0 0 / 0.6);
-  backdrop-filter: blur(2px);
-}
-
-@starting-style {
-  .mobile-navigation-dialog[open] {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-
-  .mobile-navigation-dialog[open]::backdrop {
-    background: transparent;
-    backdrop-filter: blur(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  .mobile-navigation-dialog,
-  .mobile-navigation-dialog::backdrop {
-    transition: none;
-  }
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(29 29 31 / 0.12);
-  border-radius: 999px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(29 29 31 / 0.2);
-  background-clip: padding-box;
 }

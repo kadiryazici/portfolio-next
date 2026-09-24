@@ -68,7 +68,7 @@ export function ExperienceCard(props: ExperienceCardProps) {
     <div
       {...attrs}
       className={cn(
-        "inset-shadow-liquid flex flex-col overflow-hidden rounded-3xl inset-shadow-liquid border border-white/[0.09] bg-white/[0.035] shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl transition-[border-color,background-color,transform,box-shadow] duration-300",
+        "inset-shadow-liquid flex flex-col overflow-hidden rounded-3xl inset-shadow-liquid border border-white/[0.09] shadow-[0_24px_70px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm bg-bg-2/40 transition-[border-color,background-color,transform,box-shadow] duration-300",
         className,
       )}
     >
