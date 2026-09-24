@@ -43,7 +43,7 @@ export function MobileSidebar(props: MobileSidebarProps) {
     >
       <div
         className={cn(
-          "pointer-events-auto w-full max-w-sm rounded-full bg-sidebar p-1 ring-1 ring-neutral-800/50 inset-shadow-liquid",
+          "pointer-events-auto w-full max-w-sm rounded-full bg-sidebar/50 backdrop-blur-sm p-1 ring-1 ring-neutral-800/50 inset-shadow-liquid",
           "transition-[scale,filter,opacity] duration-1000 delay-1500 starting:scale-125 starting:blur-sm starting:opacity-0 motion-reduce:transition-none",
         )}
       >
