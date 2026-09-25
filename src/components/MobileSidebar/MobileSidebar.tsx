@@ -38,9 +38,16 @@ export function MobileSidebar(props: MobileSidebarProps) {
 
   useLayoutEffect(() => {
     let oldScroll = document.documentElement.scrollTop
+
     function handler() {
-      setShrinked(document.documentElement.scrollTop > oldScroll)
-      oldScroll = document.documentElement.scrollTop
+      const top = document.documentElement.scrollTop;
+
+      if (top < 0 || window.innerHeight + window.scrollY > document.body.scrollHeight - 1) {
+        return
+      }
+
+      setShrinked(top > oldScroll)
+      oldScroll = top
     }
 
     document.addEventListener("scroll", handler)
