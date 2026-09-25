@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode } from "react"
-import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { cn } from "@/lib/utils"
 import Link from "vinext/shims/link"
+import { Icons } from "../Icons"
 
 export type LinkCardProps = ComponentProps<typeof Link> & {
   icon: ReactNode
@@ -16,8 +16,7 @@ export function LinkCard(props: LinkCardProps) {
       {...attrs}
       prefetch={false}
       className={cn(
-        "group flex w-full items-center justify-between gap-2 sm:gap-4 rounded-3xl inset-shadow-liquid border border-white/[0.05]  backdrop-blur-sm bg-bg-2/40 px-5 py-5 text-ink no-underline transition-[border-color,background-color,transform,box-shadow] duration-300",
-        "hover:border-white/[0.15]",
+        "group flex w-full items-center justify-between gap-2 sm:gap-4 rounded-3xl inset-shadow-liquid border border-white/[0.05]  backdrop-blur-sm bg-bg-2/40 hover:bg-bg-2/80 px-5 py-5 text-ink no-underline transition-[border-color,background-color,transform,box-shadow] duration-300",
         className,
       )}
     >
@@ -29,9 +28,8 @@ export function LinkCard(props: LinkCardProps) {
           {title}
         </span>
       </span>
-      <AppIcon
-        name="arrow"
-        className="size-3 sm:size-5 shrink-0 transition-colors"
+      <Icons.ArrowOutward
+        className="text-base shrink-0 transition-colors group-hover:text-yellow-400"
       />
     </Link>
   )

@@ -2,6 +2,7 @@ import type { ComponentProps, ReactNode } from "react"
 import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { cn } from "@/lib/utils"
 import Link from "vinext/shims/link"
+import { Icons } from "../Icons"
 
 export type ProjectCardProps = ComponentProps<typeof Link> & {
   imageUrl?: string
@@ -50,9 +51,8 @@ export function ProjectCard(props: ProjectCardProps) {
               <h2 className="m-0 text-[17px] font-semibold leading-6 tracking-normal text-ink md:text-lg">
                 {title}
               </h2>
-              <AppIcon
-                name="arrow"
-                className="size-4 shrink-0 text-ink-soft transition-colors group-hover:text-accent"
+              <Icons.ArrowOutward
+                className="text-base shrink-0 text-ink-soft transition-colors group-hover:text-accent"
               />
             </div>
             <p className="m-0 mt-0.5 text-[13px] leading-5 text-ink-soft md:text-sm">

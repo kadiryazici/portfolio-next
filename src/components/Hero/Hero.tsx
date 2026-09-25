@@ -79,14 +79,15 @@ export function Hero(props: HeroProps) {
         </div>
       </div>
 
-      <LinkCard
-        href="/experience"
-        className="mt-8 starting:blur-sm starting:[transform:translateY(24px)] starting:opacity-0 duration-1000 delay-1400 transition-all"
-        icon={
-          <Icons.StarDuotone />
-        }
-        title="Wanna See What I've Built?"
-      />
+      <div className="mt-8 starting:blur-sm starting:[transform:translateY(24px)] starting:opacity-0 duration-1000 delay-1400 transition-all">
+        <LinkCard
+          href="/experience"
+          icon={
+            <Icons.StarDuotone />
+          }
+          title="Wanna See What I've Built?"
+        />
+      </div>
     </section>
   )
 }

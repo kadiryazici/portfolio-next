@@ -1,5 +1,5 @@
-import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { ContentHeader } from "@/components/ContentHeader/ContentHeader"
+import { Icons } from "@/components/Icons"
 import { PageMain } from "@/components/PageMain/PageMain"
 import { posts } from "@/lib/posts"
 import Link from "vinext/shims/link"
@@ -36,9 +36,8 @@ export default function BlogPage() {
               <span className="shrink-0 text-[12px] text-ink-soft">
                 {post.date}
               </span>
-              <AppIcon
-                name="arrow"
-                className="max-md:absolute max-md:right-3 max-md:top-5 size-4 text-ink-soft transition-colors group-hover:text-accent md:block"
+              <Icons.ArrowOutward
+                className="max-md:absolute max-md:right-3 max-md:top-5 text-base text-ink-soft transition-colors group-hover:text-accent md:block"
               />
             </Link>
           </li>
