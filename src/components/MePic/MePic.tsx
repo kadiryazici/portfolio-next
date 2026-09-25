@@ -13,13 +13,18 @@ export function MePic(props: MePicProps) {
       {...attrs}
       className={cn("isolate relative aspect-square w-[400px] max-w-full p-6 sm:p-10", className)}
     >
-      <img
+      <div
         aria-hidden="true"
-        src="/me-big.webp"
-        width={330}
-        height={330}
-        className="animate-spin [animation-direction:reverse] [animation-duration:20s] z-[-1] absolute inset-0 blur-[150px] opacity-50 starting:opacity-0 starting:scale-0 delay-1000 duration-2000 block aspect-square h-auto w-full rounded-full object-cover"
-      />
+        className="absolute inset-0 -z-10 overflow-clip rounded-full blur-[150px] opacity-50 starting:opacity-0 starting:scale-0 delay-1000 duration-2000"
+      >
+        <img
+          src="/me-big.webp"
+          alt=""
+          width={330}
+          height={330}
+          className="block aspect-square h-auto w-full rounded-full object-cover animate-spin [animation-direction:reverse] [animation-duration:20s] motion-reduce:animate-none"
+        />
+      </div>
       <img
         src="/me-big.webp"
         alt="Kadir Yazıcı with a bicycle beside a lake"
