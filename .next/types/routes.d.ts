@@ -20,10 +20,10 @@ declare global {
 }
 
 declare namespace VinextRouteTypes {
-  type PageRoute = "/" | "/blog" | "/blog/building-an-ssh-portfolio" | "/blog/from-swe-to-curtain" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux" | "/experience" | "/preview/time-picker-button" | "/projects";
+  type PageRoute = "/" | "/blog" | "/blog/building-an-ssh-portfolio" | "/blog/from-swe-to-curtain" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux" | "/experience" | "/preview/liquid-div" | "/preview/time-picker-button" | "/projects";
   type LayoutRoute = "/" | "/blog";
   type RouteHandlerRoute = never;
-  type AppRoute = "/" | "/blog" | "/blog/building-an-ssh-portfolio" | "/blog/from-swe-to-curtain" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux" | "/experience" | "/preview/time-picker-button" | "/projects";
+  type AppRoute = "/" | "/blog" | "/blog/building-an-ssh-portfolio" | "/blog/from-swe-to-curtain" | "/blog/surviving-ai-world-as-a-stubborn-old-developer" | "/blog/that-feeling-when-the-app-has-perfect-ux" | "/experience" | "/preview/liquid-div" | "/preview/time-picker-button" | "/projects";
 
   interface ParamMap {
     "/": {};
@@ -33,6 +33,7 @@ declare namespace VinextRouteTypes {
     "/blog/surviving-ai-world-as-a-stubborn-old-developer": {};
     "/blog/that-feeling-when-the-app-has-perfect-ux": {};
     "/experience": {};
+    "/preview/liquid-div": {};
     "/preview/time-picker-button": {};
     "/projects": {};
   }

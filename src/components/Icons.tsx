@@ -97,7 +97,23 @@ export function TablerChevronLeft(props: SVGProps<SVGSVGElement>) {
   )
 }
 
+
+export function LetsIconsFullScreenCornerLight(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Lets Icons by Leonid Tsvetkov - https://creativecommons.org/licenses/by/4.0/ */}<path fill="currentColor" d="M4 20h-.5v.5H4zm5.354-4.646a.5.5 0 0 0-.708-.708zM3.5 14v6h1v-6zm.5 6.5h6v-1H4zm.354-.146l5-5l-.708-.708l-5 5zM20 4h.5v-.5H20zm-5.354 4.646a.5.5 0 0 0 .708.708zM20.5 10V4h-1v6zM20 3.5h-6v1h6zm-.354.146l-5 5l.708.708l5-5z" /></svg>
+  )
+}
+
+
+export function LetsIconsCloseRound(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Lets Icons by Leonid Tsvetkov - https://creativecommons.org/licenses/by/4.0/ */}<path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 6L6 18M6 6l12 12" /></svg>
+  )
+}
+
 export const Icons = {
+  Close: LetsIconsCloseRound,
+  FullScreen: LetsIconsFullScreenCornerLight,
   ChevronLeft: TablerChevronLeft,
   Paper: LetsIconsPaperFill,
   BookOpen: LetsIconsBookOpenDuotone,

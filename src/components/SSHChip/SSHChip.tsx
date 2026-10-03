@@ -3,6 +3,7 @@
 import type { ComponentProps } from "react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { LiquidDiv } from "../LiquidDiv/LiquidDiv"
 
 const sshCommand = "ssh ssh.kadiryazici.dev"
 
@@ -20,7 +21,8 @@ export function SSHChip(props: SSHChipProps) {
   }
 
   return (
-    <button
+    <LiquidDiv
+      as="button"
       {...attrs}
       aria-label="Copy SSH command"
       className={cn(
@@ -32,6 +34,6 @@ export function SSHChip(props: SSHChipProps) {
       type={type}
     >
       {copied ? "Copied" : sshCommand}
-    </button>
+    </LiquidDiv>
   )
 }

@@ -2,6 +2,7 @@ import { ButtonPaddingStyles, ButtonVariantStyles } from "@/components/Button/Bu
 import { cn } from "@/lib/utils"
 import type { ComponentProps, ReactNode } from "react"
 import Link from "vinext/shims/link"
+import { LiquidDiv } from "../LiquidDiv/LiquidDiv"
 
 export type ButtonProps = ComponentProps<"button"> & {
   leftIcon?: ReactNode
@@ -32,7 +33,7 @@ export function Button(props: ButtonProps) {
   } = props
 
   const buttonClassName = cn(
-    "relative inline-flex shrink-0 items-center justify-center gap-2 rounded-2xl font-medium no-underline",
+    "relative inline-flex shrink-0 items-center justify-center gap-2 rounded-full font-medium no-underline",
     "transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
     ButtonVariantStyles[variant],
     ButtonPaddingStyles[padding],
@@ -68,7 +69,8 @@ export function Button(props: ButtonProps) {
 
   if (href) {
     return (
-      <Link
+      <LiquidDiv
+        as={Link}
         {...attrs as any}
         href={href}
         target={target}
@@ -78,18 +80,19 @@ export function Button(props: ButtonProps) {
         className={buttonClassName}
       >
         {content}
-      </Link>
+      </LiquidDiv>
     )
   }
 
   return (
-    <button
+    <LiquidDiv
       {...attrs}
+      as="button"
       type={type}
       disabled={disabled || loading}
       className={buttonClassName}
     >
       {content}
-    </button>
+    </LiquidDiv>
   )
 }

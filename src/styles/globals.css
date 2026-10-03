@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: rgb(18, 18, 18);
+  --color-bg: rgb(14, 14, 14);
   --color-bg-2: rgb(33, 33, 33);
-  --color-sidebar: rgb(10, 10, 10);
+  --color-sidebar: rgb(30, 30, 30);
   --color-dialog: rgba(237, 238, 241, 0.96);
 
   --color-ink: rgb(240, 240, 240);
@@ -110,4 +110,48 @@ html {
 ::selection {
   background: rgb(8 104 216 / 0.2);
   color: var(--color-ink);
+}
+
+::view-transition-group(.video-popup) {
+  animation-duration: 450ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+::view-transition-old(.video-popup) {
+  animation: none;
+  opacity: 0;
+}
+
+::view-transition-new(.video-popup) {
+  animation: none;
+  height: 100%;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(.video-popup-container) {
+  animation: video-popup-container-enter 300ms ease-out both;
+}
+
+::view-transition-old(.video-popup-container) {
+  animation: video-popup-container-enter 220ms ease-in reverse both;
+}
+
+@keyframes video-popup-container-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  ::view-transition-group(.video-popup),
+  ::view-transition-group(.video-popup-container),
+  ::view-transition-new(.video-popup-container),
+  ::view-transition-old(.video-popup-container) {
+    animation: none;
+  }
 }
