@@ -1,45 +1,22 @@
-import { cn } from "cn";
-import { Component, ComponentProps, ComponentType, ExoticComponent, FC, ForwardRefExoticComponent, FunctionComponent, JSX, PropsWithChildren, ReactNode } from "react";
+import { cn } from "@/lib/utils"
+import type { ComponentProps, ElementType } from "react"
 
-type LiquidDivProps<
-  As extends keyof JSX.IntrinsicElements
-> = Omit<ComponentProps<As>, "as"> & {
-  disabled?: boolean
+export type LiquidDivProps<As extends ElementType = "div"> = Omit<ComponentProps<As>, "as" | "material"> & {
   as?: As
+  material?: "content" | "control" | "navigation" | "selection"
 }
 
-export function LiquidDiv<
-  As extends keyof JSX.IntrinsicElements = "div"
->(props: LiquidDivProps<As>) {
-  const { className, disabled = false, children, as: As = "div", style = {}, ...attrs } = props as LiquidDivProps<"div">
+export function LiquidDiv<As extends ElementType = "div">(props: LiquidDivProps<As>) {
+  const { className, children, as: As = "div", material = "content", ...attrs } = props
+  const Element: ElementType = As
 
   return (
-    <As
-      {...attrs as object}
-      className={cn("isolate relative bg-sidebar/70 backdrop-blur-[8px]", className)}
-      style={{
-        ...style,
-      }}
+    <Element
+      {...attrs}
+      data-glass={material}
+      className={cn("liquid-glass isolate relative bg-sidebar/70", className)}
     >
-      <div
-        className="transition-shadow liquid-container overflow-hidden flex pointer-events-none z-[-1] absolute inset-0 rounded-[inherit]"
-        style={{
-          boxShadow: disabled
-            ? "0px 0px 0px 1px transparent,3px 0px 0px -2px transparent,-3px 0px 0px -2px transparent,inset 0px 40px 10px -40px transparent, inset 0px -40px 10px -40px transparent"
-            : "0px 0px 0px 1px rgba(0,0,0,.3),3px 0px 0px -2px rgba(0,0,0,.3),-3px 0px 0px -2px rgba(0,0,0,.3),inset 0px 40px 10px -40px #1A1A1A, inset 0px -40px 10px -40px #1A1A1A"
-        }}
-      >
-        <div
-          className="transition-shadow size-full rounded-[inherit] blur-[1px]"
-          style={{
-            boxShadow: disabled
-              ? "inset 0 1px 0 transparent, inset 0 -1px 0 transparent"
-              : "inset 0 1px 0 rgba(255,255,255,.3), inset 0 -1px 0 rgba(255,255,255,.3)"
-          }}
-        />
-      </div>
-
       {children}
-    </As>
+    </Element>
   )
 }

@@ -1,4 +1,3 @@
-import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { ContentHeader } from "@/components/ContentHeader/ContentHeader"
 import { ExperienceCard } from "@/components/ExperienceCard/ExperienceCard"
 import { Icons } from "@/components/Icons"

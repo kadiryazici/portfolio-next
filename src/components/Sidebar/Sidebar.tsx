@@ -51,12 +51,12 @@ export function Sidebar(props: SidebarProps) {
                 transitionTimingFunction: "linear(0, 0.013 1%, 0.051 2.2%, 0.404 9.8%, 0.51 12.6%, 0.602 15.5%, 0.683 18.7%, 0.754 22.2%, 0.813 26%, 0.861 30.2%, 0.9 34.8%, 0.931 40%, 0.972 52.7%, 0.992 70.2%, 1), linear(0, 0.009 1.4%, 0.032 2.8%, 0.131 6%, 0.265 9.1%, 0.675 17.6%, 0.88 22.8%, 0.953 25.2%, 1.014 27.7%, 1.062 30.3%, 1.094 32.9%, 1.121 37.2%, 1.121 42.2%, 1.102 46.7%, 1.019 61.2%, 0.989 71.5%, 0.985 81.1%, 1)",
                 transitionProperty: "translate, scale"
               }}
-              disabled={!isAnimating}
+              material="selection"
               className={cn(
                 "pointer-events-none absolute left-0 right-0 mx-auto top-[4px] h-[55px] w-[44px] rounded-full duration-650 ease-out motion-reduce:transition-none",
                 isAnimating
                   ? "bg-neutral-800/50 scale-145 motion-reduce:scale-100"
-                  : "bg-neutral-800"
+                  : "bg-black/40"
               )}
             />
           )}
@@ -93,6 +93,7 @@ function Group(props: ComponentProps<"div">) {
   return (
     <LiquidDiv
       {...attrs}
+      material="navigation"
       className={cn(
         "bg-sidebar/50 group/Wrapper isolate relative flex flex-col py-[6px] gap-[2px] rounded-full",
         "duration-1000 delay-800 transition-[scale,filter,opacity] starting:opacity-0",
