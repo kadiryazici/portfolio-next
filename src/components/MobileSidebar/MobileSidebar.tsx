@@ -61,12 +61,13 @@ export function MobileSidebar(props: MobileSidebarProps) {
       aria-label="Main navigation"
       {...attrs}
       className={cn(
-        "origin-bottom transition-transform duration-400 pointer-events-none fixed inset-x-0 bottom-0 z-[100] flex justify-center px-3 pt-3 pb-[calc(env(safe-area-inset-bottom)+16px)] md:hidden",
+        "origin-bottom transition-transform duration-400 motion-reduce:transition-none pointer-events-none fixed inset-x-0 bottom-0 z-[100] flex justify-center px-3 pt-3 pb-[calc(env(safe-area-inset-bottom)+16px)] md:hidden",
         shrinked && "scale-80",
         className,
       )}
     >
       <LiquidDiv
+        material="navigation"
         className={cn(
           "pointer-events-auto w-full max-w-sm rounded-full p-1",
           "transition-[scale,filter,opacity] duration-1000 delay-400 starting:scale-125 starting:blur-sm starting:opacity-0 motion-reduce:transition-none",
@@ -81,12 +82,12 @@ export function MobileSidebar(props: MobileSidebarProps) {
                 transitionTimingFunction: "linear(0, 0.013 1%, 0.051 2.2%, 0.404 9.8%, 0.51 12.6%, 0.602 15.5%, 0.683 18.7%, 0.754 22.2%, 0.813 26%, 0.861 30.2%, 0.9 34.8%, 0.931 40%, 0.972 52.7%, 0.992 70.2%, 1), linear(0, 0.009 1.4%, 0.032 2.8%, 0.131 6%, 0.265 9.1%, 0.675 17.6%, 0.88 22.8%, 0.953 25.2%, 1.014 27.7%, 1.062 30.3%, 1.094 32.9%, 1.121 37.2%, 1.121 42.2%, 1.102 46.7%, 1.019 61.2%, 0.989 71.5%, 0.985 81.1%, 1)",
                 transitionProperty: "translate, scale, background-color",
               }}
-              disabled={!isAnimating}
+              material="selection"
               className={cn(
                 "pointer-events-none absolute inset-y-0 left-0 w-1/4 rounded-full duration-650 motion-reduce:transition-none",
                 isAnimating
                   ? "bg-neutral-800/50 scale-135 motion-reduce:scale-100"
-                  : "bg-neutral-800"
+                  : "bg-black/40"
               )}
             />
           )}

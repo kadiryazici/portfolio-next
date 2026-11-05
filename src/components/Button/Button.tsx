@@ -33,7 +33,7 @@ export function Button(props: ButtonProps) {
   } = props
 
   const buttonClassName = cn(
-    "relative inline-flex shrink-0 items-center justify-center gap-2 rounded-full font-medium no-underline",
+    "liquid-button relative inline-flex shrink-0 items-center justify-center gap-2 rounded-full font-medium no-underline",
     "transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
     ButtonVariantStyles[variant],
     ButtonPaddingStyles[padding],
@@ -71,7 +71,8 @@ export function Button(props: ButtonProps) {
     return (
       <LiquidDiv
         as={Link}
-        {...attrs as any}
+        material="control"
+        {...attrs as unknown as ComponentProps<typeof Link>}
         href={href}
         target={target}
         prefetch={false}
@@ -88,6 +89,7 @@ export function Button(props: ButtonProps) {
     <LiquidDiv
       {...attrs}
       as="button"
+      material="control"
       type={type}
       disabled={disabled || loading}
       className={buttonClassName}

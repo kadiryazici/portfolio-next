@@ -1,5 +1,4 @@
 import type { ComponentProps, ReactNode } from "react"
-import { AppIcon } from "@/components/AppIcon/AppIcon"
 import { PageMain } from "@/components/PageMain/PageMain"
 import { cn } from "@/lib/utils"
 import Link from "vinext/shims/link"
